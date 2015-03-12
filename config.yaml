@@ -22,4 +22,4 @@ params:
   google_analytics: UA-60678621-1
 
   footer: 
-    bottom: '[Built with Hugo](href="http://gohugo.io/)  -  [Living on Github](https://github.com/isaacgregson/theCodestead.com)  -  [Hosted on Digital Ocean](https://www.digitalocean.com/?refcode=9f25736ced94)'
+    bottom: '[Built with Hugo](href="http://gohugo.io/)  -  [Lives on Github](https://github.com/isaacgregson/theCodestead.com)  -  [Hosted on Digital Ocean](https://www.digitalocean.com/?refcode=9f25736ced94)'
