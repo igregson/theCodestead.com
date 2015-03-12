@@ -1,0 +1,7 @@
+baseurl: ""
+languageCode: en-us
+title: "The Codestead"
+canonifyurls: false
+
+params: 
+  disqus_shortname: "thecodestead"

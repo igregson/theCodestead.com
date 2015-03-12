@@ -1,0 +1,26 @@
+{{ partial "head.html" . }}
+
+{{ if eq .Site.Params.sidebar "default" }}
+  {{ partial "sidebars/sidebar-base--default.html" . }}
+{{ end }}
+
+
+<div class="container">
+
+  {{ partial "sidebar.html" .}}
+
+  <main class="content" role="main">
+    <article class="post {{ range .Params.tags }}tag-{{.}} {{end}}">
+    
+      <h2 class="post--title">{{.Title}}</h2>
+      <div class="post--post">
+        {{.Content}}
+      </div>
+
+    </article>
+  </main>
+
+
+</div> <!-- end container wrap -->
+
+{{ partial "foot.html" . }}

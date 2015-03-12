@@ -1,0 +1,166 @@
+// -----------------------------------------
+// Vars -- Type
+
+$c-link: blue
+$c-link-hover: darken($c-link, 7)
+
+$font-family-heading: 'Source Sans Pro', sans-serif
+$font-family-body: 'Source Sans Pro', sans-serif
+
+$c-type: black
+$c-heading: black
+
+$c-selection: white
+$c-selection-bg: tan
+
+$c-line: #bbb
+$c-hr: $c-line
+
+
+// -----------------------------------------
+// Type 
+
+body
+  line-height: 1.5
+  font-family: $font-family-body
+  color: $c-type
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 
+  font-family: $font-family-heading
+  line-height: 1.5em
+  color: $c-heading
+  &.inline
+    display: inline
+p +
+  h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6
+    // !important unfortunately needed to override
+    // the owl selector from _base.sass 
+    // TODO: find a better approach to this
+    margin-top: 40px !important
+
+
+h1, .h1
+  font-size: 2.4em
+  font-weight: 600
+h2, .h2
+  font-size: 2em
+  font-weight: 600
+h3, .h3
+  font-size: 1.74em
+  font-weight: 600
+h4, .h4
+  font-size: 1.5em
+  font-weight: 600
+h5, .h5
+  font-size: 1.3em
+  font-weight: 600
+h6, .h6
+  font-size: 1em
+  font-weight: 600
+
+$font-size--p: 16px
+$line-height--p: 1.6
+p, ul, ol 
+ font-size: $font-size--p
+ line-height: $line-height--p
+p 
+  @include bpMax(700px)
+    text-align: justify
+
+a
+  color: $c-link
+  cursor: pointer
+  text-decoration: none
+  &:hover
+    color: $c-link-hover
+
+::selection
+  color: $c-selection
+  background: $c-selection-bg
+
+small 
+  font-size: .85em
+
+.content-text
+  ul, ol 
+    margin-top: .2rem
+    li+li 
+      margin-top: .1rem
+
+
+// ---------------
+// Blockquotes
+
+blockquote 
+  border-radius: 0 3px 3px 0
+  padding: 0 1.5rem
+  padding-right: 0
+  margin-top: 2.5rem !important
+  border-left: 4px solid lighten($c-line, 7)
+  color: $c-type
+  p
+    font-style: italic
+  @include bpMax(650px)
+    font-size: 13px
+
+
+// ---------------
+// Fig Captions
+
+figcaption 
+  font-size: 14px
+  line-height: 1.4
+  font-style: italic
+  color: rgba(0,0,0,0.6)
+  text-align: center
+
+
+
+// ---------------
+// Lists
+
+.content
+  ul, ol 
+    // font-size: 95%
+    padding-left: 0
+    margin-top: 2rem
+    margin-left: 3rem
+  ul 
+    list-style: disc
+  ol
+    list-style: decimal
+  ul ul, ul ol, ol ol, ol ul
+    margin: 1.5rem 0 1.5rem 3rem
+    font-size: 90%
+  li
+    margin-top: 0
+    margin-bottom: .5rem
+  p + ul li,  p + ol li
+    margin-top: 0
+    margin-bottom: 5px
+
+// --------------- 
+// other
+q
+  display: inline
+  quotes: "\201C" "\201D" "\2018" "\2019"
+q::before 
+  content: open-quote
+q::after
+  content: close-quote
+
+sub, sup
+  font-size: 75%
+  line-height: 0
+  position: relative
+  vertical-align: baseline
+sub
+  bottom: -0.25em
+sup 
+  top: -0.5em
+mark 
+  background: #FF0
+  color: #000
+  background-color: #FFC336
+abbr[title]
+  border-bottom: 1px dotted

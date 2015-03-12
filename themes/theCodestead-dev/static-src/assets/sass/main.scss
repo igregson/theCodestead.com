@@ -1,0 +1,33 @@
+// Notes:
+// - Currently, files with @imports must use .scss synta;
+// - All other files can use .sass syntac
+// Aside: this is a bug with gulp-sass
+
+
+// sass includes 
+
+@import "debug";
+
+// -
+
+@import "core/reset";
+@import "core/mediaQueries";
+@import "core/base";
+@import "core/type";
+@import "core/helpers";
+@import "core/states";
+@import "core/syntax-skin-import";
+@import "core/animate/animate";
+
+// -
+
+@import "shared-components/buttons";
+@import "shared-components/lines";
+@import "shared-components/images";
+@import "shared-components/code";
+
+// -
+
+@import "modules/excerpts";
+@import "modules/header";
+@import "modules/sidebars";

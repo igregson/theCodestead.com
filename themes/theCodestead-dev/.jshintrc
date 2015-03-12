@@ -1,0 +1,12 @@
+{
+  "asi"      : true,
+  "browser"  : true,
+  "eqeqeq"   : true,
+  "eqnull"   : true,
+  "expr"     : true,
+  "jquery"   : true,
+  "nonbsp"   : false,
+  "strict"   : false,
+  "undef"    : false,
+  "unused"   : false
+}

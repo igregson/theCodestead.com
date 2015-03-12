@@ -1,0 +1,32 @@
+{{ partial "head.html" . }}
+
+
+
+
+.container.page-index
+
+  aside.sb--right
+    .sb--box
+      h4.sb--header For Web Devs
+      p.. 
+        The Codestead is a place for all web devs. Whether you're on the front-end or back-end, there's something here for you.
+
+  .content.excerpts
+    {{ range where .Data.Pages "Section" "post" }}
+    
+      .excerpt
+        h2.excerpt--header
+          a href={{.RelPermalink }} {{.Title}} &mdash;
+        {{.Summary}}
+
+      hr.excerpt--divider
+
+    {{ end }}
+
+
+  .clearfix  
+
+
+
+
+{{ partial "foot.html" . }}

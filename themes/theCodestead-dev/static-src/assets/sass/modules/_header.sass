@@ -1,0 +1,56 @@
+.header--main 
+  max-width: $width--content-with-sb
+
+.has-sb--right, .has-sb--left, .template--index
+  .header--main 
+    max-width: $width-contain
+    
+
+.header--main 
+  height: 115px
+  margin: 0 auto
+  position: relative
+  padding: 0 10px
+  z-index: 1
+  overflow: hidden
+  *
+    color: $c-white
+    // font-weight: 600
+.header--title h1
+  font-size: 2em
+  position: absolute
+  left: 0 
+  top: 15px
+  // transform: translateY(-50%)
+  text-transform: uppercase
+.header--nav 
+  position: absolute
+  left: 0
+  // top: 70%
+  bottom: 5px
+  li a 
+    font-weight: 600  
+    padding: 5px 15px 10px
+    color: inherit
+    // text-transform: uppercase
+    position: relative
+    // &:first-of-type
+    //   padding-left: 0
+    // &:after
+    //   content: ''
+    //   width: 13px 
+    //   border: 2px solid darken($c-white, 17)
+    //   position: absolute
+    //   left: 0
+    //   right: 0
+    //   bottom: 0
+    //   margin: 0 auto
+    //   transform: translateY(900%)
+    //   transition: transform .3s ease
+    // &:hover, &.nav--active
+    //   &:after 
+    //     transform: translateY(100%)
+    &.nav--active 
+      background: $c-white
+      color: $c-type
+    
