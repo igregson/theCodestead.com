@@ -1,7 +1,25 @@
 baseurl: ""
-languageCode: en-us
-title: "The Codestead"
 canonifyurls: false
+languageCode: en-us
+metaDataFormat: yaml
+title: The Codestead
+
 
 params: 
+  subtitle: for Crafters of the Modern Web
   disqus_shortname: "thecodestead"
+
+  meta_default: 
+    description: 'The Codestead is a resources for developers of the modern web. Think "homestead," only for coders'
+    keywords: 
+      - web developement
+      - code communities
+      - dev blogs
+      - css 
+      - golang
+      - flat file themes
+      - static site generators
+  google_analytics: UA-60678621-1
+
+  footer: 
+    bottom: '[Built with Hugo](href="http://gohugo.io/)  -  [Living on Github](https://github.com/isaacgregson/theCodestead.com)  -  [Hosted on Digital Ocean](https://www.digitalocean.com/?refcode=9f25736ced94)'

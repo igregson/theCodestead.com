@@ -1,44 +1,42 @@
-    <!-- make sitewide GoTemplate vars available to script files -->
-    <script>
-      var google_analytics_accout = {{ .Site.Params.google_analytics_accout }}
-      var home_page_excerpt_style = {{ .Site.Params.home_excerpt_style }}
-      // var base_url = {{ .Site.BaseUrl }}
-    </script>
+    <footer class="siteFooter">
+      <div class="siteFooter--text">
+        <div class="siteFooter--bottom">
+          {{ .Site.Params.footer.bottom | markdownify}}
+        </div>
+      </div>
+    </footer>
+
 
     <!-- jQuery 
        - Think first, you might not need it (http://youmightnotneedjquery.com/)
        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
      -->
     
-    <!-- Single, browserified bundle -->
     <script src="/assets/js/bundle.js"></script>
-
     
-    <!-- Google Analytics - To Use:
-    1. Add google_anaglytics key with value to site param settings 
-    2. Uncomment below -->
-
-    <!--
     {{ with .Site.Params.google_analytics }}
     <script>
-      var _gaq=[['_setAccount','{{ . }}'],['_trackPageview']];
-      (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-      g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-      s.parentNode.insertBefore(g,s)}(document,'script'));
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', '{{ . }}', 'auto');
+      ga('send', 'pageview');
     </script>
     {{ end }}
-    -->
-
-    <div id="disqus_thread"></div>
+    
+    {{if isset .Params "comments" }}
     <script type="text/javascript">
-        var disqus_shortname = {{ .Site.Params.disqus_shortname }}
-        
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
+      var disqus_shortname = {{ .Site.Params.disqus_shortname }};
+      
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
     </script>
+    {{end}}
 
   </body>
 </html>

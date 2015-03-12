@@ -38,6 +38,7 @@ html
   overflow-y: scroll
 body
   padding: 0 $space-container $space-container * 2
+  padding-bottom: 0
 
 .contain 
   margin: 0 auto
@@ -61,6 +62,10 @@ body
 .has-sb--right, .has-sb--left, .template--index
   .contain 
     max-width: $width-contain
+    @include bpMax(800px)
+      max-width: 100%
   .content
     max-width: 75%
+    @include bpMax(800px)
+      max-width: 100%
 

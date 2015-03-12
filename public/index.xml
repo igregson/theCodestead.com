@@ -10,7 +10,7 @@
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>Static Site Generator Or Flat File CMS</title>
+      <title>Static Site Generator or Flat File CMS</title>
       <link>http://localhost:1313/post/static-site-generator-or-flat-file-cms/</link>
       <pubDate>Tue, 03 Mar 2015 23:13:17 +0300</pubDate>
       
@@ -120,7 +120,9 @@ have. And it&amp;rsquo;s really true.&lt;/p&gt;
       <pubDate>Tue, 03 Mar 2015 18:49:32 +0300</pubDate>
       
       <guid>http://localhost:1313/resources/</guid>
-      <description>&lt;p&gt;Resources galor!&lt;/p&gt;
+      <description>&lt;p&gt;Ahhhhhh, yeah. Resources.&lt;/p&gt;
+
+&lt;p&gt;Coming Soon.&lt;/p&gt;
 </description>
     </item>
     
@@ -130,7 +132,7 @@ have. And it&amp;rsquo;s really true.&lt;/p&gt;
       <pubDate>Tue, 03 Mar 2015 18:49:20 +0300</pubDate>
       
       <guid>http://localhost:1313/about/</guid>
-      <description>&lt;p&gt;An About Page&lt;/p&gt;
+      <description>&lt;p&gt;Comming Soon!&lt;/p&gt;
 </description>
     </item>
     
@@ -140,7 +142,7 @@ have. And it&amp;rsquo;s really true.&lt;/p&gt;
       <pubDate>Tue, 03 Mar 2015 18:49:13 +0300</pubDate>
       
       <guid>http://localhost:1313/contact/</guid>
-      <description>&lt;p&gt;This is a contact page.&lt;/p&gt;
+      <description>&lt;p&gt;&lt;a href=&#34;mailto:isaac@thecodestead.com&#34;&gt;Click to Email&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     

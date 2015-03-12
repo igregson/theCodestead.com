@@ -1,0 +1,22 @@
+.siteFooter 
+  height: 5rem
+  position: relative
+  @extend .container
+.siteFooter--text
+  // margin: 0 auto
+  max-width: 100%
+  text-align: center
+  margin-top: .2rem
+  p
+    color: lighten($c-link, 27)
+    text-align: center
+    font-weight: 600
+    font-size: .8em
+    a 
+      color: inherit
+
+.has-sb--right .siteFooter--text
+  max-width: 75%
+  @include bpMax(800px)
+    max-width: 100%
+

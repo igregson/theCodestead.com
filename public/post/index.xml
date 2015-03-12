@@ -10,7 +10,7 @@
     <atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>Static Site Generator Or Flat File CMS</title>
+      <title>Static Site Generator or Flat File CMS</title>
       <link>http://localhost:1313/post/static-site-generator-or-flat-file-cms/</link>
       <pubDate>Tue, 03 Mar 2015 23:13:17 +0300</pubDate>
       

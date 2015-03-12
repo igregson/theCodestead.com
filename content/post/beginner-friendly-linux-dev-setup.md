@@ -1,9 +1,10 @@
-+++
-date = "2015-03-03T23:01:09+03:00"
-draft = true
-title = "Beginner Friendly Linux Dev Setup"
-sidebar = "right"
-+++
+---
+date: 2015-03-03T23:01:09+03:00
+draft: true
+title: Beginner Friendly Linux Dev Setup
+sidebar: right
+comments: true      
+---
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad cumque nisi aperiam sequi voluptates? Veniam quis ab id vel sint, quod totam explicabo quasi, sequi voluptate fugiat unde iusto et ratione cum iure ut recusandae!
 

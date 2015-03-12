@@ -6,4 +6,4 @@ title = "About"
 
 +++
 
-An About Page
+Comming Soon!

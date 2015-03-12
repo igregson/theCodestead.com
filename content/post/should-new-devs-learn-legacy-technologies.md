@@ -1,9 +1,9 @@
-+++
-date = "2015-03-03T22:39:18+03:00"
-draft = true
-title = "Should New Devs Learn Legacy Technologies?"
-sidebar = "right"
-+++
+---
+date: 2015-03-03T22:39:18+03:00
+draft: true
+title: Should New Devs Learn Legacy Technologies?
+sidebar: right
+---
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, fuga fugit impedit tempore ad itaque officia similique iure facere, asperiores vero, voluptas a ullam obcaecati dignissimos rerum aliquid voluptatem cumque! Natus suscipit tempore id iste molestiae, ut itaque mollitia, doloremque voluptatibus odit facilis et?
 

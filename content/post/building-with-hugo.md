@@ -1,9 +1,10 @@
-+++
-date = "2015-03-03T22:57:35+03:00"
-draft = true
-title = "Building with Hugo"
-sidebar = "right"
-+++
+---
+date: 2015-03-03T22:57:35+03:00
+draft: true
+title: Building with Hugo
+sidebar: right
+comments: true
+---
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias perspiciatis harum distinctio, id sint laborum ut ex quasi earum. Expedita consectetur facilis commodi eaque, illo possimus? Tempore, rerum hic. Recusandae voluptatibus nam non tenetur eligendi similique neque molestiae quia id impedit repudiandae dolor deserunt accusamus sit, optio magni vitae quisquam maxime exercitationem perspiciatis rerum.
 

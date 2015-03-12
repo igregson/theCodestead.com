@@ -16,7 +16,7 @@ html
     link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,200italic,300italic,400italic,600italic' rel='stylesheet' type='text/css'
 
     
-  body class="{{if ne .Url "/"}}post-template page{{end}} page-template-{{with .Title | urlize}}{{.}}{{end}} {{ if eq .Url "/" }} template--index{{end}} {{if .Params.sidebar}}has-sb--{{.Params.sidebar}}{{end}}" id="{{with .Site.Params.bg_img}}{{.}}{{end}}"
+  body class="{{if ne .Url "/"}}post-template page{{end}} page-template-{{with .Title | urlize}}{{.}}{{end}} {{ if eq .Url "/" }} template--index{{end}} {{if .Params.sidebar}}has-sb--right{{end}} {{if eq .Url "/"}}has-sb--right{{end}}" id="{{with .Site.Params.bg_img}}{{.}}{{end}}"
     #top
 
     {{ partial "icons--svg.html" . }}
@@ -30,6 +30,9 @@ html
           {{else}}
             {{.Site.Title}}
           {{end}}
+      .header--subtitle
+        h2 
+          {{.Site.Params.subtitle}}
       nav.header--nav
         ul
           li

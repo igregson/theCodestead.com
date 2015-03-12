@@ -6,4 +6,6 @@ nav = "Resources"
 sidebar = "right"
 +++
 
-Resources galor!
+Ahhhhhh, yeah. Resources. 
+
+Coming Soon.

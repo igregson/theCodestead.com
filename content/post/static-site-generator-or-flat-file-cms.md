@@ -1,8 +1,9 @@
 ---
 date: 2015-03-03T23:13:17+03:00
 draft: true
-title: Static Site Generator Or Flat File CMS
+title: Static Site Generator or Flat File CMS
 sidebar: right
+comments: true
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, quae. Facere odit beatae ipsam illo aspernatur minus consequuntur ducimus dolor facilis nihil!
