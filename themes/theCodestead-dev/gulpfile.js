@@ -88,7 +88,7 @@ var config = {
 
 gulp.task('hugo', function() {
   return gulp.src('', {read: false})
-    .pipe(shell('hugo server --theme=' + theme_name_dev + ' --buildDrafts --watch', {
+    .pipe(shell('hugo server --theme=' + theme_name_dev + ' --watch', {
       cwd: "./../../"
     }))
 })

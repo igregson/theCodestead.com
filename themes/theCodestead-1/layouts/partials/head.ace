@@ -33,6 +33,10 @@ html
       .header--subtitle
         h2 
           {{.Site.Params.subtitle}}
+      
+      // a.icon--twitter href=http://twitter.com/thecodestead
+        img src="/assets/images/icon-twitter.svg"
+
       nav.header--nav
         ul
           li

@@ -1,6 +1,5 @@
 ---
 date: 2015-03-03T22:57:35+03:00
-draft: true
 title: Building with Hugo
 sidebar: right
 comments: true

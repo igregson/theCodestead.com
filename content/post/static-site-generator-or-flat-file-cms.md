@@ -1,6 +1,5 @@
 ---
 date: 2015-03-03T23:13:17+03:00
-draft: true
 title: Static Site Generator or Flat File CMS
 sidebar: right
 comments: true

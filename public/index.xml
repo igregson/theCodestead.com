@@ -6,8 +6,113 @@
     <description>Recent content on The Codestead</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 03 Mar 2015 23:13:17 +0300</lastBuildDate>
+    <lastBuildDate>Thu, 19 Mar 2015 09:31:12 +0300</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Rsync for Deployment</title>
+      <link>http://localhost:1313/post/rsync-for-deployment/</link>
+      <pubDate>Thu, 19 Mar 2015 09:31:12 +0300</pubDate>
+      
+      <guid>http://localhost:1313/post/rsync-for-deployment/</guid>
+      <description>
+
+&lt;p&gt;Deployment options abound. This means that choosing one can be quite overwhelming.&lt;/p&gt;
+
+&lt;p&gt;Rather than try and provide a complete list of deployment options (Chris Coyier &lt;a href=&#34;https://css-tricks.com/deployment/&#34;&gt;already did that&lt;/a&gt; a while back), I&amp;rsquo;d like to share (and suggest consideration of) just one: rsync.&lt;/p&gt;
+
+&lt;h3 id=&#34;rsync-the-big-picture:f1d04fc53cd377626ea68f849c5f9c97&#34;&gt;rsync - the big picture&lt;/h3&gt;
+
+&lt;p&gt;The geeek-way of learning about a cli is to simply &amp;ldquo;man the command.&amp;rdquo; In other words, bring up the &lt;a href=&#34;http://en.wikipedia.org/wiki/Man_page&#34;&gt;man page&lt;/a&gt; for the command in question.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ man rsync
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Rsync is a fast and extraordinarily versatile file copying tool. It can copy locally, to/from another host over any remote shell, or to/from a remote rsync daemon. It offers a large number of options that control every aspect of its behavior and permit very flexible specification of the set of files to be copied. It is famous for its delta-transfer algorithm, which reduces the amount of data sent over the network by sending only the differences between the source files and the existing files in the destination. Rsync is widely used for backups and mirror‐ing and as an improved copy command for everyday use.&lt;/p&gt;
+
+&lt;p&gt;Rsync finds files that need to be transferred using a &amp;ldquo;quick check&amp;rdquo; algorithm (by default) that looks for files that have changed in size or in last-modified time. Any changes in the other preserved attributes (as requested by options) are made on the destination file directly when the quick check indicates that the file’s data does not need to be updated.&lt;/p&gt;
+
+&lt;p&gt;Some of the additional features of rsync are:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;support for copying links, devices, owners, groups, and permissions&lt;/li&gt;
+&lt;li&gt;exclude and exclude-from options similar to GNU tar&lt;/li&gt;
+&lt;li&gt;a CVS exclude mode for ignoring the same files that CVS would ignore&lt;/li&gt;
+&lt;li&gt;can use any transparent remote shell, including ssh or rsh&lt;/li&gt;
+&lt;li&gt;does not require super-user privileges&lt;/li&gt;
+&lt;li&gt;pipelining of file transfers to minimize latency costs&lt;/li&gt;
+&lt;li&gt;support for anonymous or authenticated rsync daemons (ideal for mirroring)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;small&gt;Note: the above is a bit abbreviated from the original&lt;/small&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;in-other-words:f1d04fc53cd377626ea68f849c5f9c97&#34;&gt;In Other Words:&lt;/h4&gt;
+
+&lt;p&gt;Rsync is a command line interface tool with superpowers.&lt;br /&gt;
+A mere &lt;em&gt;1-line&lt;/em&gt; rsync command can send your entire site to a remote server (or do the opposite), quickly and securely.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s learn how to use it.&lt;/p&gt;
+
+&lt;h3 id=&#34;rsync-usage:f1d04fc53cd377626ea68f849c5f9c97&#34;&gt;rsync &amp;ndash; Usage&lt;/h3&gt;
+
+&lt;p&gt;Formula:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$ rsync options source destination&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Example:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;        ⊢-- options --⊣   ⊢-- source ---⊣   ⊢------------- destination ---------------⊣
+$ rsync   --delete -r        ./public       user@domain.com:/path/to/location/on/remote
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;local-8594-remote:f1d04fc53cd377626ea68f849c5f9c97&#34;&gt;Local &amp;#8594; Remote&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;$ rsync --delete -r public/ user@your-domain.com:/path/to/location/on/remote
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;remote-8594-local:f1d04fc53cd377626ea68f849c5f9c97&#34;&gt;Remote &amp;#8594; Local&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;$ rsync --delete -r user@your-domain.com:/path/to/location/on/remote ./
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;tips:f1d04fc53cd377626ea68f849c5f9c97&#34;&gt;Tips&lt;/h3&gt;
+
+&lt;h4 id=&#34;test-first:f1d04fc53cd377626ea68f849c5f9c97&#34;&gt;Test First&lt;/h4&gt;
+
+&lt;p&gt;Rsync has the option to do a &amp;ldquo;dry run,&amp;rdquo; meaning it will not actually copy anything. This is great for testing your rsync command to ensure you&amp;rsquo;re not going to break anything.&lt;/p&gt;
+
+&lt;p&gt;To do a dry run:
+add &lt;code&gt;--dry-drun&lt;/code&gt; or &lt;code&gt;n&lt;/code&gt; to the options&lt;/p&gt;
+
+&lt;h4 id=&#34;understand-the-trailing-slash:f1d04fc53cd377626ea68f849c5f9c97&#34;&gt;Understand the trailing slash &lt;code&gt;/&lt;/code&gt;&lt;/h4&gt;
+
+&lt;p&gt;For the source string of an rsync command a trailing slash (or lack thereof) &lt;strong&gt;is significant.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Include&lt;/strong&gt; the trailing slash to include the directory itself:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ rsync /my/local/site/ user@domain.com/path/to/remote/root
+[result...]
+/path/to/remote/root/file1
+/path/to/remote/root/file2
+/path/to/remote/root/file3
+/path/to/remote/root/file4
+[...etc]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Do not include&lt;/strong&gt; the trailing slash to not include the directory itself.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ rsync /my/local/site user@domain.com/path/to/remote/root
+[result...]
+/path/to/remote/site/root/file1
+/path/to/remote/site/root/file2
+/path/to/remote/site/root/file3
+/path/to/remote/site/root/file4
+[...etc]
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>Static Site Generator or Flat File CMS</title>
@@ -29,13 +134,16 @@
       <pubDate>Tue, 03 Mar 2015 23:01:09 +0300</pubDate>
       
       <guid>http://localhost:1313/post/beginner-friendly-linux-dev-setup/</guid>
-      <description>&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad cumque nisi aperiam sequi voluptates? Veniam quis ab id vel sint, quod totam explicabo quasi, sequi voluptate fugiat unde iusto et ratione cum iure ut recusandae!&lt;/p&gt;
+      <description>
 
-&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci modi fuga, illo voluptatum quos atque aliquam. Aliquid pariatur eaque laudantium at, debitis alias numquam ut consequatur, porro error tempora labore, consectetur velit consequuntur illum quas itaque, ipsum. Sapiente totam, corporis voluptatum deleniti facilis rem in praesentium. Ad, illum voluptas libero hic, natus itaque soluta impedit quia!&lt;/p&gt;
+&lt;!-- When I first began writing code I worked on a Windows 7 machine. It&#39;s true. I wasn&#39;t one of the cool mac-kinds. When seeing macs I was of course intrigued. Usually they frustrated me. &#34;Why can&#39;t I delete this file!&#34; &#34;Where the right click button!&#34; And many other thoughts came to mind whenever I&#39;d fumble around on macs of friends or family members. 
 
-&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut ex repellat, aliquam eaque at fugiat, recusandae consectetur enim ipsam sit numquam accusamus quo asperiores totam, incidunt voluptates, ipsa necessitatibus vero ea libero. Doloremque, quo, ipsam?&lt;/p&gt;
+But I wasn&#39;t exactly happy on Windows either. Certainly, I &#34;power-used&#34; the heck out of it, complete with tons of customized keyboard shortcuts and &#34;extended-feature&#34; apps. But then came &#34;the shell.&#34;
+ --&gt;
 
-&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint tenetur excepturi enim dicta sapiente sunt facere officiis. Inventore pariatur tempora vel, odit dolor mollitia corporis laboriosam. Ut temporibus, officia dicta quaerat vel excepturi sit eaque amet earum iste autem obcaecati esse harum deserunt unde iusto fugiat ab maxime aliquam quae dignissimos fugit numquam perferendis! Voluptate, fugit.&lt;/p&gt;
+&lt;p&gt;Linux isn&amp;rsquo;t (only) for geeks. In the past it may have been, but times have changed. With the right Linux flavor (&amp;ldquo;distro,&amp;rdquo; in Linux terms) it&amp;rsquo;s easy to have a powerful and user-friendly development machine. I&amp;rsquo;ve been using Linux as my primary work machine for well over a year now. For those in search of a better shell (Windows users) or something closer to most production environments (Mac users), here&amp;rsquo;s my 2 cents.&lt;/p&gt;
+
+&lt;h2 id=&#34;choose-the-right-distro:40874660f1122584356d35784ba0aabd&#34;&gt;Choose the right distro&lt;/h2&gt;
 </description>
     </item>
     
@@ -62,8 +170,6 @@
       <description>&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, fuga fugit impedit tempore ad itaque officia similique iure facere, asperiores vero, voluptas a ullam obcaecati dignissimos rerum aliquid voluptatem cumque! Natus suscipit tempore id iste molestiae, ut itaque mollitia, doloremque voluptatibus odit facilis et?&lt;/p&gt;
 
 &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, delectus ullam cumque enim nesciunt inventore, rem non. Ipsum ullam perferendis est laboriosam tenetur laborum voluptatibus culpa repellendus id maiores nesciunt tempora cum sequi quisquam beatae, temporibus ad praesentium harum corrupti consectetur consequatur natus dolores nam error totam! Ullam aspernatur, sunt voluptates repellat veritatis perferendis ea vel ipsa commodi.&lt;/p&gt;
-
-&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga modi voluptatibus obcaecati cumque optio odit fugit temporibus vel soluta ducimus. Itaque rerum natus, atque repudiandae voluptate ratione rem? Ipsa sapiente dolore, dignissimos ratione repudiandae! Quas eveniet similique accusantium. Optio a provident ea, non voluptatibus sed?&lt;/p&gt;
 </description>
     </item>
     
@@ -111,38 +217,6 @@
 
 &lt;p&gt;Ever heard a teach say that he/she learns so much more than they teach? I sure
 have. And it&amp;rsquo;s really true.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Resources</title>
-      <link>http://localhost:1313/resources/</link>
-      <pubDate>Tue, 03 Mar 2015 18:49:32 +0300</pubDate>
-      
-      <guid>http://localhost:1313/resources/</guid>
-      <description>&lt;p&gt;Ahhhhhh, yeah. Resources.&lt;/p&gt;
-
-&lt;p&gt;Coming Soon.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>About</title>
-      <link>http://localhost:1313/about/</link>
-      <pubDate>Tue, 03 Mar 2015 18:49:20 +0300</pubDate>
-      
-      <guid>http://localhost:1313/about/</guid>
-      <description>&lt;p&gt;Comming Soon!&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Contact</title>
-      <link>http://localhost:1313/contact/</link>
-      <pubDate>Tue, 03 Mar 2015 18:49:13 +0300</pubDate>
-      
-      <guid>http://localhost:1313/contact/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;mailto:isaac@thecodestead.com&#34;&gt;Click to Email&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     

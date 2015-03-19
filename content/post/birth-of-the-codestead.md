@@ -1,6 +1,5 @@
 ---
 date: 2015-03-03T22:05:08+03:00
-draft: true
 title: Birth of The Codestead
 sidebar: right
 ---
