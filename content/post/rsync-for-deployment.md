@@ -3,6 +3,11 @@ date: 2015-03-19T09:31:12+03:00
 title: Rsync for Deployment 
 ---
 
+<!--see:
+ http://www.thegeekstuff.com/2010/09/rsync-command-examples/ 
+ http://aaronlord.is/deploying-to-multiple-environments-via-git/
+-->
+
 Deployment options abound. This means that choosing one can be quite overwhelming.
 
 Rather than try and provide a complete list of deployment options (Chris Coyier [already did that](https://css-tricks.com/deployment/) a while back), I'd like to share (and suggest consideration of) just one: rsync.
