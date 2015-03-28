@@ -3,6 +3,7 @@ canonifyurls: false
 languageCode: en-us
 metaDataFormat: yaml
 title: The Codestead
+theme: theCodestead-1
 
 
 params: 

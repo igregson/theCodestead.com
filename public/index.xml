@@ -2,20 +2,95 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>The Codestead</title>
-    <link>http://localhost:1313/</link>
+    <link>http://thecodestead.com/</link>
     <description>Recent content on The Codestead</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 19 Mar 2015 09:31:12 +0300</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 20 Mar 2015 09:47:23 +0300</lastBuildDate>
+    <atom:link href="http://thecodestead.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>The Developer Dip</title>
+      <link>http://thecodestead.com/post/the-developer-dip/</link>
+      <pubDate>Fri, 20 Mar 2015 09:47:23 +0300</pubDate>
+      
+      <guid>http://thecodestead.com/post/the-developer-dip/</guid>
+      <description>
+
+&lt;p&gt;Seth Godin articulates an important concept of &amp;ldquo;the dip&amp;rdquo; in his book &lt;em&gt;&lt;a href=&#34;http://amzn.to/19EM2Nn&#34;&gt;The Dip&lt;/a&gt;&lt;/em&gt;. If you haven&amp;rsquo;t read it, think &amp;ldquo;learning curve&amp;rdquo; or &amp;ldquo;barrier of entry&amp;rdquo;. But it&amp;rsquo;s more than that. It&amp;rsquo;s the thing that separates the novices from the pros. It&amp;rsquo;s the thing standing between you and becoming &amp;ldquo;the best in the world&amp;rdquo; at whatever it is you&amp;rsquo;re aspiring to.&lt;/p&gt;
+
+&lt;p&gt;There&amp;rsquo;s a lot of value to unpack in Godin&amp;rsquo;s concept for those in (or entering) the world of web development.&lt;/p&gt;
+
+&lt;h3 id=&#34;getting-started-is-easy:3c8129ef12fc5e08f1639b4f509fb10d&#34;&gt;Getting Started is Easy&lt;/h3&gt;
+
+&lt;p&gt;Getting started as a &amp;ldquo;web dev&amp;rdquo; doesn&amp;rsquo;t take much.&lt;/p&gt;
+
+&lt;p&gt;Initially, I&amp;rsquo;d argue that all seeking a path in web development should at least be familiar with the front-end bread-and-butter skills (html, css, and js). Lots of tutorials and courses aimed at beginners go something like this:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;download sublime or another easy but powerful editor&lt;/li&gt;
+&lt;li&gt;download html5 boiler plate&lt;/li&gt;
+&lt;li&gt;add-in bootstrap&lt;/li&gt;
+&lt;li&gt;wire up styles and scripts&lt;/li&gt;
+&lt;li&gt;start changing stuff, experiment, break stuff, build something&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This is of course an over simplification. But the point remains: the barrier of basic front-end skill is pretty darn low. Certainly, learning to do the above &lt;em&gt;really well&lt;/em&gt; isn&amp;rsquo;t easy. But learning to &amp;ldquo;do it and make something decent&amp;rdquo; isn&amp;rsquo;t so hard.&lt;/p&gt;
+
+&lt;p&gt;This isn&amp;rsquo;t &amp;ldquo;the dip&amp;rdquo; that Godin speaks of.&lt;/p&gt;
+
+&lt;h3 id=&#34;getting-through-the-dip-is-hard:3c8129ef12fc5e08f1639b4f509fb10d&#34;&gt;Getting through &amp;ldquo;the dip&amp;rdquo; is HARD&lt;/h3&gt;
+
+&lt;p&gt;Why? Because staying at this point doesn&amp;rsquo;t take one very far. Remember, &amp;ldquo;the dip&amp;rdquo; is the thing to get through that will make you &amp;ldquo;the best in the world.&amp;rdquo; It&amp;rsquo;s the thing that&amp;rsquo;ll separate your career from that of the rookie who only builds sites for family members and friends.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;So what&amp;rsquo;s &amp;ldquo;the dip&amp;rdquo; that those seeking to be &lt;em&gt;really good developers&lt;/em&gt; need to get through? And doesn&amp;rsquo;t it depend on which particular realm of web dev one&amp;rsquo;s interested in?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;To my younger self, and anyone else who might benefit from it, here&amp;rsquo;s my take on &amp;ldquo;the developer dip&amp;rdquo;, roughly in some type of helpful order (of course the learning process for these things isn&amp;rsquo;t really sequential, and it&amp;rsquo;s certainly dynamic):&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Javascript without jQuery (at least the basic dom manipulation stuff)&lt;/li&gt;
+&lt;li&gt;intimate familiarity with at least one text editor&lt;/li&gt;
+&lt;li&gt;the command line (at least a minimal working knowledge)&lt;/li&gt;
+&lt;li&gt;system configuration/know-how
+
+&lt;ul&gt;
+&lt;li&gt;giving your system an ssh identity&lt;/li&gt;
+&lt;li&gt;being able to connect to things via ssh&lt;/li&gt;
+&lt;li&gt;knowing how to add things to &amp;ldquo;the path&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;having a shell that works the way you&amp;rsquo;d like it to&lt;/li&gt;
+&lt;li&gt;understanding of user permissions and roles (this arguably doesn&amp;rsquo;t apply to some folks, but I still think it&amp;rsquo;s an important thing to understand)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;pre-processors&lt;/li&gt;
+&lt;li&gt;a build tool (GUIs like Codekit, Prepos and the others are great, but I think it&amp;rsquo;s important to also know how to harness something like Grunt, Gulp, NPM, make, or any of the many others for being able to perform bulid tasks)&lt;/li&gt;
+&lt;li&gt;git&lt;/li&gt;
+&lt;li&gt;deployment&lt;/li&gt;
+&lt;li&gt;dns setup/management&lt;/li&gt;
+&lt;li&gt;ability to follow naming conventions (since these can vary between projects and teams, it&amp;rsquo;s fine and even good to have your own, but it&amp;rsquo;s also important to be able to learn and follow others)&lt;/li&gt;
+&lt;li&gt;ability to work without any frameworks. Don&amp;rsquo;t get me wrong, frameworks can be great, but they add abstraction. Skills built on abstraction without fundamental understanding are brittle &amp;ndash; brittle things easily break. So use Bootstrap if that&amp;rsquo;s your thing, but know how to create awesome styles and user experiences without it.&lt;/li&gt;
+&lt;li&gt;able to execute (link here to execute book)&lt;/li&gt;
+&lt;li&gt;able to &amp;ldquo;rock out&amp;rdquo; at least one CMS&lt;/li&gt;
+&lt;li&gt;having a collection of starting points (forked or home-grown) to quickly start
+any project.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Have I missed something? Don&amp;rsquo;t agree with one of my aspects of the &amp;ldquo;developer dip?&amp;rdquo; Share your thoughts. After all, what&amp;rsquo;s a developer without an opinion, right?&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Rsync for Deployment</title>
-      <link>http://localhost:1313/post/rsync-for-deployment/</link>
+      <link>http://thecodestead.com/post/rsync-for-deployment/</link>
       <pubDate>Thu, 19 Mar 2015 09:31:12 +0300</pubDate>
       
-      <guid>http://localhost:1313/post/rsync-for-deployment/</guid>
+      <guid>http://thecodestead.com/post/rsync-for-deployment/</guid>
       <description>
+
+&lt;!--see:
+ http://www.thegeekstuff.com/2010/09/rsync-command-examples/ 
+ http://aaronlord.is/deploying-to-multiple-environments-via-git/
+--&gt;
 
 &lt;p&gt;Deployment options abound. This means that choosing one can be quite overwhelming.&lt;/p&gt;
 
@@ -116,10 +191,10 @@ add &lt;code&gt;--dry-drun&lt;/code&gt; or &lt;code&gt;n&lt;/code&gt; to the opt
     
     <item>
       <title>Static Site Generator or Flat File CMS</title>
-      <link>http://localhost:1313/post/static-site-generator-or-flat-file-cms/</link>
+      <link>http://thecodestead.com/post/static-site-generator-or-flat-file-cms/</link>
       <pubDate>Tue, 03 Mar 2015 23:13:17 +0300</pubDate>
       
-      <guid>http://localhost:1313/post/static-site-generator-or-flat-file-cms/</guid>
+      <guid>http://thecodestead.com/post/static-site-generator-or-flat-file-cms/</guid>
       <description>&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, quae. Facere odit beatae ipsam illo aspernatur minus consequuntur ducimus dolor facilis nihil!&lt;/p&gt;
 
 &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe et excepturi quos alias voluptates quas officia modi in quibusdam dolore possimus ea suscipit praesentium iusto quidem accusantium nam quisquam, eum aliquam adipisci optio, voluptatum. Nulla aliquam sapiente asperiores accusamus sed distinctio, ipsa modi vero corporis tenetur commodi assumenda beatae dignissimos numquam ut voluptatem necessitatibus sit aspernatur iusto.&lt;/p&gt;
@@ -130,10 +205,10 @@ add &lt;code&gt;--dry-drun&lt;/code&gt; or &lt;code&gt;n&lt;/code&gt; to the opt
     
     <item>
       <title>Beginner Friendly Linux Dev Setup</title>
-      <link>http://localhost:1313/post/beginner-friendly-linux-dev-setup/</link>
+      <link>http://thecodestead.com/post/beginner-friendly-linux-dev-setup/</link>
       <pubDate>Tue, 03 Mar 2015 23:01:09 +0300</pubDate>
       
-      <guid>http://localhost:1313/post/beginner-friendly-linux-dev-setup/</guid>
+      <guid>http://thecodestead.com/post/beginner-friendly-linux-dev-setup/</guid>
       <description>
 
 &lt;!-- When I first began writing code I worked on a Windows 7 machine. It&#39;s true. I wasn&#39;t one of the cool mac-kinds. When seeing macs I was of course intrigued. Usually they frustrated me. &#34;Why can&#39;t I delete this file!&#34; &#34;Where the right click button!&#34; And many other thoughts came to mind whenever I&#39;d fumble around on macs of friends or family members. 
@@ -149,10 +224,10 @@ But I wasn&#39;t exactly happy on Windows either. Certainly, I &#34;power-used&#
     
     <item>
       <title>Building with Hugo</title>
-      <link>http://localhost:1313/post/building-with-hugo/</link>
+      <link>http://thecodestead.com/post/building-with-hugo/</link>
       <pubDate>Tue, 03 Mar 2015 22:57:35 +0300</pubDate>
       
-      <guid>http://localhost:1313/post/building-with-hugo/</guid>
+      <guid>http://thecodestead.com/post/building-with-hugo/</guid>
       <description>&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias perspiciatis harum distinctio, id sint laborum ut ex quasi earum. Expedita consectetur facilis commodi eaque, illo possimus? Tempore, rerum hic. Recusandae voluptatibus nam non tenetur eligendi similique neque molestiae quia id impedit repudiandae dolor deserunt accusamus sit, optio magni vitae quisquam maxime exercitationem perspiciatis rerum.&lt;/p&gt;
 
 &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum fugit iste laborum officiis sequi eaque tempore dolores atque non accusantium quasi aliquam harum provident, maiores, cupiditate illum minus in consectetur. Animi perspiciatis, quis! Dolores, iusto.&lt;/p&gt;
@@ -163,10 +238,10 @@ But I wasn&#39;t exactly happy on Windows either. Certainly, I &#34;power-used&#
     
     <item>
       <title>Should New Devs Learn Legacy Technologies?</title>
-      <link>http://localhost:1313/post/should-new-devs-learn-legacy-technologies/</link>
+      <link>http://thecodestead.com/post/should-new-devs-learn-legacy-technologies/</link>
       <pubDate>Tue, 03 Mar 2015 22:39:18 +0300</pubDate>
       
-      <guid>http://localhost:1313/post/should-new-devs-learn-legacy-technologies/</guid>
+      <guid>http://thecodestead.com/post/should-new-devs-learn-legacy-technologies/</guid>
       <description>&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, fuga fugit impedit tempore ad itaque officia similique iure facere, asperiores vero, voluptas a ullam obcaecati dignissimos rerum aliquid voluptatem cumque! Natus suscipit tempore id iste molestiae, ut itaque mollitia, doloremque voluptatibus odit facilis et?&lt;/p&gt;
 
 &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, delectus ullam cumque enim nesciunt inventore, rem non. Ipsum ullam perferendis est laboriosam tenetur laborum voluptatibus culpa repellendus id maiores nesciunt tempora cum sequi quisquam beatae, temporibus ad praesentium harum corrupti consectetur consequatur natus dolores nam error totam! Ullam aspernatur, sunt voluptates repellat veritatis perferendis ea vel ipsa commodi.&lt;/p&gt;
@@ -175,10 +250,10 @@ But I wasn&#39;t exactly happy on Windows either. Certainly, I &#34;power-used&#
     
     <item>
       <title>Birth of The Codestead</title>
-      <link>http://localhost:1313/post/birth-of-the-codestead/</link>
+      <link>http://thecodestead.com/post/birth-of-the-codestead/</link>
       <pubDate>Tue, 03 Mar 2015 22:05:08 +0300</pubDate>
       
-      <guid>http://localhost:1313/post/birth-of-the-codestead/</guid>
+      <guid>http://thecodestead.com/post/birth-of-the-codestead/</guid>
       <description>
 
 &lt;h3 id=&#34;the-idea:73c0457a31d262211fe5dcb3f2545c0a&#34;&gt;The Idea&lt;/h3&gt;

@@ -2,7 +2,6 @@
 
 
 
-
 .container.page-index
 
   aside.sb--right
@@ -10,6 +9,13 @@
       h4.sb--header For Web Devs
       p.. 
         The Codestead is a place for all web devs. Whether you're on the front-end or back-end, there's something here for you.
+
+    .sb--box
+      h4.sb--header 
+        i codesteading
+      ul 
+        li 
+
 
   .content.excerpts
     {{ range where .Data.Pages "Section" "post" }}
@@ -25,7 +31,6 @@
 
 
   .clearfix  
-
 
 
 
