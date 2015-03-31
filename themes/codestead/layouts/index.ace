@@ -1,6 +1,6 @@
 {{ partial "head.html" . }}
 
-
+.divider--top
 
 .container.page-index
 

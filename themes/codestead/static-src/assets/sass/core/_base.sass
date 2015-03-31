@@ -7,6 +7,8 @@ $width--content-with-sb: $width-contain - $width-sb
 
 $space-container: 25px
 
+$container-offset: 33px
+
 $container-padding: $space-container
 $container-space-top: $container-padding 
 $container-space-side: $container-padding
@@ -36,16 +38,16 @@ $c-bg: #3D3A37
 html 
   background-color: $c-bg
   overflow-y: scroll
-body
-  padding: 0 $space-container $space-container * 2
-  padding-bottom: 0
+// body
+//   padding-bottom: 0
 
 .contain 
   margin: 0 auto
-  overflow: hidden
+  // overflow: hidden
   max-width: $width--content-with-sb
   width: 100%
 .container
+  padding: 0 $space-container $space-container * 2
   @extend .contain 
   margin-left: auto
   margin-right: auto
@@ -55,8 +57,10 @@ body
   z-index: 10
   background-color: $c-white
   width: auto
-  overflow: hidden
-  margin-top: 0
+  // overflow: hidden
+  margin-top: -#{$container-offset}
+  margin-bottom: -17px
+  border-radius: 3px
 
 
 .has-sb--right, .has-sb--left, .template--index
@@ -68,4 +72,3 @@ body
     max-width: 75%
     @include bpMax(800px)
       max-width: 100%
-
