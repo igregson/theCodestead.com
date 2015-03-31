@@ -2,44 +2,54 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://thecodestead.com/</loc>
+    <loc>http://localhost:1313/</loc>
     <lastmod>2015-03-20T09:47:23+03:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://thecodestead.com/post/the-developer-dip/</loc>
+    <loc>http://localhost:1313/post/the-developer-dip/</loc>
     <lastmod>2015-03-20T09:47:23+03:00</lastmod>
   </url>
   
   <url>
-    <loc>http://thecodestead.com/post/rsync-for-deployment/</loc>
+    <loc>http://localhost:1313/post/rsync-for-deployment/</loc>
     <lastmod>2015-03-19T09:31:12+03:00</lastmod>
   </url>
   
   <url>
-    <loc>http://thecodestead.com/post/static-site-generator-or-flat-file-cms/</loc>
+    <loc>http://localhost:1313/post/static-site-generator-or-flat-file-cms/</loc>
     <lastmod>2015-03-03T23:13:17+03:00</lastmod>
   </url>
   
   <url>
-    <loc>http://thecodestead.com/post/beginner-friendly-linux-dev-setup/</loc>
+    <loc>http://localhost:1313/post/beginner-friendly-linux-dev-setup/</loc>
     <lastmod>2015-03-03T23:01:09+03:00</lastmod>
   </url>
   
   <url>
-    <loc>http://thecodestead.com/post/building-with-hugo/</loc>
+    <loc>http://localhost:1313/post/npm-as-a-build-tool-with-hugo/</loc>
     <lastmod>2015-03-03T22:57:35+03:00</lastmod>
   </url>
   
   <url>
-    <loc>http://thecodestead.com/post/should-new-devs-learn-legacy-technologies/</loc>
-    <lastmod>2015-03-03T22:39:18+03:00</lastmod>
+    <loc>http://localhost:1313/post/birth-of-the-codestead/</loc>
+    <lastmod>2015-03-03T22:05:08+03:00</lastmod>
   </url>
   
   <url>
-    <loc>http://thecodestead.com/post/birth-of-the-codestead/</loc>
-    <lastmod>2015-03-03T22:05:08+03:00</lastmod>
+    <loc>http://localhost:1313/resources/</loc>
+    <lastmod>2015-03-03T18:49:32+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/about/</loc>
+    <lastmod>2015-03-03T18:49:20+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/contact/</loc>
+    <lastmod>2015-03-03T18:49:13+03:00</lastmod>
   </url>
   
 </urlset>

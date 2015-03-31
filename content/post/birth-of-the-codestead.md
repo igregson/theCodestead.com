@@ -4,6 +4,11 @@ title: Birth of The Codestead
 sidebar: right
 ---
 
+Here's to the obligatory first post. The post that explains the big idea, at
+least here in the beginning.
+
+<!--more-->
+
 ### The Idea
 
 For a long time I've been hearing and even telling myself to start a blog. Well, this is it. Only instead of using myname.com as the platform, I'm attempting to create something "Beyond myself."

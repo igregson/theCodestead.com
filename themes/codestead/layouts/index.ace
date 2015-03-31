@@ -1,0 +1,40 @@
+{{ partial "head.html" . }}
+
+
+
+.container.page-index
+
+  aside.sb--right
+    .sb--box
+      h4.sb--header 
+        i codesteading
+      ul 
+        li Exploration of Tech-Frontiers
+        li Mastering Toolsets
+        li Optimizing Resources
+        li Perpetually Learning
+        li Continually Shipping
+        li 
+          i Code as Craft
+
+
+
+  .content.excerpts
+    {{ range where .Data.Pages "Section" "post" }}
+    
+      .excerpt
+        h2.excerpt--header
+          a href={{.RelPermalink }} {{.Title}}
+        {{.Summary}}
+        a.excerpt--readFull href={{.RelPermalink}} Go To Article &#8594;
+
+      hr.excerpt--divider
+
+    {{ end }}
+
+
+  .clearfix  
+
+
+
+{{ partial "foot.html" . }}

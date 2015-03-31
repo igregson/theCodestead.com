@@ -3,12 +3,12 @@ canonifyurls: false
 languageCode: en-us
 metaDataFormat: yaml
 title: The Codestead
-theme: theCodestead-1
-
+theme: codestead
 
 params: 
   subtitle: for Crafters of the Modern Web
   disqus_shortname: "thecodestead"
+  author_default: "Isaac Gregson"
 
   meta_default: 
     description: 'The Codestead is a resources for developers of the modern web. Think "homestead," only for coders'

@@ -11,7 +11,11 @@ But I wasn't exactly happy on Windows either. Certainly, I "power-used" the heck
  -->
 
 
-Linux isn't (only) for geeks. In the past it may have been, but times have changed. With the right Linux flavor ("distro," in Linux terms) it's easy to have a powerful and user-friendly development machine. I've been using Linux as my primary work machine for well over a year now. For those in search of a better shell (Windows users) or something closer to most production environments (Mac users), here's my 2 cents.
+Linux isn't (only) for geeks. In the past it may have been, but times have changed. With the right Linux flavor ("distro," in Linux terms) it's easy to have a powerful and user-friendly development machine.
+
+<!--more-->
+
+I've been using Linux as my primary work machine for well over a year now. For those in search of a better shell (Windows users) or something closer to most production environments (Mac users), here's my 2 cents.
 
 ## Choose the right distro
 

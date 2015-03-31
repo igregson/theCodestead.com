@@ -1,0 +1,47 @@
+html
+  head
+    meta charset=utf-8
+    meta http-equiv=X-UA-Compatible content=IE=edge
+
+    title {{.Title | title}}{{if ne .Url "/"}} - {{.Site.Title}}{{end}}
+    meta name=description content={{with .Description}}{{.}}{{else}}{{.Site.Params.meta_default.description}}{{end}}
+    meta name=keywords content="{{if .Keywords}}{{range .Keywords}}{{. | urlize}} {{end}} {{else}}{{range .Site.Params.meta_default.keywords}}{{. | urlize}} {{end}}{{end}}"
+
+    meta name=HandheldFriendly content=True
+    meta name=viewport content=width=device-width initial-scale=1.0
+
+    link rel="shortcut icon" href=/assets/images/favicon.ico
+
+    link rel=stylesheet href=/assets/css/main.css id=defaultStyle
+    link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,200italic,300italic,400italic,600italic' rel='stylesheet' type='text/css'
+
+    
+  body class="{{if ne .Url "/"}}post-template page{{end}} page-template-{{with .Title | urlize}}{{.}}{{end}} {{ if eq .Url "/" }} template--index{{end}} {{if .Params.sidebar}}has-sb--right{{end}} {{if eq .Url "/"}}has-sb--right{{end}}" id="{{with .Site.Params.bg_img}}{{.}}{{end}}"
+    #top
+
+    {{ partial "icons--svg.html" . }}
+
+    header.header--main
+      .header--title
+        h1
+          {{if ne .Url "/"}}
+            a href=/
+              {{ partial "logo.html" . }}
+          {{else}}
+            {{ partial "logo.html" . }}
+          {{end}}
+      
+      // a.icon--twitter href=http://twitter.com/thecodestead
+        img src="/assets/images/icon-twitter.svg"
+
+      nav.header--nav
+        ul
+          li
+            a href=/ class="{{if or (eq .Section "post") (eq .Url "/" )}}nav--active{{end}}"
+              | Blog
+            a href=/resources class="{{ if eq .Params.nav "Resources" }}nav--active{{end}}" 
+              | Resources
+            a href=/about class="{{ if eq .Params.nav "About" }}nav--active{{end}}"
+              | About
+            a href=/contact class="{{ if eq .Params.nav "Contact" }}nav--active{{end}}"
+              | Contact

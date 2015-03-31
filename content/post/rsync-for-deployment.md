@@ -12,6 +12,8 @@ Deployment options abound. This means that choosing one can be quite overwhelmin
 
 Rather than try and provide a complete list of deployment options (Chris Coyier [already did that](https://css-tricks.com/deployment/) a while back), I'd like to share (and suggest consideration of) just one: rsync.
 
+<!--more-->
+
 ### rsync - the big picture
 
 The geeek-way of learning about a cli is to simply "man the command." In other words, bring up the [man page](http://en.wikipedia.org/wiki/Man_page) for the command in question. 

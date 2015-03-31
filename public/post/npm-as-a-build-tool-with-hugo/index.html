@@ -1,4 +1,4 @@
-<html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><title>About - The Codestead</title><meta content="The Codestead is a resources for developers of the modern web. Think &#34;homestead,&#34; only for coders" name="description"><meta name="keywords" content="web-developement code-communities dev-blogs css golang flat-file-themes static-site-generators "><meta name="HandheldFriendly" content="True"><meta initial-scale="1.0" name="viewport" content="width=device-width"><link rel="shortcut icon" href="/assets/images/favicon.ico"><link id="defaultStyle" rel="stylesheet" href="/assets/css/main.css"><link href="'http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,200italic,300italic,400italic,600italic'" rel="'stylesheet'" type="'text/css'"></head><body id="" class="post-template page page-template-about   "><div id="top"></div><header class="header--main"><div class="header--title"><h1><a href="/"><svg width="266px" height="30px" viewBox="0 0 266 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+<html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><title>NPM As A Build Tool With Hugo - The Codestead</title><meta content="The Codestead is a resources for developers of the modern web. Think &#34;homestead,&#34; only for coders" name="description"><meta name="keywords" content="web-developement code-communities dev-blogs css golang flat-file-themes static-site-generators "><meta name="HandheldFriendly" content="True"><meta initial-scale="1.0" name="viewport" content="width=device-width"><link rel="shortcut icon" href="/assets/images/favicon.ico"><link id="defaultStyle" rel="stylesheet" href="/assets/css/main.css"><link href="'http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,200italic,300italic,400italic,600italic'" rel="'stylesheet'" type="'text/css'"></head><body id="" class="post-template page page-template-npm-as-a-build-tool-with-hugo   "><div id="top"></div><header class="header--main"><div class="header--title"><h1><a href="/"><svg width="266px" height="30px" viewBox="0 0 266 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
     <g id="Page-1" fill-rule="evenodd" sketch:type="MSPage">
         <g id="THE-+-CODESTEAD" sketch:type="MSLayerGroup" transform="translate(1.000000, 2.000000)">
             <path d="M4.42,14.04 L0.08,14.04 L0.08,11.84 L11.28,11.84 L11.28,14.04 L6.94,14.04 L6.94,26 L4.42,26 L4.42,14.04 Z M12.92,11.84 L15.44,11.84 L15.44,17.56 L22.06,17.56 L22.06,11.84 L24.58,11.84 L24.58,26 L22.06,26 L22.06,19.72 L15.44,19.72 L15.44,26 L12.92,26 L12.92,11.84 Z M27.7,11.84 L37.08,11.84 L37.08,14.04 L30.22,14.04 L30.22,17.64 L36.72,17.64 L36.72,19.76 L30.22,19.76 L30.22,23.76 L37.44,23.76 L37.44,26 L27.7,26 L27.7,11.84 Z" id="THE" sketch:type="MSShapeGroup"></path>
@@ -9,26 +9,180 @@
 </a></h1></div><!-- a.icon--twitter href=http://twitter.com/thecodestead
 img src="/assets/images/icon-twitter.svg"
 
---><nav class="header--nav"><ul><li><a class="" href="/">Blog</a><a class="" href="/resources">Resources</a><a class="nav--active" href="/about">About</a><a class="" href="/contact">Contact</a></li></ul></nav></header><script>document.write('<script src="http://'
+--><nav class="header--nav"><ul><li><a class="nav--active" href="/">Blog</a><a class="" href="/resources">Resources</a><a class="" href="/about">About</a><a class="" href="/contact">Contact</a></li></ul></nav></header><script>document.write('<script src="http://'
         + (location.host || 'localhost').split(':')[0]
 		+ ':1313/livereload.js?mindelay=10"></'
         + 'script>')</script></body></html>
 
 
 
-<div class="container page-page">
+
+<div class="container">
 
   
 
   <main class="content" role="main">
-    <h2 class="post--title">About</h2>
-    <p>Comming Soon!</p>
+    <article class="post ">
+    
+      <h2 class="post--title">NPM as a Build Tool with Hugo</h2>
+      <p class="post--meta">By Isaac Gregson on 03/03/2015</p>
+      <div class="post--post">
+        
 
+<p>Hugo&rsquo;s a rather powerful tool for making websites. At its core it&rsquo;s a static
+site generator, but it&rsquo;s also capable of quite a bit more.</p>
+
+<p>NPM&rsquo;s a rather powerful package manager. It&rsquo;s also a powerful build
+tool.</p>
+
+<p>Developing with Hugo and NPM in collaboration makes for a powerful setup. Let&rsquo;s
+learn how.</p>
+
+<h3 id="how-to-use-npm-as-a-build-tool-with-hugo:cbe9e3adfe4b24f79a8f2fb4b155e5bf">How to use NPM as a build tool with Hugo</h3>
+
+<p>Here are the bare-bones requirements of what I&rsquo;d consider essential for
+developing a modern site:</p>
+
+<ul>
+<li>CSS Pre &amp; Post Processing</li>
+<li>JS concatination/bundling</li>
+<li>Minifying CSS &amp; JS</li>
+<li>Live Reloading Developement Setup</li>
+</ul>
+
+<p>on top of this, there are more &ldquo;advanced&rdquo; but nevertheless &ldquo;nice-to-haves:&rdquo;</p>
+
+<ul>
+<li>Source maps (for JS &amp; CSS for debugging while developing)</li>
+<li>Asset versioning (for browser caching)</li>
+<li>Image minification</li>
+<li>Icon system building</li>
+</ul>
+
+<p>Out of the box, Hugo includes a super fast and resource friendly <code>watch</code> feature
+that &ldquo;just works&rdquo;. There are of course fancier ways to watch a build
+environment, but when working with Hugo I prefer to use its watch flag.</p>
+
+<p>For everything else, there&rsquo;s NPM.</p>
+
+<p>Here&rsquo;s the bare-bones directory structure of a Hugo site</p>
+
+<pre><code>content
+layouts
+static
+
+public -- the static build, not source files
+</code></pre>
+
+<p>There are a few other directories (<code>archetypes</code>, <code>data</code>, and <code>themes</code>) that are
+usually part of a site, but there&rsquo;s no need to worry about these right now.</p>
+
+<p>Hugo watches for changes in its individual directories, not the main project
+directory. This means we can add our own &ldquo;special directoies&rdquo; right inside our
+project directory.</p>
+
+<p>Let&rsquo;s add a custom directory for our pre-compiled assets:</p>
+
+<pre><code>content
+layouts
+static-src --- our custom directory
+
+public
+</code></pre>
+
+<p>Now, inside of <code>static-src</code> we can arrange our Sass (or Less, Stylus, etc),
+scripts, and images however we&rsquo;d like. Saves to files in this folder won&rsquo;t
+trigger Hugo to reload, which means we can use NPM scripts to do the magic and
+then send the built assets to the <code>static</code> directory.</p>
+
+<h4 id="organizing-static-src:cbe9e3adfe4b24f79a8f2fb4b155e5bf">Organizing <code>static-src</code></h4>
+
+<p>Organize <code>static-src</code> however you&rsquo;d like. Even call it whatever you&rsquo;d like.
+These things don&rsquo;t matter. What matters is that there&rsquo;s logic to your naming
+that make sense to you (and any others that you may be working with).</p>
+
+<p>Let&rsquo;s say we organize <code>static-src</code> like this:</p>
+
+<pre><code>static-src/
+  /assets
+    /src-sass
+      main.sass -- and the rest of our pre-processed css here
+    /src-js
+      index.js -- and the rest of our pre-processed js here
+</code></pre>
+
+<p>Now, lets wire up the build steps in <code>package.json</code>.</p>
+
+<pre><code>// package.json
+
+  &quot;scripts&quot;: {
+    &quot;css:build&quot;: &quot;scss-cli --output-style compressed './static-src/src-assets/sass/**/*.{scss,sass}' --glob -o static/assets/css&quot;,
+    &quot;postcss:build&quot;: &quot;autoprefixer -b 'last 2 versions' static/src-assets/css/*.css&quot;,
+    &quot;css:watch&quot;: &quot;onchange './static-src/assets/src-sass/' -- npm run css:build&quot;,
+    &quot;js:build&quot;: &quot;browserify static-src/assets/js/index.js -o static/assets/js/bundle.js&quot;,
+    &quot;js:watch&quot;: &quot;watchify static-src/assets/src-js/index.js -o static/assets/js/bundle.js&quot;,
+    &quot;build&quot;: &quot;npm run css:build &amp;&amp; npm run js:build&quot;,
+    &quot;prewatch&quot;: &quot;npm run build&quot;,
+    &quot;watch&quot;: &quot;parallelshell 'npm run css:watch' 'npm run js:watch'&quot;,
+    &quot;start&quot;: &quot;npm run watch&quot;,
+  },
+</code></pre>
+
+<h4 id="a-few-things-here-to-note:cbe9e3adfe4b24f79a8f2fb4b155e5bf">A few things here to note:</h4>
+
+<p><code>paralellshell</code> is <a href="https://github.com/keithamus/parallelshell">a package</a> for doing exactly what it says: running tasks in parallel. It&rsquo;s written and maintained by Keith Cirkel, who wrote an <a href="http://blog.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/">awesome article</a> on using NPM as a build tool. If you&rsquo;re famliar with bash commands you may be wondering why to use this package instead of the <code>&amp;</code> operator. If so, <a href="https://github.com/keithamus/parallelshell/issues/5">see Keith&rsquo;s great answer</a> to my asking of this question.</p>
+
+<p>NPM gives <code>pre</code> and <code>post</code> hooks for each script command you create. These are
+really handy. They let us <code>build</code> before we <code>watch</code> and autoprefix our css after
+it&rsquo;s been de-sassified.</p>
+
+<h3 id="why-not-just-use-gulp-grunt-broccli-et-all:cbe9e3adfe4b24f79a8f2fb4b155e5bf">Why not just use Gulp, Grunt, Broccli, et all?</h3>
+
+<p>Because I find it&rsquo;s beneficial to minimize mental overhead where possible.</p>
+
+<p>Using NPM as a build tool means that I can <code>cat package.json</code> in the terminal to
+quickly glance at my entire build pipeline - usually without scrolling. As
+a convert from Gulp (which I still use for some things) this is quite nice. Bugs
+in things like wrong paths are also much easier to prevent (and catch).</p>
+
+<p>Not having to use wrappers is also beneficial. Grunt, Gulp, and all the others
+certainly have handy collections of plugins and such, but most of these are just
+wrappers for their elder vanilla-js upstream superiors. This means that package
+bugs are fewer and updates quicker.</p>
+
+      </div>
+
+      <h5>Care to share?</h5>
+    </article>
   </main>
+
 
 </div>
 
+<section class="container post--share">
+  <div class="content">
+    <a class="share--twitter" href="https://twitter.com/share?text=&amp;url=http://thecodestead.com%2fpost%2fnpm-as-a-build-tool-with-hugo%2f"
+    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span>Twitter</span>
+    </a>
+    <a class="share--facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://thecodestead.com%2fpost%2fnpm-as-a-build-tool-with-hugo%2f"
+    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span>Facebook</span>
+    </a>
+    <a class="share--googleplus" href="https://plus.google.com/share?url=http://thecodestead.com%2fpost%2fnpm-as-a-build-tool-with-hugo%2f"
+    onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span>Google+</span>
+    </a>
+  </div>
+</section>
 
+<section class="container">
+  <div class="content comments--wrap">
+    
+      <div id="disqus_thread"></div>
+    
+  </div>
+</section>
 
     
       <footer class="siteFooter">
