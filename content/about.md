@@ -5,3 +5,4 @@ title: About
 ---
 
 Comming Soon!
+This is an about page... 
