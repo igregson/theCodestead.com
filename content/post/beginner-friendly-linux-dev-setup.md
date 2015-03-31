@@ -5,7 +5,7 @@ title: Beginner Friendly Linux Dev Setup
 
 A developer's operating system is akin to the cowboy's horse. It should be chosen wisely. There'll be lots of time spent on it. The better one knows it the more one can get from it. So do choose wisely.
 
-Lots of web devs simply buy a Mac and go to town with OSX. Most of these folks would never think of leaving their land of milk and honey. But for those not yet initiated in the Mac-world but knowing there must be something better then their Windows reality, consider a beginner friendly Linux setup. 
+Lots of web devs simply buy a Mac and go to town with OSX. Most of these folks would never think of leaving their land of milk and honey. But for those not yet initiated into the Mac-world but knowing there must be something better then their Windows reality, consider a beginner-friendly Linux setup. 
 
 <!--more-->
 
@@ -60,7 +60,7 @@ I liked Unity, but I wanted something a bit more "traditionally-Linux" feeling. 
 
 #### Ubuntu Gnome 3 [link](http://ubuntugnome.org/)
 	
-Ubuntu's Gnome distro is legendary. I find it to be more traditional than the Unity desktop but still modern and "generally awesome." There's an addon called the [Tweak Tool](https://apps.ubuntu.com/cat/applications/gnome-tweak-tool/) that lets you tweak different settings and such (I consider it a mandatory addition).  
+Ubuntu's Gnome distro is legendary. I find it to be more traditional than the Unity desktop but still modern and "generally awesome." There's an add-on called the [Tweak Tool](https://apps.ubuntu.com/cat/applications/gnome-tweak-tool/) that lets you tweak different settings and such (I consider it a mandatory addition).  
 
 I used Gnome 3 for a while and was generally happy with it. It's powerful, quite customizable, and it's Ubuntu (which I work with on the server-side). The only reason I switched was because I found something that I liked more. 
 

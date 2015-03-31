@@ -1,6 +1,7 @@
 ---
 date: 2015-03-19T09:31:12+03:00
 title: Rsync for Deployment 
+draft: true
 ---
 
 <!--see:

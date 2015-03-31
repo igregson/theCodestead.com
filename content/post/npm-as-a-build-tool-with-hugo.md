@@ -1,6 +1,7 @@
 ---
 date: 2015-03-03T22:57:35+03:00
 title: NPM as a Build Tool with Hugo
+draft: true
 ---
 
 Hugo's a rather powerful tool for making websites. At its core it's a static
