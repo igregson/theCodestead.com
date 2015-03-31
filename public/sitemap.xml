@@ -3,17 +3,17 @@
   
   <url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2015-03-20T09:47:23+03:00</lastmod>
+    <lastmod>2015-03-19T09:31:12+03:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/the-developer-dip/</loc>
-    <lastmod>2015-03-20T09:47:23+03:00</lastmod>
+    <loc>http://localhost:1313/post/rsync-for-deployment/</loc>
+    <lastmod>2015-03-19T09:31:12+03:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/rsync-for-deployment/</loc>
+    <loc>http://localhost:1313/post/the-developer-dip/</loc>
     <lastmod>2015-03-19T09:31:12+03:00</lastmod>
   </url>
   
