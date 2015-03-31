@@ -1,10 +1,11 @@
 ---
-date: 2015-03-20T09:47:23+03:00
+date: {}
 sidebar: right
 title: The Developer Dip
+published: true
 ---
 
-Seth Godin articulates an important concept of "the dip" in his book *[The Dip][1]*. If you haven't read it, think "learning curve" or "barrier of entry". But it's more than that. It's the thing that separates the novices from the pros. It's the thing standing between you and becoming "the best in the world" at whatever it is you're aspiring to. 
+Seth Godin articulates an important concept of "the dip" in his book *[The Dip][http://amzn.to/19EM2Nn]*. If you haven't read it, think "learning curve" or "barrier of entry". But it's more than that. It's the thing that separates the novices from the pros. It's the thing standing between you and becoming "the best in the world" at whatever it is you're aspiring to. 
 
 There's a lot of value to unpack in Godin's concept for those in (or entering) the world of web development.
 
@@ -57,7 +58,3 @@ any project.
 
 
 Have I missed something? Don't agree with one of my aspects of the "developer dip?" Share your thoughts. After all, what's a developer without an opinion, right?
-
-
-
-[1]: http://amzn.to/19EM2Nn
