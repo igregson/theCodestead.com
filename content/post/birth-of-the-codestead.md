@@ -12,10 +12,10 @@ Here's to the obligatory first post. The post to stake-out initial intentions an
 
 For a long time I've been hearing and even telling myself to start a developer-based blog. I guess the idea came a few months after I felt comfortable with the front-end basics (sometime in 2012). But for some reason I never did it. 
 
-I think these were the two main hesitations or barriers: 
+I think these were the two main hesitations/barriers: 
 
-1. Wondering *who am I* to write stuff to help others
-2. Wondering if I could invest the time and energy necessary to make it worth while 
+1. [Imposture syndrome](http://en.wikipedia.org/wiki/Impostor_syndrome)
+2. Wondering if I could invest the necessary time and energy
 
 ### The Mental Switch 
 
