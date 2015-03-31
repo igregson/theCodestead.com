@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on The Codestead</title>
-    <link>http://localhost:1313/post/</link>
+    <link>http://thecodestead.com/post/</link>
     <description>Recent content in Posts on The Codestead</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 19 Mar 2015 09:31:12 +0300</lastBuildDate>
-    <atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://thecodestead.com/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>The Developer Dip</title>
-      <link>http://localhost:1313/post/the-developer-dip/</link>
+      <link>http://thecodestead.com/post/the-developer-dip/</link>
       <pubDate>Thu, 19 Mar 2015 09:31:12 +0300</pubDate>
       
-      <guid>http://localhost:1313/post/the-developer-dip/</guid>
+      <guid>http://thecodestead.com/post/the-developer-dip/</guid>
       <description>
 
 &lt;p&gt;Seth Godin articulates an important concept of &amp;ldquo;the dip&amp;rdquo; in his book &lt;em&gt;&lt;a href=&#34;http://amzn.to/19EM2Nn&#34;&gt;The Dip&lt;/a&gt;&lt;/em&gt;. If you haven&amp;rsquo;t read it, think &amp;ldquo;learning curve&amp;rdquo; or &amp;ldquo;barrier of entry&amp;rdquo;. But it&amp;rsquo;s more than that. It&amp;rsquo;s the thing that separates the novices from the pros. It&amp;rsquo;s the thing standing between you and becoming &amp;ldquo;the best in the world&amp;rdquo; at whatever it is you&amp;rsquo;re aspiring to.&lt;/p&gt;
@@ -95,10 +95,10 @@
     
     <item>
       <title>Beginner Friendly Linux Dev Setup</title>
-      <link>http://localhost:1313/post/beginner-friendly-linux-dev-setup/</link>
+      <link>http://thecodestead.com/post/beginner-friendly-linux-dev-setup/</link>
       <pubDate>Tue, 03 Mar 2015 23:01:09 +0300</pubDate>
       
-      <guid>http://localhost:1313/post/beginner-friendly-linux-dev-setup/</guid>
+      <guid>http://thecodestead.com/post/beginner-friendly-linux-dev-setup/</guid>
       <description>
 
 &lt;p&gt;A developer&amp;rsquo;s operating system is akin to the cowboy&amp;rsquo;s horse. It should be chosen wisely. There&amp;rsquo;ll be lots of time spent on it. The better one knows it the more one can get from it. So do choose wisely.&lt;/p&gt;
@@ -185,10 +185,10 @@
     
     <item>
       <title>Birth of The Codestead</title>
-      <link>http://localhost:1313/post/birth-of-the-codestead/</link>
+      <link>http://thecodestead.com/post/birth-of-the-codestead/</link>
       <pubDate>Tue, 03 Mar 2015 22:05:08 +0300</pubDate>
       
-      <guid>http://localhost:1313/post/birth-of-the-codestead/</guid>
+      <guid>http://thecodestead.com/post/birth-of-the-codestead/</guid>
       <description>
 
 &lt;p&gt;Here&amp;rsquo;s to the obligatory first post. The post to stake-out initial intentions and potential directions for The Codestead.&lt;/p&gt;
@@ -226,7 +226,7 @@
 
 &lt;p&gt;Maybe you find some of the stuff here helpful. It all right if you don&amp;rsquo;t, but it&amp;rsquo;s cool if you do.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://localhost:1313/contact&#34;&gt;Contact me&lt;/a&gt; with any ideas and such you might have.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://thecodestead.com/contact&#34;&gt;Contact me&lt;/a&gt; with any ideas and such you might have.&lt;/p&gt;
 
 &lt;p&gt;Do come again.&lt;/p&gt;
 </description>

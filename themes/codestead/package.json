@@ -15,7 +15,7 @@
     "prewatch": "npm run build",
     "watch": "parallelshell 'npm run css:watch' 'npm run js:watch'",
     "start": "npm run watch",
-    "deploy": "npm run hugo:build && rsync --delete -r public/ isaac@isaacgregson.com:/var/www/thecodestead/thecodestead.com",
+    "deploy": "npm run hugo:build && cd ../../ && rsync --delete -r public/ root@isaacgregson.com:/var/www/thecodestead/thecodestead.com",
     "predeploy": "npm run build",
     "postdeploy": "echo '[GOOD-NEWS] shipped!'"
   },

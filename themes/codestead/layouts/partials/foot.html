@@ -30,6 +30,7 @@
     {{ end }}
     
     {{if isset .Params "comments" }}
+    {{ else }}
     <script type="text/javascript">
       var disqus_shortname = {{ .Site.Params.disqus_shortname }};
       
