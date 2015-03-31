@@ -8,28 +8,13 @@
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/rsync-for-deployment/</loc>
-    <lastmod>2015-03-19T09:31:12+03:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://localhost:1313/post/the-developer-dip/</loc>
     <lastmod>2015-03-19T09:31:12+03:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/static-site-generator-or-flat-file-cms/</loc>
-    <lastmod>2015-03-03T23:13:17+03:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://localhost:1313/post/beginner-friendly-linux-dev-setup/</loc>
     <lastmod>2015-03-03T23:01:09+03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://localhost:1313/post/npm-as-a-build-tool-with-hugo/</loc>
-    <lastmod>2015-03-03T22:57:35+03:00</lastmod>
   </url>
   
   <url>

@@ -57,9 +57,9 @@ html
           li
             a href=/ class="{{if or (eq .Section "post") (eq .Url "/" )}}nav--active{{end}}"
               | Blog
-            a href=/resources class="{{ if eq .Params.nav "Resources" }}nav--active{{end}}" 
+            / a href=/resources class="{{ if eq .Params.nav "Resources" }}nav--active{{end}}" 
               | Resources
-            a href=/about class="{{ if eq .Params.nav "About" }}nav--active{{end}}"
+            / a href=/about class="{{ if eq .Params.nav "About" }}nav--active{{end}}"
               | About
             a href=/contact class="{{ if eq .Params.nav "Contact" }}nav--active{{end}}"
               | Contact

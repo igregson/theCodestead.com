@@ -10,116 +10,6 @@
     <atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>Rsync for Deployment</title>
-      <link>http://localhost:1313/post/rsync-for-deployment/</link>
-      <pubDate>Thu, 19 Mar 2015 09:31:12 +0300</pubDate>
-      
-      <guid>http://localhost:1313/post/rsync-for-deployment/</guid>
-      <description>
-
-&lt;!--see:
- http://www.thegeekstuff.com/2010/09/rsync-command-examples/ 
- http://aaronlord.is/deploying-to-multiple-environments-via-git/
---&gt;
-
-&lt;p&gt;Deployment options abound. This means that choosing one can be quite overwhelming.&lt;/p&gt;
-
-&lt;p&gt;Rather than try and provide a complete list of deployment options (Chris Coyier &lt;a href=&#34;https://css-tricks.com/deployment/&#34;&gt;already did that&lt;/a&gt; a while back), I&amp;rsquo;d like to share (and suggest consideration of) just one: rsync.&lt;/p&gt;
-
-&lt;h3 id=&#34;rsync-the-big-picture:f1d04fc53cd377626ea68f849c5f9c97&#34;&gt;rsync - the big picture&lt;/h3&gt;
-
-&lt;p&gt;The geeek-way of learning about a cli is to simply &amp;ldquo;man the command.&amp;rdquo; In other words, bring up the &lt;a href=&#34;http://en.wikipedia.org/wiki/Man_page&#34;&gt;man page&lt;/a&gt; for the command in question.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ man rsync
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Rsync is a fast and extraordinarily versatile file copying tool. It can copy locally, to/from another host over any remote shell, or to/from a remote rsync daemon. It offers a large number of options that control every aspect of its behavior and permit very flexible specification of the set of files to be copied. It is famous for its delta-transfer algorithm, which reduces the amount of data sent over the network by sending only the differences between the source files and the existing files in the destination. Rsync is widely used for backups and mirror‐ing and as an improved copy command for everyday use.&lt;/p&gt;
-
-&lt;p&gt;Rsync finds files that need to be transferred using a &amp;ldquo;quick check&amp;rdquo; algorithm (by default) that looks for files that have changed in size or in last-modified time. Any changes in the other preserved attributes (as requested by options) are made on the destination file directly when the quick check indicates that the file’s data does not need to be updated.&lt;/p&gt;
-
-&lt;p&gt;Some of the additional features of rsync are:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;support for copying links, devices, owners, groups, and permissions&lt;/li&gt;
-&lt;li&gt;exclude and exclude-from options similar to GNU tar&lt;/li&gt;
-&lt;li&gt;a CVS exclude mode for ignoring the same files that CVS would ignore&lt;/li&gt;
-&lt;li&gt;can use any transparent remote shell, including ssh or rsh&lt;/li&gt;
-&lt;li&gt;does not require super-user privileges&lt;/li&gt;
-&lt;li&gt;pipelining of file transfers to minimize latency costs&lt;/li&gt;
-&lt;li&gt;support for anonymous or authenticated rsync daemons (ideal for mirroring)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;small&gt;Note: the above is a bit abbreviated from the original&lt;/small&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;in-other-words:f1d04fc53cd377626ea68f849c5f9c97&#34;&gt;In Other Words:&lt;/h4&gt;
-
-&lt;p&gt;Rsync is a command line interface tool with superpowers.&lt;br /&gt;
-A mere &lt;em&gt;1-line&lt;/em&gt; rsync command can send your entire site to a remote server (or do the opposite), quickly and securely.&lt;/p&gt;
-
-&lt;p&gt;Let&amp;rsquo;s learn how to use it.&lt;/p&gt;
-
-&lt;h3 id=&#34;rsync-usage:f1d04fc53cd377626ea68f849c5f9c97&#34;&gt;rsync &amp;ndash; Usage&lt;/h3&gt;
-
-&lt;p&gt;Formula:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;$ rsync options source destination&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Example:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;        ⊢-- options --⊣   ⊢-- source ---⊣   ⊢------------- destination ---------------⊣
-$ rsync   --delete -r        ./public       user@domain.com:/path/to/location/on/remote
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;local-8594-remote:f1d04fc53cd377626ea68f849c5f9c97&#34;&gt;Local &amp;#8594; Remote&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code&gt;$ rsync --delete -r public/ user@your-domain.com:/path/to/location/on/remote
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;remote-8594-local:f1d04fc53cd377626ea68f849c5f9c97&#34;&gt;Remote &amp;#8594; Local&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code&gt;$ rsync --delete -r user@your-domain.com:/path/to/location/on/remote ./
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;tips:f1d04fc53cd377626ea68f849c5f9c97&#34;&gt;Tips&lt;/h3&gt;
-
-&lt;h4 id=&#34;test-first:f1d04fc53cd377626ea68f849c5f9c97&#34;&gt;Test First&lt;/h4&gt;
-
-&lt;p&gt;Rsync has the option to do a &amp;ldquo;dry run,&amp;rdquo; meaning it will not actually copy anything. This is great for testing your rsync command to ensure you&amp;rsquo;re not going to break anything.&lt;/p&gt;
-
-&lt;p&gt;To do a dry run:
-add &lt;code&gt;--dry-drun&lt;/code&gt; or &lt;code&gt;n&lt;/code&gt; to the options&lt;/p&gt;
-
-&lt;h4 id=&#34;understand-the-trailing-slash:f1d04fc53cd377626ea68f849c5f9c97&#34;&gt;Understand the trailing slash &lt;code&gt;/&lt;/code&gt;&lt;/h4&gt;
-
-&lt;p&gt;For the source string of an rsync command a trailing slash (or lack thereof) &lt;strong&gt;is significant.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Include&lt;/strong&gt; the trailing slash to include the directory itself:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ rsync /my/local/site/ user@domain.com/path/to/remote/root
-[result...]
-/path/to/remote/root/file1
-/path/to/remote/root/file2
-/path/to/remote/root/file3
-/path/to/remote/root/file4
-[...etc]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;Do not include&lt;/strong&gt; the trailing slash to not include the directory itself.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ rsync /my/local/site user@domain.com/path/to/remote/root
-[result...]
-/path/to/remote/site/root/file1
-/path/to/remote/site/root/file2
-/path/to/remote/site/root/file3
-/path/to/remote/site/root/file4
-[...etc]
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
       <title>The Developer Dip</title>
       <link>http://localhost:1313/post/the-developer-dip/</link>
       <pubDate>Thu, 19 Mar 2015 09:31:12 +0300</pubDate>
@@ -129,40 +19,42 @@ add &lt;code&gt;--dry-drun&lt;/code&gt; or &lt;code&gt;n&lt;/code&gt; to the opt
 
 &lt;p&gt;Seth Godin articulates an important concept of &amp;ldquo;the dip&amp;rdquo; in his book &lt;em&gt;&lt;a href=&#34;http://amzn.to/19EM2Nn&#34;&gt;The Dip&lt;/a&gt;&lt;/em&gt;. If you haven&amp;rsquo;t read it, think &amp;ldquo;learning curve&amp;rdquo; or &amp;ldquo;barrier of entry&amp;rdquo;. But it&amp;rsquo;s more than that. It&amp;rsquo;s the thing that separates the novices from the pros. It&amp;rsquo;s the thing standing between you and becoming &amp;ldquo;the best in the world&amp;rdquo; at whatever it is you&amp;rsquo;re aspiring to.&lt;/p&gt;
 
-&lt;p&gt;There&amp;rsquo;s a lot of value to unpack in Godin&amp;rsquo;s concept for those in (or entering) the world of web development.&lt;/p&gt;
+&lt;p&gt;There&amp;rsquo;s a lot of value to unpack in Godin&amp;rsquo;s concept for those entering or already in the world of web development.&lt;/p&gt;
 
 &lt;h3 id=&#34;getting-started-is-easy:3c8129ef12fc5e08f1639b4f509fb10d&#34;&gt;Getting Started is Easy&lt;/h3&gt;
 
 &lt;p&gt;Getting started as a &amp;ldquo;web dev&amp;rdquo; doesn&amp;rsquo;t take much.&lt;/p&gt;
 
-&lt;p&gt;Initially, I&amp;rsquo;d argue that all seeking a path in web development should at least be familiar with the front-end bread-and-butter skills (html, css, and js). Lots of tutorials and courses aimed at beginners go something like this:&lt;/p&gt;
+&lt;p&gt;Initially, proficiency in the front-end bread-and-butter skills (html, css, and js) is crucial and not too hard to obtain. Certainly, it takes work. But there are &lt;em&gt;lots&lt;/em&gt; of tutorials and courses for these intro skills. Most seem to go something like this:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;download sublime or another easy but powerful editor&lt;/li&gt;
+&lt;li&gt;download sublime or another easy but incredibly powerful editor&lt;/li&gt;
 &lt;li&gt;download html5 boiler plate&lt;/li&gt;
 &lt;li&gt;add-in bootstrap&lt;/li&gt;
 &lt;li&gt;wire up styles and scripts&lt;/li&gt;
-&lt;li&gt;start changing stuff, experiment, break stuff, build something&lt;/li&gt;
+&lt;li&gt;start changing stuff, experiment, break, build&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;This is of course an over simplification. But the point remains: the barrier of basic front-end skill is pretty darn low. Certainly, learning to do the above &lt;em&gt;really well&lt;/em&gt; isn&amp;rsquo;t easy. But learning to &amp;ldquo;do it and make something decent&amp;rdquo; isn&amp;rsquo;t so hard.&lt;/p&gt;
+&lt;p&gt;Learning to do the above &lt;em&gt;really well&lt;/em&gt; isn&amp;rsquo;t easy. And of course there&amp;rsquo;s more to learn (like Git and solid JS skills). But learning the above doesn&amp;rsquo;t take years of toiling.&lt;/p&gt;
 
-&lt;p&gt;This isn&amp;rsquo;t &amp;ldquo;the dip&amp;rdquo; that Godin speaks of.&lt;/p&gt;
+&lt;p&gt;Learning the above isn&amp;rsquo;t &amp;ldquo;the dip&amp;rdquo; that Godin speaks of.&lt;/p&gt;
 
-&lt;h3 id=&#34;getting-through-the-dip-is-hard:3c8129ef12fc5e08f1639b4f509fb10d&#34;&gt;Getting through &amp;ldquo;the dip&amp;rdquo; is HARD&lt;/h3&gt;
+&lt;h3 id=&#34;getting-through-the-dip-is-hard:3c8129ef12fc5e08f1639b4f509fb10d&#34;&gt;Getting Through &amp;ldquo;The Dip&amp;rdquo; is HARD&lt;/h3&gt;
 
-&lt;p&gt;Why? Because staying at this point doesn&amp;rsquo;t take one very far. Remember, &amp;ldquo;the dip&amp;rdquo; is the thing to get through that will make you &amp;ldquo;the best in the world.&amp;rdquo; It&amp;rsquo;s the thing that&amp;rsquo;ll separate your career from that of the rookie who only builds sites for family members and friends.&lt;/p&gt;
+&lt;p&gt;Why? Because staying at this point doesn&amp;rsquo;t take one very far. Remember, &amp;ldquo;the dip&amp;rdquo; is the thing to get through that will make you &amp;ldquo;the best in the world.&amp;rdquo; It&amp;rsquo;s the thing that&amp;rsquo;ll separate your career from that of the rookie weekend coders.&lt;/p&gt;
+
+&lt;h3 id=&#34;what-is-the-developer-dip:3c8129ef12fc5e08f1639b4f509fb10d&#34;&gt;What &lt;em&gt;is&lt;/em&gt; the &amp;ldquo;Developer Dip?&amp;rdquo;&lt;/h3&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;So what&amp;rsquo;s &amp;ldquo;the dip&amp;rdquo; that those seeking to be &lt;em&gt;really good developers&lt;/em&gt; need to get through? And doesn&amp;rsquo;t it depend on which particular realm of web dev one&amp;rsquo;s interested in?&lt;/p&gt;
+&lt;p&gt;So what is &amp;ldquo;the dip&amp;rdquo; that those seeking to be &lt;em&gt;really good developers&lt;/em&gt; need to get through? Doesn&amp;rsquo;t it vary with the particular realm of development that one is interested in?&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;To my younger self, and anyone else who might benefit from it, here&amp;rsquo;s my take on &amp;ldquo;the developer dip&amp;rdquo;, roughly in some type of helpful order (of course the learning process for these things isn&amp;rsquo;t really sequential, and it&amp;rsquo;s certainly dynamic):&lt;/p&gt;
+&lt;p&gt;To my younger self, and anyone else who might benefit from it, here&amp;rsquo;s my take on &amp;ldquo;the developer dip,&amp;rdquo; roughly in some type of helpful order (of course the learning process for these things isn&amp;rsquo;t really sequential, and it&amp;rsquo;s certainly always dynamic):&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Javascript without jQuery (at least the basic dom manipulation stuff)&lt;/li&gt;
+&lt;li&gt;Javascript without jQuery (at least the basic DOM manipulation stuff)&lt;/li&gt;
 &lt;li&gt;intimate familiarity with at least one text editor&lt;/li&gt;
-&lt;li&gt;the command line (at least a minimal working knowledge)&lt;/li&gt;
+&lt;li&gt;the terminal (at least a minimal working knowledge)&lt;/li&gt;
 &lt;li&gt;system configuration/know-how
 
 &lt;ul&gt;
@@ -173,33 +65,31 @@ add &lt;code&gt;--dry-drun&lt;/code&gt; or &lt;code&gt;n&lt;/code&gt; to the opt
 &lt;li&gt;understanding of user permissions and roles (this arguably doesn&amp;rsquo;t apply to some folks, but I still think it&amp;rsquo;s an important thing to understand)&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;pre-processors&lt;/li&gt;
-&lt;li&gt;a build tool (GUIs like Codekit, Prepos and the others are great, but I think it&amp;rsquo;s important to also know how to harness something like Grunt, Gulp, NPM, make, or any of the many others for being able to perform bulid tasks)&lt;/li&gt;
-&lt;li&gt;git&lt;/li&gt;
+&lt;li&gt;a build tool, and likely several (GUIs like Codekit, Prepos and the others are great, but I think it&amp;rsquo;s important to also know how to harness something like Grunt, Gulp, NPM, make, or any of the others for being able to perform build tasks)&lt;/li&gt;
+&lt;li&gt;Git&lt;/li&gt;
 &lt;li&gt;deployment&lt;/li&gt;
+&lt;li&gt;continuous integration&lt;/li&gt;
+&lt;li&gt;testing&lt;/li&gt;
 &lt;li&gt;dns setup/management&lt;/li&gt;
-&lt;li&gt;ability to follow naming conventions (since these can vary between projects and teams, it&amp;rsquo;s fine and even good to have your own, but it&amp;rsquo;s also important to be able to learn and follow others)&lt;/li&gt;
-&lt;li&gt;ability to work without any frameworks. Don&amp;rsquo;t get me wrong, frameworks can be great, but they add abstraction. Skills built on abstraction without fundamental understanding are brittle &amp;ndash; brittle things easily break. So use Bootstrap if that&amp;rsquo;s your thing, but know how to create awesome styles and user experiences without it.&lt;/li&gt;
-&lt;li&gt;able to execute (link here to execute book)&lt;/li&gt;
-&lt;li&gt;able to &amp;ldquo;rock out&amp;rdquo; at least one CMS&lt;/li&gt;
-&lt;li&gt;having a collection of starting points (forked or home-grown) to quickly start
-any project.&lt;/li&gt;
+&lt;li&gt;ability to follow naming conventions (since these can vary between projects and teams, it&amp;rsquo;s fine and even good to have your own, but it&amp;rsquo;s also important to be able to learn and follow those of others)&lt;/li&gt;
+&lt;li&gt;ability to work without any frameworks. Don&amp;rsquo;t get me wrong, frameworks can be great, but they add abstraction. Skills built on abstraction without fundamental understanding are brittle &amp;ndash; brittle things break. So use Bootstrap if that&amp;rsquo;s your thing, but know how to create awesome styles and user experiences without it.&lt;/li&gt;
+&lt;li&gt;ability to execute (&lt;a href=&#34;http://executebook.com/&#34;&gt;here&amp;rsquo;s an incredible book on the topic&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;ability to customize and thrive in &lt;em&gt;at least&lt;/em&gt; one CMS&lt;/li&gt;
+&lt;li&gt;having a collection of starting points (from vendors, forked, or home-grown) that enable rapid but thorough project initiation.&lt;/li&gt;
+&lt;li&gt;algorithmic programming abilities (at least the basics)&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Have I missed something? Don&amp;rsquo;t agree with one of my aspects of the &amp;ldquo;developer dip?&amp;rdquo; Share your thoughts. After all, what&amp;rsquo;s a developer without an opinion, right?&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Static Site Generator or Flat File CMS</title>
-      <link>http://localhost:1313/post/static-site-generator-or-flat-file-cms/</link>
-      <pubDate>Tue, 03 Mar 2015 23:13:17 +0300</pubDate>
-      
-      <guid>http://localhost:1313/post/static-site-generator-or-flat-file-cms/</guid>
-      <description>&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, quae. Facere odit beatae ipsam illo aspernatur minus consequuntur ducimus dolor facilis nihil!&lt;/p&gt;
+&lt;h3 id=&#34;these-are-just-the-hard-skills:3c8129ef12fc5e08f1639b4f509fb10d&#34;&gt;These are Just the &amp;ldquo;Hard Skills&amp;rdquo;&lt;/h3&gt;
 
-&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe et excepturi quos alias voluptates quas officia modi in quibusdam dolore possimus ea suscipit praesentium iusto quidem accusantium nam quisquam, eum aliquam adipisci optio, voluptatum. Nulla aliquam sapiente asperiores accusamus sed distinctio, ipsa modi vero corporis tenetur commodi assumenda beatae dignissimos numquam ut voluptatem necessitatibus sit aspernatur iusto.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Hard&lt;/em&gt; in the sense of &lt;em&gt;tangible&lt;/em&gt;. There are entire other posts and books (though &lt;a href=&#34;http://amzn.to/1DnGP8h&#34;&gt;a good one&amp;rsquo;s already been written&lt;/a&gt;) on the topic of &amp;ldquo;soft skills&amp;rdquo; for developers. Things like communication, branding, follow-up, etc.&lt;/p&gt;
 
-&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus ad doloremque harum. Consectetur dolores expedita nisi, fugiat, iste deleniti esse reprehenderit nulla eos libero hic enim ducimus quasi laborum dolor, ea magni maiores soluta laudantium eum? Labore, veritatis.&lt;/p&gt;
+&lt;p&gt;The soft skills are also part of &amp;ldquo;the dip.&amp;rdquo; Perhaps they&amp;rsquo;re even bigger than the &amp;ldquo;hard&amp;rdquo; skills above.&lt;/p&gt;
+
+&lt;h3 id=&#34;getting-through-the-dip:3c8129ef12fc5e08f1639b4f509fb10d&#34;&gt;Getting Through &amp;ldquo;The Dip&amp;rdquo;&lt;/h3&gt;
+
+&lt;p&gt;As the saying &amp;ldquo;nothing good happens overnight&amp;rdquo; reminds us, the path to most anything worthwhile in life takes time, energy, and hard work. This isn&amp;rsquo;t what most of us want to hear. Most of us (including myself) tend to default to the paths of least resistance, those that don&amp;rsquo;t lead us through &amp;ldquo;the dips.&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Best of strength and luck in embracing and getting the &amp;ldquo;the dip.&amp;rdquo;&lt;/p&gt;
 </description>
     </item>
     
@@ -211,147 +101,85 @@ any project.&lt;/li&gt;
       <guid>http://localhost:1313/post/beginner-friendly-linux-dev-setup/</guid>
       <description>
 
-&lt;!-- When I first began writing code I worked on a Windows 7 machine. It&#39;s true. I wasn&#39;t one of the cool mac-kinds. When seeing macs I was of course intrigued. Usually they frustrated me. &#34;Why can&#39;t I delete this file!&#34; &#34;Where the right click button!&#34; And many other thoughts came to mind whenever I&#39;d fumble around on macs of friends or family members. 
+&lt;p&gt;A developer&amp;rsquo;s operating system is akin to the cowboy&amp;rsquo;s horse. It should be chosen wisely. There&amp;rsquo;ll be lots of time spent on it. The better one knows it the more one can get from it. So do choose wisely.&lt;/p&gt;
 
-But I wasn&#39;t exactly happy on Windows either. Certainly, I &#34;power-used&#34; the heck out of it, complete with tons of customized keyboard shortcuts and &#34;extended-feature&#34; apps. But then came &#34;the shell.&#34;
- --&gt;
+&lt;p&gt;Lots of web devs simply buy a Mac and go to town with OSX. Most of these folks would never think of leaving their land of milk and honey. But for those not yet initiated into the Mac-world but knowing there must be something better then their Windows reality, consider a beginner-friendly Linux setup.&lt;/p&gt;
 
-&lt;p&gt;Linux isn&amp;rsquo;t (only) for geeks. In the past it may have been, but times have changed. With the right Linux flavor (&amp;ldquo;distro,&amp;rdquo; in Linux terms) it&amp;rsquo;s easy to have a powerful and user-friendly development machine.&lt;/p&gt;
+&lt;h3 id=&#34;modern-linux:40874660f1122584356d35784ba0aabd&#34;&gt;Modern Linux&lt;/h3&gt;
 
-&lt;p&gt;I&amp;rsquo;ve been using Linux as my primary work machine for well over a year now. For those in search of a better shell (Windows users) or something closer to most production environments (Mac users), here&amp;rsquo;s my 2 cents.&lt;/p&gt;
+&lt;p&gt;That&amp;rsquo;s right, &lt;em&gt;modern Linux&lt;/em&gt;.&lt;/p&gt;
 
-&lt;h2 id=&#34;choose-the-right-distro:40874660f1122584356d35784ba0aabd&#34;&gt;Choose the right distro&lt;/h2&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>NPM as a Build Tool with Hugo</title>
-      <link>http://localhost:1313/post/npm-as-a-build-tool-with-hugo/</link>
-      <pubDate>Tue, 03 Mar 2015 22:57:35 +0300</pubDate>
-      
-      <guid>http://localhost:1313/post/npm-as-a-build-tool-with-hugo/</guid>
-      <description>
+&lt;p&gt;Many folks seem to &lt;em&gt;exclusively&lt;/em&gt; associate &lt;em&gt;Linux&lt;/em&gt; with  &lt;em&gt;hacker.&lt;/em&gt; While the platform is &lt;em&gt;certainly&lt;/em&gt; well suited for the hacker-minded codesteader type, it&amp;rsquo;s also quite friendly for closer-to-normal users.&lt;/p&gt;
 
-&lt;p&gt;Hugo&amp;rsquo;s a rather powerful tool for making websites. At its core it&amp;rsquo;s a static
-site generator, but it&amp;rsquo;s also capable of quite a bit more.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ve been using Linux as my primary work machine for well over 14 months. I came from Windows 7. I don&amp;rsquo;t have a CS degree and barely knew the command line (before the switch).&lt;/p&gt;
 
-&lt;p&gt;NPM&amp;rsquo;s a rather powerful package manager. It&amp;rsquo;s also a powerful build
-tool.&lt;/p&gt;
+&lt;p&gt;Changing from Windows to Linux was like going from a clumsy half-working mini-van to a supped-up SUV.&lt;/p&gt;
 
-&lt;p&gt;Developing with Hugo and NPM in collaboration makes for a powerful setup. Let&amp;rsquo;s
-learn how.&lt;/p&gt;
+&lt;h3 id=&#34;primary-linux-from-windows-benefits:40874660f1122584356d35784ba0aabd&#34;&gt;Primary Linux from Windows Benefits&lt;/h3&gt;
 
-&lt;h3 id=&#34;how-to-use-npm-as-a-build-tool-with-hugo:cbe9e3adfe4b24f79a8f2fb4b155e5bf&#34;&gt;How to use NPM as a build tool with Hugo&lt;/h3&gt;
-
-&lt;p&gt;Here are the bare-bones requirements of what I&amp;rsquo;d consider essential for
-developing a modern site:&lt;/p&gt;
+&lt;p&gt;The primary things I was grateful for when switching were:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;CSS Pre &amp;amp; Post Processing&lt;/li&gt;
-&lt;li&gt;JS concatination/bundling&lt;/li&gt;
-&lt;li&gt;Minifying CSS &amp;amp; JS&lt;/li&gt;
-&lt;li&gt;Live Reloading Developement Setup&lt;/li&gt;
+&lt;li&gt;An awesome terminal (hello bash and z-shell)&lt;/li&gt;
+&lt;li&gt;dev-environment == production-environment&lt;/li&gt;
+&lt;li&gt;speed&lt;/li&gt;
+&lt;li&gt;security (goodbye viruses and spy/mal/bad-ware)&lt;/li&gt;
+&lt;li&gt;stability (no more &lt;code&gt;crtl&lt;/code&gt;+&lt;code&gt;alt&lt;/code&gt;+&lt;code&gt;delete&lt;/code&gt;ing!)&lt;/li&gt;
+&lt;li&gt;old-hardware friendliness (I&amp;rsquo;m a resourceful fellow and like to keep old things around for as long as it makes sense)&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;on top of this, there are more &amp;ldquo;advanced&amp;rdquo; but nevertheless &amp;ldquo;nice-to-haves:&amp;rdquo;&lt;/p&gt;
+&lt;h3 id=&#34;choose-the-right-distro-desktop-environment:40874660f1122584356d35784ba0aabd&#34;&gt;Choose the Right Distro / Desktop Environment&lt;/h3&gt;
+
+&lt;p&gt;There&amp;rsquo;s no one default &amp;ldquo;flavor&amp;rdquo; of Linux. Instead, there are lots (and lots) of different variations which come from a number of &lt;em&gt;distributions&lt;/em&gt; (referred to as &lt;em&gt;distros&lt;/em&gt;) for which developers have created many &lt;em&gt;desktop environments&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s important to understand the line between distro and desktop environment. In normal-folk terms, think &amp;ldquo;close-to-the-metal&amp;rdquo; low-level stuff for distros &amp;ndash; like &lt;em&gt;Ubuntu&lt;/em&gt;, &lt;em&gt;Debian&lt;/em&gt;, &lt;em&gt;Arch&lt;/em&gt;, and &lt;em&gt;Suse&lt;/em&gt;.  For desktop environments, think &amp;ldquo;icing on top.&amp;rdquo; For context, Linux servers run a specific distro (Ubuntu and Fedora are two common ones) with no desktop environment.&lt;/p&gt;
+
+&lt;p&gt;If you&amp;rsquo;re considering the switch, you&amp;rsquo;ll need to choose the right distro/desktop environment. Though there&amp;rsquo;s no ubiquitous choice, there &lt;em&gt;are&lt;/em&gt; several great options worth considering.&lt;/p&gt;
+
+&lt;p&gt;If you have time, experiment with as many of these as you can. But do be warned: distro-hopping is a real (and likely paralyzing) thing. Try and settle on one sooner than latter.&lt;/p&gt;
+
+&lt;p&gt;Before I settled on my distro-of-choice I was a weary distro-hopper. At the time it brought nothing but toil. Now it brings valuable insight.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s my take on some of the best Linux distros for web-devs and general code enthusiasts (though they&amp;rsquo;re not really limited to anyone particular, they&amp;rsquo;re just all-around good choices).&lt;/p&gt;
+
+&lt;p&gt;To be clear, I&amp;rsquo;d recommend any of these to anyone looking to switch to Linux.&lt;/p&gt;
+
+&lt;h4 id=&#34;elementary-os-link-http-elementary-io:40874660f1122584356d35784ba0aabd&#34;&gt;Elementary OS &lt;a href=&#34;http://elementary.io/&#34;&gt;link&lt;/a&gt;&lt;/h4&gt;
+
+&lt;p&gt;Elementary OS feels a lot like OSX. It&amp;rsquo;s clean, incredibly smooth, quick and easy to install and get started with but still decently customizable. It&amp;rsquo;s built on Ubuntu, which some say is good and others say is bad.&lt;/p&gt;
+
+&lt;p&gt;I nearly settled on Elementary but eventually moved-on due to wanting finer-grained control over customizations.&lt;/p&gt;
+
+&lt;h4 id=&#34;ubuntu-unity-link-https-unity-ubuntu-com:40874660f1122584356d35784ba0aabd&#34;&gt;Ubuntu Unity &lt;a href=&#34;https://unity.ubuntu.com/&#34;&gt;link&lt;/a&gt;&lt;/h4&gt;
+
+&lt;p&gt;Ubuntu&amp;rsquo;s Unity disto is a future-now feeling os that packed with features and bold in its overall implementations. It received a fair amount of criticism early on but has since seemed to win-over more followers.&lt;/p&gt;
+
+&lt;p&gt;I liked Unity, but I wanted something a bit more &amp;ldquo;traditionally-Linux&amp;rdquo; feeling. It also seemed to hog my systems resources. But otherwise, perhaps if I were a bit younger, I&amp;rsquo;d have stuck with it.&lt;/p&gt;
+
+&lt;h4 id=&#34;ubuntu-gnome-3-link-http-ubuntugnome-org:40874660f1122584356d35784ba0aabd&#34;&gt;Ubuntu Gnome 3 &lt;a href=&#34;http://ubuntugnome.org/&#34;&gt;link&lt;/a&gt;&lt;/h4&gt;
+
+&lt;p&gt;Ubuntu&amp;rsquo;s Gnome distro is legendary. I find it to be more traditional than the Unity desktop but still modern and &amp;ldquo;generally awesome.&amp;rdquo; There&amp;rsquo;s an add-on called the &lt;a href=&#34;https://apps.ubuntu.com/cat/applications/gnome-tweak-tool/&#34;&gt;Tweak Tool&lt;/a&gt; that lets you tweak different settings and such (I consider it a mandatory addition).&lt;/p&gt;
+
+&lt;p&gt;I used Gnome 3 for a while and was generally happy with it. It&amp;rsquo;s powerful, quite customizable, and it&amp;rsquo;s Ubuntu (which I work with on the server-side). The only reason I switched was because I found something that I liked more.&lt;/p&gt;
+
+&lt;h4 id=&#34;antergos-link-http-antergos-com:40874660f1122584356d35784ba0aabd&#34;&gt;Antergos &lt;a href=&#34;http://antergos.com/&#34;&gt;link&lt;/a&gt;&lt;/h4&gt;
+
+&lt;p&gt;Meet my dev-desktop of choice. Built on Arch Linux, the Antergos desktop distro provides a great balance of power, features, stability, and &amp;ldquo;customizability.&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Arch Linux is a minimalist approach to Linux where you essentially pick-and-choose the different components you&amp;rsquo;d like to have makeup your system. While this is a great and powerful thing, it&amp;rsquo;s also extremely daunting (especially for Linux newbies). But with Antergos there&amp;rsquo;s the best of both worlds: a quick and easy installer and an Arch-based system.&lt;/p&gt;
+
+&lt;p&gt;What&amp;rsquo;s so great about Arch? The fact that it&amp;rsquo;s a &amp;ldquo;rolling&amp;rdquo; distribution (which means that it&amp;rsquo;s always up to date). This comes with the slight downside that sometimes (and really, only perhaps once every 3 months or so) there&amp;rsquo;s a hiccup after updating. In my mind it&amp;rsquo;s a small price to pay.&lt;/p&gt;
+
+&lt;h4 id=&#34;others-worth-a-look:40874660f1122584356d35784ba0aabd&#34;&gt;Others Worth a Look&lt;/h4&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Source maps (for JS &amp;amp; CSS for debugging while developing)&lt;/li&gt;
-&lt;li&gt;Asset versioning (for browser caching)&lt;/li&gt;
-&lt;li&gt;Image minification&lt;/li&gt;
-&lt;li&gt;Icon system building&lt;/li&gt;
+&lt;li&gt;Linux Mint &lt;a href=&#34;http://www.linuxmint.com/&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Manjara &lt;a href=&#34;https://manjaro.github.io/&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Out of the box, Hugo includes a super fast and resource friendly &lt;code&gt;watch&lt;/code&gt; feature
-that &amp;ldquo;just works&amp;rdquo;. There are of course fancier ways to watch a build
-environment, but when working with Hugo I prefer to use its watch flag.&lt;/p&gt;
+&lt;h3 id=&#34;more-linux-info-to-come:40874660f1122584356d35784ba0aabd&#34;&gt;More Linux Info to Come&lt;/h3&gt;
 
-&lt;p&gt;For everything else, there&amp;rsquo;s NPM.&lt;/p&gt;
-
-&lt;p&gt;Here&amp;rsquo;s the bare-bones directory structure of a Hugo site&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;content
-layouts
-static
-
-public -- the static build, not source files
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;There are a few other directories (&lt;code&gt;archetypes&lt;/code&gt;, &lt;code&gt;data&lt;/code&gt;, and &lt;code&gt;themes&lt;/code&gt;) that are
-usually part of a site, but there&amp;rsquo;s no need to worry about these right now.&lt;/p&gt;
-
-&lt;p&gt;Hugo watches for changes in its individual directories, not the main project
-directory. This means we can add our own &amp;ldquo;special directoies&amp;rdquo; right inside our
-project directory.&lt;/p&gt;
-
-&lt;p&gt;Let&amp;rsquo;s add a custom directory for our pre-compiled assets:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;content
-layouts
-static-src --- our custom directory
-
-public
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now, inside of &lt;code&gt;static-src&lt;/code&gt; we can arrange our Sass (or Less, Stylus, etc),
-scripts, and images however we&amp;rsquo;d like. Saves to files in this folder won&amp;rsquo;t
-trigger Hugo to reload, which means we can use NPM scripts to do the magic and
-then send the built assets to the &lt;code&gt;static&lt;/code&gt; directory.&lt;/p&gt;
-
-&lt;h4 id=&#34;organizing-static-src:cbe9e3adfe4b24f79a8f2fb4b155e5bf&#34;&gt;Organizing &lt;code&gt;static-src&lt;/code&gt;&lt;/h4&gt;
-
-&lt;p&gt;Organize &lt;code&gt;static-src&lt;/code&gt; however you&amp;rsquo;d like. Even call it whatever you&amp;rsquo;d like.
-These things don&amp;rsquo;t matter. What matters is that there&amp;rsquo;s logic to your naming
-that make sense to you (and any others that you may be working with).&lt;/p&gt;
-
-&lt;p&gt;Let&amp;rsquo;s say we organize &lt;code&gt;static-src&lt;/code&gt; like this:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;static-src/
-  /assets
-    /src-sass
-      main.sass -- and the rest of our pre-processed css here
-    /src-js
-      index.js -- and the rest of our pre-processed js here
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now, lets wire up the build steps in &lt;code&gt;package.json&lt;/code&gt;.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;// package.json
-
-  &amp;quot;scripts&amp;quot;: {
-    &amp;quot;css:build&amp;quot;: &amp;quot;scss-cli --output-style compressed &#39;./static-src/src-assets/sass/**/*.{scss,sass}&#39; --glob -o static/assets/css&amp;quot;,
-    &amp;quot;postcss:build&amp;quot;: &amp;quot;autoprefixer -b &#39;last 2 versions&#39; static/src-assets/css/*.css&amp;quot;,
-    &amp;quot;css:watch&amp;quot;: &amp;quot;onchange &#39;./static-src/assets/src-sass/&#39; -- npm run css:build&amp;quot;,
-    &amp;quot;js:build&amp;quot;: &amp;quot;browserify static-src/assets/js/index.js -o static/assets/js/bundle.js&amp;quot;,
-    &amp;quot;js:watch&amp;quot;: &amp;quot;watchify static-src/assets/src-js/index.js -o static/assets/js/bundle.js&amp;quot;,
-    &amp;quot;build&amp;quot;: &amp;quot;npm run css:build &amp;amp;&amp;amp; npm run js:build&amp;quot;,
-    &amp;quot;prewatch&amp;quot;: &amp;quot;npm run build&amp;quot;,
-    &amp;quot;watch&amp;quot;: &amp;quot;parallelshell &#39;npm run css:watch&#39; &#39;npm run js:watch&#39;&amp;quot;,
-    &amp;quot;start&amp;quot;: &amp;quot;npm run watch&amp;quot;,
-  },
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;a-few-things-here-to-note:cbe9e3adfe4b24f79a8f2fb4b155e5bf&#34;&gt;A few things here to note:&lt;/h4&gt;
-
-&lt;p&gt;&lt;code&gt;paralellshell&lt;/code&gt; is &lt;a href=&#34;https://github.com/keithamus/parallelshell&#34;&gt;a package&lt;/a&gt; for doing exactly what it says: running tasks in parallel. It&amp;rsquo;s written and maintained by Keith Cirkel, who wrote an &lt;a href=&#34;http://blog.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/&#34;&gt;awesome article&lt;/a&gt; on using NPM as a build tool. If you&amp;rsquo;re famliar with bash commands you may be wondering why to use this package instead of the &lt;code&gt;&amp;amp;&lt;/code&gt; operator. If so, &lt;a href=&#34;https://github.com/keithamus/parallelshell/issues/5&#34;&gt;see Keith&amp;rsquo;s great answer&lt;/a&gt; to my asking of this question.&lt;/p&gt;
-
-&lt;p&gt;NPM gives &lt;code&gt;pre&lt;/code&gt; and &lt;code&gt;post&lt;/code&gt; hooks for each script command you create. These are
-really handy. They let us &lt;code&gt;build&lt;/code&gt; before we &lt;code&gt;watch&lt;/code&gt; and autoprefix our css after
-it&amp;rsquo;s been de-sassified.&lt;/p&gt;
-
-&lt;h3 id=&#34;why-not-just-use-gulp-grunt-broccli-et-all:cbe9e3adfe4b24f79a8f2fb4b155e5bf&#34;&gt;Why not just use Gulp, Grunt, Broccli, et all?&lt;/h3&gt;
-
-&lt;p&gt;Because I find it&amp;rsquo;s beneficial to minimize mental overhead where possible.&lt;/p&gt;
-
-&lt;p&gt;Using NPM as a build tool means that I can &lt;code&gt;cat package.json&lt;/code&gt; in the terminal to
-quickly glance at my entire build pipeline - usually without scrolling. As
-a convert from Gulp (which I still use for some things) this is quite nice. Bugs
-in things like wrong paths are also much easier to prevent (and catch).&lt;/p&gt;
-
-&lt;p&gt;Not having to use wrappers is also beneficial. Grunt, Gulp, and all the others
-certainly have handy collections of plugins and such, but most of these are just
-wrappers for their elder vanilla-js upstream superiors. This means that package
-bugs are fewer and updates quicker.&lt;/p&gt;
+&lt;p&gt;That&amp;rsquo;s all for now. There are a number of other Linux-related articles already on the to-do list, so stay tuned.&lt;/p&gt;
 </description>
     </item>
     
@@ -363,45 +191,44 @@ bugs are fewer and updates quicker.&lt;/p&gt;
       <guid>http://localhost:1313/post/birth-of-the-codestead/</guid>
       <description>
 
-&lt;p&gt;Here&amp;rsquo;s to the obligatory first post. The post that explains the big idea, at
-least here in the beginning.&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s to the obligatory first post. The post to stake-out initial intentions and potential directions for The Codestead.&lt;/p&gt;
 
 &lt;h3 id=&#34;the-idea:73c0457a31d262211fe5dcb3f2545c0a&#34;&gt;The Idea&lt;/h3&gt;
 
-&lt;p&gt;For a long time I&amp;rsquo;ve been hearing and even telling myself to start a blog. Well, this is it. Only instead of using myname.com as the platform, I&amp;rsquo;m attempting to create something &amp;ldquo;Beyond myself.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;For a long time I&amp;rsquo;ve been hearing and even telling myself to start a developer-based blog. I guess the idea came a few months after I felt comfortable with the front-end basics (sometime in 2012). But for some reason I never did it.&lt;/p&gt;
+
+&lt;p&gt;I think these were the two main hesitations/barriers:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://en.wikipedia.org/wiki/Impostor_syndrome&#34;&gt;Imposture syndrome&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Wondering if I could invest the necessary time and energy&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;the-mental-switch:73c0457a31d262211fe5dcb3f2545c0a&#34;&gt;The Mental Switch&lt;/h3&gt;
+
+&lt;p&gt;I listen to a lot of podcasts. It&amp;rsquo;s a convenient way to feel productive (without actually doing anything). One such listening (while doing some home renovation work, might I add) motivated me to finally start. It was &lt;a href=&#34;https://developertea.com/episodes/7976&#34;&gt;this Developer Tea&lt;/a&gt; episode, an interview with author of &lt;a href=&#34;http://simpleprogrammer.com/&#34;&gt;Simple Programmer&lt;/a&gt; John Sonmez effectively encouraging folks to offer what they&amp;rsquo;ve learned and are learning to the world.&lt;/p&gt;
 
 &lt;h3 id=&#34;the-name:73c0457a31d262211fe5dcb3f2545c0a&#34;&gt;The Name&lt;/h3&gt;
 
-&lt;p&gt;Chances are, you either smile or scratch your head at the site&amp;rsquo;s title. Perhaps you&amp;rsquo;re asking &amp;ldquo;what&amp;rsquo;s a &lt;em&gt;codestead&lt;/em&gt;.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;I didn&amp;rsquo;t want a blog at myname.com. I&amp;rsquo;d rather create something beyond myself.&lt;/p&gt;
+
+&lt;p&gt;When reading &lt;em&gt;The Codestead&lt;/em&gt; folks likely either smile or scratch heads.&lt;/p&gt;
+
+&lt;h6 id=&#34;what-s-a-codestead:73c0457a31d262211fe5dcb3f2545c0a&#34;&gt;What&amp;rsquo;s a Codestead?&lt;/h6&gt;
 
 &lt;p&gt;A &lt;em&gt;codestead&lt;/em&gt; is like a homestead, only for coders (and virtual, of course).&lt;/p&gt;
 
 &lt;h6 id=&#34;what-does-this-mean:73c0457a31d262211fe5dcb3f2545c0a&#34;&gt;What does this mean?&lt;/h6&gt;
 
-&lt;p&gt;Though it&amp;rsquo;s certainly no longer the 1990&amp;rsquo;s, I still think of the web as a modern-day &amp;ldquo;wild west&amp;rdquo; of sorts. US history is filled with examples of folks &amp;ldquo;going west&amp;rdquo; and steaking their claims. Often, they created homestead (Abraham Lincoln&amp;rsquo;s homeplace being one of countless examples). Homestead&amp;rsquo;s are places for jacks-of-all-trades.&lt;/p&gt;
+&lt;p&gt;Though it&amp;rsquo;s certainly no longer the 1990&amp;rsquo;s, I still tend think of the web as a modern-day &amp;ldquo;wild west&amp;rdquo; of sorts. US history is filled with examples of folks &amp;ldquo;going west to settle.&amp;rdquo; Often they settled on homesteads, near-self-sufficient harbors of rogue and royal alike. Homestead&amp;rsquo;s are places for jacks-of-all-trades.&lt;/p&gt;
 
-&lt;h3 id=&#34;hasn-t-this-been-done-before:73c0457a31d262211fe5dcb3f2545c0a&#34;&gt;Hasn&amp;rsquo;t this been done before?&lt;/h3&gt;
+&lt;h3 id=&#34;join-in:73c0457a31d262211fe5dcb3f2545c0a&#34;&gt;Join In&lt;/h3&gt;
 
-&lt;p&gt;Lots of questions go through one&amp;rsquo;s mind before beginning a new project. For web projects, one of the big ones is &amp;ldquo;hasn&amp;rsquo;t this been done before?&amp;rdquo; And if something&amp;rsquo;s been done before, why do it again?&lt;/p&gt;
+&lt;p&gt;Maybe you find some of the stuff here helpful. It all right if you don&amp;rsquo;t, but it&amp;rsquo;s cool if you do.&lt;/p&gt;
 
-&lt;p&gt;There&amp;rsquo;s something that feels almost inherintly wrong with &amp;ldquo;recreating the wheel.&amp;rdquo; If I&amp;rsquo;m camping with friends and someone&amp;rsquo;s already built a fire, the last thing I&amp;rsquo;m likely to do is build &lt;em&gt;another&lt;/em&gt; one. Yet, industry and individuals are guilty of &amp;ldquo;wheel-recreating&amp;rdquo; nearly every day. If we weren&amp;rsquo;t, there&amp;rsquo;d be no Toyota (Ford existed first), no bicycle (there was already the tricycle), and no Twitter (there was already Facebook).&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://localhost:1313/contact&#34;&gt;Contact me&lt;/a&gt; with any ideas and such you might have.&lt;/p&gt;
 
-&lt;p&gt;So there are obvious reasons to do something that&amp;rsquo;s already been done:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;variety (same idea, different execution)&lt;/li&gt;
-&lt;li&gt;innovation (idea morphing)&lt;/li&gt;
-&lt;li&gt;perspective&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;For products, the simple idea is that &amp;ldquo;this may have already been done, but I/we want to improve it&amp;rdquo; or &amp;ldquo;I/we want to do it differently.&amp;rdquo; Straightforward, right?&lt;/p&gt;
-
-&lt;p&gt;For information-based websites, there&amp;rsquo;s great value in variety and perspective. Just like books. If all authors were affraid of re-creating the wheel, libraries would be much smaller (if they&amp;rsquo;d exist at all).&lt;/p&gt;
-
-&lt;h3 id=&#34;mostly-for-me:73c0457a31d262211fe5dcb3f2545c0a&#34;&gt;Mostly for Me&lt;/h3&gt;
-
-&lt;p&gt;Ever heard a teach say that he/she learns so much more than they teach? I sure
-have. And it&amp;rsquo;s really true.&lt;/p&gt;
+&lt;p&gt;Do come again.&lt;/p&gt;
 </description>
     </item>
     
