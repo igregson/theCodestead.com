@@ -2,19 +2,218 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>The Codestead</title>
-    <link>http://thecodestead.com/</link>
+    <link>http://localhost:1313/</link>
     <description>Recent content on The Codestead</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 19 Mar 2015 09:31:12 +0300</lastBuildDate>
-    <atom:link href="http://thecodestead.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 04 Apr 2015 22:57:35 +0300</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>NPM as a Build Tool with Hugo</title>
+      <link>http://localhost:1313/post/npm-as-a-build-tool-with-hugo/</link>
+      <pubDate>Sat, 04 Apr 2015 22:57:35 +0300</pubDate>
+      
+      <guid>http://localhost:1313/post/npm-as-a-build-tool-with-hugo/</guid>
+      <description>
+
+&lt;p&gt;Hugo&amp;rsquo;s a rather powerful tool for making websites. At its core it&amp;rsquo;s a static
+site generator, but it&amp;rsquo;s also capable of quite a bit more.&lt;/p&gt;
+
+&lt;p&gt;NPM&amp;rsquo;s a rather powerful package manager. It&amp;rsquo;s also a powerful build
+tool.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s learn how to setup NPM with Hugo to process our scripts and styles.&lt;/p&gt;
+
+&lt;h3 id=&#34;requirements:cbe9e3adfe4b24f79a8f2fb4b155e5bf&#34;&gt;Requirements&lt;/h3&gt;
+
+&lt;p&gt;Here are the bare-bones requirements of what I&amp;rsquo;d consider essential for
+developing a modern site:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;CSS pre &amp;amp; post processing&lt;/li&gt;
+&lt;li&gt;Js concatination/bundling&lt;/li&gt;
+&lt;li&gt;Minification of CSS &amp;amp; Js&lt;/li&gt;
+&lt;li&gt;A live-reloading dev environment&lt;/li&gt;
+&lt;li&gt;Js and CSS source maps (for easy debugging)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;hugo-provides-the-watcher:cbe9e3adfe4b24f79a8f2fb4b155e5bf&#34;&gt;Hugo Provides the Watcher&lt;/h3&gt;
+
+&lt;p&gt;Out of the box, Hugo includes a super fast and resource friendly &lt;code&gt;watch&lt;/code&gt; feature
+that &amp;ldquo;just works&amp;rdquo;. There are of course fancier ways to watch a build
+environment, but when working with Hugo I&amp;rsquo;m grateful for the simplicity and &amp;ldquo;just-works&amp;rdquo; nature of its built-in watch feature.&lt;/p&gt;
+
+&lt;h3 id=&#34;hugo-s-directory-structure:cbe9e3adfe4b24f79a8f2fb4b155e5bf&#34;&gt;Hugo&amp;rsquo;s Directory Structure&lt;/h3&gt;
+
+&lt;p&gt;Here&amp;rsquo;s the default Hugo directory structrue:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// Hugo-project-root
+
+content/
+layouts/
+static/
+archetypes/
+data/
+public/  --- where the site is built to, of no interest now
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;hugo-s-theme-directory:cbe9e3adfe4b24f79a8f2fb4b155e5bf&#34;&gt;Hugo&amp;rsquo;s Theme Directory&lt;/h4&gt;
+
+&lt;p&gt;Hugo theme directories mirror the parent project root:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// Hugo-project-foot
+
+content/
+layouts/
+static/
+archetypes/
+data/
+themes/
+	my-hugo-theme/
+			content/
+			layouts/
+			static/
+			archetypes/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;the-behavior-of-hugo-s-watcher:cbe9e3adfe4b24f79a8f2fb4b155e5bf&#34;&gt;The Behavior of Hugo&amp;rsquo;s Watcher&lt;/h3&gt;
+
+&lt;p&gt;One really nice thing about Hugo&amp;rsquo;s watcher is that &lt;strong&gt;it only watches for changes inside of the above core Hugo directories.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;why-is-this-good:cbe9e3adfe4b24f79a8f2fb4b155e5bf&#34;&gt;Why is this good?&lt;/h4&gt;
+
+&lt;p&gt;This is good because it allows us source-file-organization freedom and gives NPM scripts a way to harness Hugos watcher.&lt;/p&gt;
+
+&lt;p&gt;In other words, this allows us to:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;organize our unprocessed asset files (unprocessed CSS and Js) however we&amp;rsquo;d like (so long as they&amp;rsquo;re outside of Hugo&amp;rsquo;s core directories.&lt;/li&gt;
+&lt;li&gt;utilize NPM to watch for changes and send the processed versions to Hugo&amp;rsquo;s core directories that will then trigger Hugo&amp;rsquo;s watcher to reload.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Before learning the above behavior of Hugo&amp;rsquo;s watcher I was organizing my unprocessed asset files outside of the root. Learning that I didn&amp;rsquo;t need to do this brought incredible joy - no joke.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;unprocessed-css-and-js-source-organization:cbe9e3adfe4b24f79a8f2fb4b155e5bf&#34;&gt;Unprocessed CSS and Js Source Organization&lt;/h3&gt;
+
+&lt;p&gt;In efforts to keep things simple, I organize all project assets in a project (or theme) root directory named &lt;code&gt;static-src/&lt;/code&gt;. Inside of &lt;code&gt;static-src/&lt;/code&gt; I like to more-or-less mirror directory structure to the structure inside of Hugo&amp;rsquo;s &lt;code&gt;static/&lt;/code&gt; directory. Doing this reduces mental overhead (which is a really good thing).&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s add it into our directory structure:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// Hugo-project-root
+
+content/
+layouts/
+archetypes/
+data/
+static/
+static-src/ --- our custom directory
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now, inside of &lt;code&gt;static-src&lt;/code&gt; we can arrange our unprocessed CSS (Sass, Less, Stylus, etc),
+Js, and other assets (like images and such) as we please.&lt;/p&gt;
+
+&lt;p&gt;Changes to files inside of &lt;code&gt;static-src&lt;/code&gt; won&amp;rsquo;t trigger Hugo&amp;rsquo;s watcher, which means we can use NPM scripts to do the magic and send the built assets to the &lt;code&gt;static&lt;/code&gt; directory.&lt;/p&gt;
+
+&lt;h4 id=&#34;understand-how-hugo-handles-the-static-directory:cbe9e3adfe4b24f79a8f2fb4b155e5bf&#34;&gt;Understand How Hugo Handles the &lt;code&gt;static/&lt;/code&gt; Directory&lt;/h4&gt;
+
+&lt;p&gt;It&amp;rsquo;s important to understand that everything inside of Hugo&amp;rsquo;s &lt;code&gt;static/&lt;/code&gt; directory goes to the root of the built site (or, &lt;code&gt;public/&lt;/code&gt;)&lt;/p&gt;
+
+&lt;p&gt;Essentially, this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// Hugo-project-root
+
+static/
+	assets/
+		main.css
+		bundle.js
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Gets built to this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// Hugo-project-root
+
+public/
+	assets/
+		main.css
+		bundle.js
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;static-src-organization:cbe9e3adfe4b24f79a8f2fb4b155e5bf&#34;&gt;&lt;code&gt;static-src&lt;/code&gt; Organization&lt;/h3&gt;
+
+&lt;p&gt;You can organize your source files however you or your team prefer. For this demo, let&amp;rsquo;s do it like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;static-src/
+  /assets
+    /src-sass
+      main.sass -- and the rest of our unprocessed css here
+    /src-js
+      index.js -- and the rest of our unprocessed js here
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;creating-the-npm-build-chain:cbe9e3adfe4b24f79a8f2fb4b155e5bf&#34;&gt;Creating the NPM Build Chain&lt;/h3&gt;
+
+&lt;p&gt;First off, if you&amp;rsquo;re not familiar with the general idea of using NPM as a build tool, I highly recommend giving &lt;a href=&#34;http://blog.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/&#34;&gt;this excelletn article on the topic&lt;/a&gt; a read.&lt;/p&gt;
+
+&lt;p&gt;Now, with a general understanding of harnessing NPM build-tool potential, lets wire up our &lt;code&gt;package.json&lt;/code&gt; file.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// package.json
+
+&amp;quot;scripts&amp;quot;: {
+    &amp;quot;css:build&amp;quot;: &amp;quot;scss-cli --source-map --output-style compressed &#39;./static-src/src-assets/sass/**/*.{scss,sass}&#39; --glob -o static/assets/css&amp;quot;,
+    &amp;quot;postcss:build&amp;quot;: &amp;quot;autoprefixer -b &#39;last 2 versions&#39; static/src-assets/css/*.css&amp;quot;,
+    &amp;quot;css:watch&amp;quot;: &amp;quot;onchange &#39;./static-src/assets/src-sass/&#39; -- npm run css:build&amp;quot;,
+    &amp;quot;js:build&amp;quot;: &amp;quot;browserify static-src/assets/js/index.js -o static/assets/js/bundle.js&amp;quot;,
+    &amp;quot;js:watch&amp;quot;: &amp;quot;watchify static-src/assets/src-js/index.js -o static/assets/js/bundle.js&amp;quot;,
+    &amp;quot;build&amp;quot;: &amp;quot;npm run css:build &amp;amp;&amp;amp; npm run js:build&amp;quot;,
+    &amp;quot;prewatch&amp;quot;: &amp;quot;npm run build&amp;quot;,
+    &amp;quot;watch&amp;quot;: &amp;quot;parallelshell &#39;npm run css:watch&#39; &#39;npm run js:watch&#39;&amp;quot;,
+    &amp;quot;start&amp;quot;: &amp;quot;npm run watch&amp;quot;,
+},
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;a-few-things-here-to-note:cbe9e3adfe4b24f79a8f2fb4b155e5bf&#34;&gt;A few things here to note:&lt;/h4&gt;
+
+&lt;h5 id=&#34;package-parallelshell:cbe9e3adfe4b24f79a8f2fb4b155e5bf&#34;&gt;Package &lt;code&gt;parallelshell&lt;/code&gt;&lt;/h5&gt;
+
+&lt;p&gt;&lt;code&gt;paralellshell&lt;/code&gt; is &lt;a href=&#34;https://github.com/keithamus/parallelshell&#34;&gt;a package&lt;/a&gt; for doing exactly what it says: running tasks in parallel. It&amp;rsquo;s written and maintained by Keith Cirkel, who wrote an &lt;a href=&#34;http://blog.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/&#34;&gt;awesome article mentioned above&lt;/a&gt; on using NPM as a build tool. If you&amp;rsquo;re familiar with bash commands you may be wondering why to use this package instead of the &lt;code&gt;&amp;amp;&lt;/code&gt; operator. If so, &lt;a href=&#34;https://github.com/keithamus/parallelshell/issues/5&#34;&gt;see Keith&amp;rsquo;s answer&lt;/a&gt; to my asking of this question.&lt;/p&gt;
+
+&lt;h5 id=&#34;package-onchange:cbe9e3adfe4b24f79a8f2fb4b155e5bf&#34;&gt;Package &lt;code&gt;onchange&lt;/code&gt;&lt;/h5&gt;
+
+&lt;p&gt;Since we still need to watch for changes in our source assets it&amp;rsquo;s necessary to use a specific package. After trying several, I found the &lt;code&gt;onchange&lt;/code&gt; &lt;a href=&#34;https://github.com/Qard/onchange&#34;&gt;package&lt;/a&gt; to work best for my particular approach.&lt;/p&gt;
+
+&lt;h5 id=&#34;npm-pre-and-post-hooks:cbe9e3adfe4b24f79a8f2fb4b155e5bf&#34;&gt;NPM &lt;code&gt;pre&lt;/code&gt; and &lt;code&gt;post&lt;/code&gt; hooks&lt;/h5&gt;
+
+&lt;p&gt;NPM gives &lt;code&gt;pre&lt;/code&gt; and &lt;code&gt;post&lt;/code&gt; hooks for each script command you create. These are
+really handy. They let us &lt;code&gt;build&lt;/code&gt; before we &lt;code&gt;watch&lt;/code&gt; and autoprefix our css after
+it&amp;rsquo;s been de-pre-processor-ified.&lt;/p&gt;
+
+&lt;h5 id=&#34;the-state-of-libsass-cli-tools:cbe9e3adfe4b24f79a8f2fb4b155e5bf&#34;&gt;The State of Libsass CLI Tools&lt;/h5&gt;
+
+&lt;p&gt;Libsass is written in C++. This means we have to use a compiled implementation that has a command line interface (cli). From &lt;a href=&#34;https://github.com/sass/libsass/wiki/Implementations&#34;&gt;the many compiled implementations&lt;/a&gt;  only some of them have mature CLIs. Still, I&amp;rsquo;ve yet to find one that I&amp;rsquo;m completely happy with. &lt;a href=&#34;https://github.com/sass/node-sass&#34;&gt;Node Sass&lt;/a&gt; has a very good CLI but I haven&amp;rsquo;t yet gotten it to compile both &lt;code&gt;.scss&lt;/code&gt; and &lt;code&gt;.sass&lt;/code&gt; Sass versions (as I prefer to use both). I&amp;rsquo;ve also tried working directly with the &lt;a href=&#34;https://github.com/sass/sassc&#34;&gt;the official Sass C CLI&lt;/a&gt; but it&amp;rsquo;s feature set is still rather sparse. The I found &lt;code&gt;scss-cli&lt;/code&gt; (&lt;a href=&#34;https://github.com/paulcpederson/scss-cli&#34;&gt;here on Github&lt;/a&gt;) that fills in Node-Sass&amp;rsquo;s gaps (not accepting file globs and ignoring files that start with an underscore). So &lt;code&gt;scss-cli&lt;/code&gt; it is for now.&lt;/p&gt;
+
+&lt;h3 id=&#34;more-is-possible:cbe9e3adfe4b24f79a8f2fb4b155e5bf&#34;&gt;More is Possible&lt;/h3&gt;
+
+&lt;p&gt;It&amp;rsquo;s possible to use NPM&amp;rsquo;s build-tool superpowers for much more than the above. Asset versioning is one. Deployment another. Image spriting and minification yet another.&lt;/p&gt;
+
+&lt;h3 id=&#34;this-is-how-i-m-currently-building-thecodestead:cbe9e3adfe4b24f79a8f2fb4b155e5bf&#34;&gt;This is How I&amp;rsquo;m Currently Building TheCodestead&lt;/h3&gt;
+
+&lt;p&gt;If you &lt;a href=&#34;https://github.com/igregson/theCodestead.com&#34;&gt;checkout theCodestead&amp;rsquo;s source&lt;/a&gt; you&amp;rsquo;ll see my implementation of something close to the above. One difference is that I&amp;rsquo;m building things with a theme in order to stay module (should/when I want to do an overhaul).&lt;/p&gt;
+
+&lt;h3 id=&#34;improvements:cbe9e3adfe4b24f79a8f2fb4b155e5bf&#34;&gt;Improvements?&lt;/h3&gt;
+
+&lt;p&gt;See anything above that could be improved, let me know!&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>The Developer Dip</title>
-      <link>http://thecodestead.com/post/the-developer-dip/</link>
+      <link>http://localhost:1313/post/the-developer-dip/</link>
       <pubDate>Thu, 19 Mar 2015 09:31:12 +0300</pubDate>
       
-      <guid>http://thecodestead.com/post/the-developer-dip/</guid>
+      <guid>http://localhost:1313/post/the-developer-dip/</guid>
       <description>
 
 &lt;p&gt;Seth Godin articulates an important concept of &amp;ldquo;the dip&amp;rdquo; in his book &lt;em&gt;&lt;a href=&#34;http://amzn.to/19EM2Nn&#34;&gt;The Dip&lt;/a&gt;&lt;/em&gt;. If you haven&amp;rsquo;t read it, think &amp;ldquo;learning curve&amp;rdquo; or &amp;ldquo;barrier of entry&amp;rdquo;. But it&amp;rsquo;s more than that. It&amp;rsquo;s the thing that separates the novices from the pros. It&amp;rsquo;s the thing standing between you and becoming &amp;ldquo;the best in the world&amp;rdquo; at whatever it is you&amp;rsquo;re aspiring to.&lt;/p&gt;
@@ -95,10 +294,10 @@
     
     <item>
       <title>Beginner Friendly Linux Dev Setup</title>
-      <link>http://thecodestead.com/post/beginner-friendly-linux-dev-setup/</link>
+      <link>http://localhost:1313/post/beginner-friendly-linux-dev-setup/</link>
       <pubDate>Tue, 03 Mar 2015 23:01:09 +0300</pubDate>
       
-      <guid>http://thecodestead.com/post/beginner-friendly-linux-dev-setup/</guid>
+      <guid>http://localhost:1313/post/beginner-friendly-linux-dev-setup/</guid>
       <description>
 
 &lt;p&gt;A developer&amp;rsquo;s operating system is akin to the cowboy&amp;rsquo;s horse. It should be chosen wisely. There&amp;rsquo;ll be lots of time spent on it. The better one knows it the more one can get from it. So do choose wisely.&lt;/p&gt;
@@ -144,25 +343,25 @@
 
 &lt;p&gt;To be clear, I&amp;rsquo;d recommend any of these to anyone looking to switch to Linux.&lt;/p&gt;
 
-&lt;h4 id=&#34;elementary-os-link-http-elementary-io:40874660f1122584356d35784ba0aabd&#34;&gt;Elementary OS &lt;a href=&#34;http://elementary.io/&#34;&gt;link&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id=&#34;elementary-os-http-elementary-io:40874660f1122584356d35784ba0aabd&#34;&gt;&lt;a href=&#34;http://elementary.io/&#34;&gt;Elementary OS&lt;/a&gt;&lt;/h4&gt;
 
 &lt;p&gt;Elementary OS feels a lot like OSX. It&amp;rsquo;s clean, incredibly smooth, quick and easy to install and get started with but still decently customizable. It&amp;rsquo;s built on Ubuntu, which some say is good and others say is bad.&lt;/p&gt;
 
 &lt;p&gt;I nearly settled on Elementary but eventually moved-on due to wanting finer-grained control over customizations.&lt;/p&gt;
 
-&lt;h4 id=&#34;ubuntu-unity-link-https-unity-ubuntu-com:40874660f1122584356d35784ba0aabd&#34;&gt;Ubuntu Unity &lt;a href=&#34;https://unity.ubuntu.com/&#34;&gt;link&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id=&#34;ubuntu-unity-https-unity-ubuntu-com:40874660f1122584356d35784ba0aabd&#34;&gt;&lt;a href=&#34;https://unity.ubuntu.com/&#34;&gt;Ubuntu Unity&lt;/a&gt;&lt;/h4&gt;
 
 &lt;p&gt;Ubuntu&amp;rsquo;s Unity disto is a future-now feeling os that packed with features and bold in its overall implementations. It received a fair amount of criticism early on but has since seemed to win-over more followers.&lt;/p&gt;
 
 &lt;p&gt;I liked Unity, but I wanted something a bit more &amp;ldquo;traditionally-Linux&amp;rdquo; feeling. It also seemed to hog my systems resources. But otherwise, perhaps if I were a bit younger, I&amp;rsquo;d have stuck with it.&lt;/p&gt;
 
-&lt;h4 id=&#34;ubuntu-gnome-3-link-http-ubuntugnome-org:40874660f1122584356d35784ba0aabd&#34;&gt;Ubuntu Gnome 3 &lt;a href=&#34;http://ubuntugnome.org/&#34;&gt;link&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id=&#34;ubuntu-gnome-3-http-ubuntugnome-org:40874660f1122584356d35784ba0aabd&#34;&gt;&lt;a href=&#34;http://ubuntugnome.org/&#34;&gt;Ubuntu Gnome 3&lt;/a&gt;&lt;/h4&gt;
 
 &lt;p&gt;Ubuntu&amp;rsquo;s Gnome distro is legendary. I find it to be more traditional than the Unity desktop but still modern and &amp;ldquo;generally awesome.&amp;rdquo; There&amp;rsquo;s an add-on called the &lt;a href=&#34;https://apps.ubuntu.com/cat/applications/gnome-tweak-tool/&#34;&gt;Tweak Tool&lt;/a&gt; that lets you tweak different settings and such (I consider it a mandatory addition).&lt;/p&gt;
 
 &lt;p&gt;I used Gnome 3 for a while and was generally happy with it. It&amp;rsquo;s powerful, quite customizable, and it&amp;rsquo;s Ubuntu (which I work with on the server-side). The only reason I switched was because I found something that I liked more.&lt;/p&gt;
 
-&lt;h4 id=&#34;antergos-link-http-antergos-com:40874660f1122584356d35784ba0aabd&#34;&gt;Antergos &lt;a href=&#34;http://antergos.com/&#34;&gt;link&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id=&#34;antergos-http-antergos-com:40874660f1122584356d35784ba0aabd&#34;&gt;&lt;a href=&#34;http://antergos.com/&#34;&gt;Antergos&lt;/a&gt;&lt;/h4&gt;
 
 &lt;p&gt;Meet my dev-desktop of choice. Built on Arch Linux, the Antergos desktop distro provides a great balance of power, features, stability, and &amp;ldquo;customizability.&amp;rdquo;&lt;/p&gt;
 
@@ -173,8 +372,8 @@
 &lt;h4 id=&#34;others-worth-a-look:40874660f1122584356d35784ba0aabd&#34;&gt;Others Worth a Look&lt;/h4&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Linux Mint &lt;a href=&#34;http://www.linuxmint.com/&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Manjara &lt;a href=&#34;https://manjaro.github.io/&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.linuxmint.com/&#34;&gt;Linux Mint&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://manjaro.github.io/&#34;&gt;Manjara&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&#34;more-linux-info-to-come:40874660f1122584356d35784ba0aabd&#34;&gt;More Linux Info to Come&lt;/h3&gt;
@@ -185,10 +384,10 @@
     
     <item>
       <title>Birth of The Codestead</title>
-      <link>http://thecodestead.com/post/birth-of-the-codestead/</link>
+      <link>http://localhost:1313/post/birth-of-the-codestead/</link>
       <pubDate>Tue, 03 Mar 2015 22:05:08 +0300</pubDate>
       
-      <guid>http://thecodestead.com/post/birth-of-the-codestead/</guid>
+      <guid>http://localhost:1313/post/birth-of-the-codestead/</guid>
       <description>
 
 &lt;p&gt;Here&amp;rsquo;s to the obligatory first post. The post to stake-out initial intentions and potential directions for The Codestead.&lt;/p&gt;
@@ -214,11 +413,11 @@
 
 &lt;p&gt;When reading &lt;em&gt;The Codestead&lt;/em&gt; folks likely either smile or scratch heads.&lt;/p&gt;
 
-&lt;h6 id=&#34;what-s-a-codestead:73c0457a31d262211fe5dcb3f2545c0a&#34;&gt;What&amp;rsquo;s a Codestead?&lt;/h6&gt;
+&lt;h5 id=&#34;what-s-a-codestead:73c0457a31d262211fe5dcb3f2545c0a&#34;&gt;What&amp;rsquo;s a Codestead?&lt;/h5&gt;
 
 &lt;p&gt;A &lt;em&gt;codestead&lt;/em&gt; is like a homestead, only for coders (and virtual, of course).&lt;/p&gt;
 
-&lt;h6 id=&#34;what-does-this-mean:73c0457a31d262211fe5dcb3f2545c0a&#34;&gt;What does this mean?&lt;/h6&gt;
+&lt;h5 id=&#34;what-does-this-mean:73c0457a31d262211fe5dcb3f2545c0a&#34;&gt;What does this mean?&lt;/h5&gt;
 
 &lt;p&gt;Though it&amp;rsquo;s certainly no longer the 1990&amp;rsquo;s, I still tend think of the web as a modern-day &amp;ldquo;wild west&amp;rdquo; of sorts. US history is filled with examples of folks &amp;ldquo;going west to settle.&amp;rdquo; Often they settled on homesteads, near-self-sufficient harbors of rogue and royal alike. Homestead&amp;rsquo;s are places for jacks-of-all-trades.&lt;/p&gt;
 
@@ -226,7 +425,7 @@
 
 &lt;p&gt;Maybe you find some of the stuff here helpful. It all right if you don&amp;rsquo;t, but it&amp;rsquo;s cool if you do.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://thecodestead.com/contact&#34;&gt;Contact me&lt;/a&gt; with any ideas and such you might have.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://localhost:1313/contact&#34;&gt;Contact me&lt;/a&gt; with any ideas and such you might have.&lt;/p&gt;
 
 &lt;p&gt;Do come again.&lt;/p&gt;
 </description>
@@ -234,10 +433,10 @@
     
     <item>
       <title>Resources</title>
-      <link>http://thecodestead.com/resources/</link>
+      <link>http://localhost:1313/resources/</link>
       <pubDate>Tue, 03 Mar 2015 18:49:32 +0300</pubDate>
       
-      <guid>http://thecodestead.com/resources/</guid>
+      <guid>http://localhost:1313/resources/</guid>
       <description>&lt;p&gt;Ahhhhhh, yeah. Resources.&lt;/p&gt;
 
 &lt;p&gt;Coming Soon.&lt;/p&gt;
@@ -246,10 +445,10 @@
     
     <item>
       <title>About</title>
-      <link>http://thecodestead.com/about/</link>
+      <link>http://localhost:1313/about/</link>
       <pubDate>Tue, 03 Mar 2015 18:49:20 +0300</pubDate>
       
-      <guid>http://thecodestead.com/about/</guid>
+      <guid>http://localhost:1313/about/</guid>
       <description>&lt;p&gt;Comming Soon!
 This is an about page&amp;hellip;&lt;/p&gt;
 </description>
@@ -257,10 +456,10 @@ This is an about page&amp;hellip;&lt;/p&gt;
     
     <item>
       <title>Contact</title>
-      <link>http://thecodestead.com/contact/</link>
+      <link>http://localhost:1313/contact/</link>
       <pubDate>Tue, 03 Mar 2015 18:49:13 +0300</pubDate>
       
-      <guid>http://thecodestead.com/contact/</guid>
+      <guid>http://localhost:1313/contact/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;mailto:isaac@thecodestead.com&#34;&gt;Click to Email&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>

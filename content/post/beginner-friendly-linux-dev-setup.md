@@ -46,25 +46,25 @@ Here's my take on some of the best Linux distros for web-devs and general code e
 
 To be clear, I'd recommend any of these to anyone looking to switch to Linux. 
 
-#### Elementary OS [link](http://elementary.io/)
+#### [Elementary OS](http://elementary.io/)
 
 Elementary OS feels a lot like OSX. It's clean, incredibly smooth, quick and easy to install and get started with but still decently customizable. It's built on Ubuntu, which some say is good and others say is bad. 
 
 I nearly settled on Elementary but eventually moved-on due to wanting finer-grained control over customizations.
 
-#### Ubuntu Unity [link](https://unity.ubuntu.com/)
+#### [Ubuntu Unity](https://unity.ubuntu.com/)
 
 Ubuntu's Unity disto is a future-now feeling os that packed with features and bold in its overall implementations. It received a fair amount of criticism early on but has since seemed to win-over more followers. 
 
 I liked Unity, but I wanted something a bit more "traditionally-Linux" feeling. It also seemed to hog my systems resources. But otherwise, perhaps if I were a bit younger, I'd have stuck with it. 
 
-#### Ubuntu Gnome 3 [link](http://ubuntugnome.org/)
+#### [Ubuntu Gnome 3](http://ubuntugnome.org/)
 	
 Ubuntu's Gnome distro is legendary. I find it to be more traditional than the Unity desktop but still modern and "generally awesome." There's an add-on called the [Tweak Tool](https://apps.ubuntu.com/cat/applications/gnome-tweak-tool/) that lets you tweak different settings and such (I consider it a mandatory addition).  
 
 I used Gnome 3 for a while and was generally happy with it. It's powerful, quite customizable, and it's Ubuntu (which I work with on the server-side). The only reason I switched was because I found something that I liked more. 
 
-#### Antergos [link](http://antergos.com/)
+#### [Antergos](http://antergos.com/)
 
 Meet my dev-desktop of choice. Built on Arch Linux, the Antergos desktop distro provides a great balance of power, features, stability, and "customizability." 
 
@@ -74,8 +74,8 @@ What's so great about Arch? The fact that it's a "rolling" distribution (which m
 
 #### Others Worth a Look
 
-- Linux Mint [link](http://www.linuxmint.com/)
-- Manjara [link](https://manjaro.github.io/) 
+- [Linux Mint](http://www.linuxmint.com/)
+- [Manjara](https://manjaro.github.io/)
 
 ### More Linux Info to Come
 

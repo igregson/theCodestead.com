@@ -1,4 +1,4 @@
-<html><head><meta charset="utf-8"><meta content="IE=edge" http-equiv="X-UA-Compatible"><title>NPM As A Build Tool With Hugo - The Codestead</title><meta name="description" content="The Codestead is a resources for developers of the modern web. Think &#34;homestead,&#34; only for coders"><meta name="keywords" content="web-developement code-communities dev-blogs css golang flat-file-themes static-site-generators "><meta name="HandheldFriendly" content="True"><meta content="width=device-width" initial-scale="1.0" name="viewport"><link id="defaultStyle" rel="stylesheet" href="/assets/css/main.css"><link href="'http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,200italic,300italic,400italic,600italic'" rel="'stylesheet'" type="'text/css'"><link rel="apple-touch-icon" sizes="57x57" href="/assets/images/favicons/apple-touch-icon-57x57.png"><link sizes="60x60" href="/assets/images/favicons/apple-touch-icon-60x60.png" rel="apple-touch-icon"><link href="/assets/images/favicons/apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72"><link rel="apple-touch-icon" sizes="76x76" href="/assets/images/favicons/apple-touch-icon-76x76.png"><link rel="apple-touch-icon" sizes="114x114" href="/assets/images/favicons/apple-touch-icon-114x114.png"><link rel="apple-touch-icon" sizes="120x120" href="/assets/images/favicons/apple-touch-icon-120x120.png"><link rel="apple-touch-icon" sizes="144x144" href="/assets/images/favicons/apple-touch-icon-144x144.png"><link sizes="152x152" href="/assets/images/favicons/apple-touch-icon-152x152.png" rel="apple-touch-icon"><link href="/assets/images/favicons/apple-touch-icon-180x180.png" rel="apple-touch-icon" sizes="180x180"><link sizes="32x32" rel="icon" type="image/png" href="/assets/images/favicons/favicon-32x32.png"><link rel="icon" type="image/png" href="/assets/images/favicons/android-chrome-192x192.png" sizes="192x192"><link sizes="96x96" rel="icon" type="image/png" href="/assets/images/favicons/favicon-96x96.png"><link type="image/png" href="/assets/images/favicons/favicon-16x16.png" sizes="16x16" rel="icon"><link rel="manifest" href="/assets/images/favicons/manifest.json"><link rel="shortcut icon" href="/assets/images/favicons/favicon.ico"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-TileImage" content="/assets/images/favicons/mstile-144x144.png"><meta name="msapplication-config" content="/assets/images/favicons/browserconfig.xml"><meta name="theme-color" content="#ffffff"></head><body id="" class="post-template page page-template-npm-as-a-build-tool-with-hugo   "><div id="top"></div><header class="header--main"><div class="header--title"><h1><a href="/"><svg width="266px" height="30px" viewBox="0 0 266 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+<html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><title>NPM As A Build Tool With Hugo - The Codestead</title><meta name="description" content="Hugo is a fast and all-around awesome tool for creating website. NPM has build-tool superpowers that folks seem to just now be realizing. Combining the two makes for a sweet setup. Let&#39;s learn how."><meta name="keywords" content="web-developement code-communities dev-blogs css golang flat-file-themes static-site-generators "><meta name="HandheldFriendly" content="True"><meta name="viewport" content="width=device-width" initial-scale="1.0"><link id="defaultStyle" rel="stylesheet" href="/assets/css/main.css"><link href="'http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,300italic,400italic,600italic|Source+Serif+Pro:400,600,700'" rel="'stylesheet'" type="'text/css'>"><link rel="apple-touch-icon" sizes="57x57" href="/assets/images/favicons/apple-touch-icon-57x57.png"><link rel="apple-touch-icon" sizes="60x60" href="/assets/images/favicons/apple-touch-icon-60x60.png"><link rel="apple-touch-icon" sizes="72x72" href="/assets/images/favicons/apple-touch-icon-72x72.png"><link sizes="76x76" href="/assets/images/favicons/apple-touch-icon-76x76.png" rel="apple-touch-icon"><link href="/assets/images/favicons/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114"><link rel="apple-touch-icon" sizes="120x120" href="/assets/images/favicons/apple-touch-icon-120x120.png"><link rel="apple-touch-icon" sizes="144x144" href="/assets/images/favicons/apple-touch-icon-144x144.png"><link rel="apple-touch-icon" sizes="152x152" href="/assets/images/favicons/apple-touch-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicons/apple-touch-icon-180x180.png"><link rel="icon" type="image/png" href="/assets/images/favicons/favicon-32x32.png" sizes="32x32"><link rel="icon" type="image/png" href="/assets/images/favicons/android-chrome-192x192.png" sizes="192x192"><link sizes="96x96" rel="icon" type="image/png" href="/assets/images/favicons/favicon-96x96.png"><link rel="icon" type="image/png" href="/assets/images/favicons/favicon-16x16.png" sizes="16x16"><link rel="manifest" href="/assets/images/favicons/manifest.json"><link href="/assets/images/favicons/favicon.ico" rel="shortcut icon"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-TileImage" content="/assets/images/favicons/mstile-144x144.png"><meta name="msapplication-config" content="/assets/images/favicons/browserconfig.xml"><meta content="#ffffff" name="theme-color"></head><body id="" class="post-template page page-template-npm-as-a-build-tool-with-hugo   "><div id="top"></div><header class="header--main"><div class="header--inner"><div class="header--title"><h1><a href="/"><svg width="266px" height="30px" viewBox="0 0 266 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
     <g id="Page-1" fill-rule="evenodd" sketch:type="MSPage">
         <g id="THE-+-CODESTEAD" sketch:type="MSLayerGroup" transform="translate(1.000000, 2.000000)">
             <path d="M4.42,14.04 L0.08,14.04 L0.08,11.84 L11.28,11.84 L11.28,14.04 L6.94,14.04 L6.94,26 L4.42,26 L4.42,14.04 Z M12.92,11.84 L15.44,11.84 L15.44,17.56 L22.06,17.56 L22.06,11.84 L24.58,11.84 L24.58,26 L22.06,26 L22.06,19.72 L15.44,19.72 L15.44,26 L12.92,26 L12.92,11.84 Z M27.7,11.84 L37.08,11.84 L37.08,14.04 L30.22,14.04 L30.22,17.64 L36.72,17.64 L36.72,19.76 L30.22,19.76 L30.22,23.76 L37.44,23.76 L37.44,26 L27.7,26 L27.7,11.84 Z" id="THE" sketch:type="MSShapeGroup"></path>
@@ -9,7 +9,7 @@
 </a></h1></div><!-- a.icon--twitter href=http://twitter.com/thecodestead
 img src="/assets/images/icon-twitter.svg"
 
---><nav class="header--nav"><ul><li><a class="nav--active" href="/">Blog</a><a class="" href="/resources">Resources</a><a class="" href="/about">About</a><a class="" href="/contact">Contact</a></li></ul></nav></header><script>document.write('<script src="http://'
+--><nav class="header--nav"><ul><li><a class="nav--active" href="/">Blog</a><a class="" href="/contact">Contact</a></li></ul></nav></div></header><script>document.write('<script src="http://'
         + (location.host || 'localhost').split(':')[0]
 		+ ':1313/livereload.js?mindelay=10"></'
         + 'script>')</script></body></html>
@@ -28,8 +28,8 @@ img src="/assets/images/icon-twitter.svg"
   <main class="content" role="main">
     <article class="post ">
     
-      <h2 class="post--title">NPM as a Build Tool with Hugo</h2>
-      <p class="post--meta">By Isaac Gregson on 03/03/2015</p>
+      <h1 class="post--title">NPM as a Build Tool with Hugo</h1>
+      <p class="post--meta">By Isaac Gregson on 04/04/2015</p>
       <div class="post--post">
         
 
@@ -39,88 +39,146 @@ site generator, but it&rsquo;s also capable of quite a bit more.</p>
 <p>NPM&rsquo;s a rather powerful package manager. It&rsquo;s also a powerful build
 tool.</p>
 
-<p>Developing with Hugo and NPM in collaboration makes for a powerful setup. Let&rsquo;s
-learn how.</p>
+<p>Let&rsquo;s learn how to setup NPM with Hugo to process our scripts and styles.</p>
 
-<h3 id="how-to-use-npm-as-a-build-tool-with-hugo:cbe9e3adfe4b24f79a8f2fb4b155e5bf">How to use NPM as a build tool with Hugo</h3>
+<h3 id="requirements:cbe9e3adfe4b24f79a8f2fb4b155e5bf">Requirements</h3>
 
 <p>Here are the bare-bones requirements of what I&rsquo;d consider essential for
 developing a modern site:</p>
 
 <ul>
-<li>CSS Pre &amp; Post Processing</li>
-<li>JS concatination/bundling</li>
-<li>Minifying CSS &amp; JS</li>
-<li>Live Reloading Developement Setup</li>
+<li>CSS pre &amp; post processing</li>
+<li>Js concatination/bundling</li>
+<li>Minification of CSS &amp; Js</li>
+<li>A live-reloading dev environment</li>
+<li>Js and CSS source maps (for easy debugging)</li>
 </ul>
 
-<p>on top of this, there are more &ldquo;advanced&rdquo; but nevertheless &ldquo;nice-to-haves:&rdquo;</p>
-
-<ul>
-<li>Source maps (for JS &amp; CSS for debugging while developing)</li>
-<li>Asset versioning (for browser caching)</li>
-<li>Image minification</li>
-<li>Icon system building</li>
-</ul>
+<h3 id="hugo-provides-the-watcher:cbe9e3adfe4b24f79a8f2fb4b155e5bf">Hugo Provides the Watcher</h3>
 
 <p>Out of the box, Hugo includes a super fast and resource friendly <code>watch</code> feature
 that &ldquo;just works&rdquo;. There are of course fancier ways to watch a build
-environment, but when working with Hugo I prefer to use its watch flag.</p>
+environment, but when working with Hugo I&rsquo;m grateful for the simplicity and &ldquo;just-works&rdquo; nature of its built-in watch feature.</p>
 
-<p>For everything else, there&rsquo;s NPM.</p>
+<h3 id="hugo-s-directory-structure:cbe9e3adfe4b24f79a8f2fb4b155e5bf">Hugo&rsquo;s Directory Structure</h3>
 
-<p>Here&rsquo;s the bare-bones directory structure of a Hugo site</p>
+<p>Here&rsquo;s the default Hugo directory structrue:</p>
 
-<pre><code>content
-layouts
-static
+<pre><code>// Hugo-project-root
 
-public -- the static build, not source files
+content/
+layouts/
+static/
+archetypes/
+data/
+public/  --- where the site is built to, of no interest now
 </code></pre>
 
-<p>There are a few other directories (<code>archetypes</code>, <code>data</code>, and <code>themes</code>) that are
-usually part of a site, but there&rsquo;s no need to worry about these right now.</p>
+<h4 id="hugo-s-theme-directory:cbe9e3adfe4b24f79a8f2fb4b155e5bf">Hugo&rsquo;s Theme Directory</h4>
 
-<p>Hugo watches for changes in its individual directories, not the main project
-directory. This means we can add our own &ldquo;special directoies&rdquo; right inside our
-project directory.</p>
+<p>Hugo theme directories mirror the parent project root:</p>
 
-<p>Let&rsquo;s add a custom directory for our pre-compiled assets:</p>
+<pre><code>// Hugo-project-foot
 
-<pre><code>content
-layouts
-static-src --- our custom directory
-
-public
+content/
+layouts/
+static/
+archetypes/
+data/
+themes/
+	my-hugo-theme/
+			content/
+			layouts/
+			static/
+			archetypes/
 </code></pre>
 
-<p>Now, inside of <code>static-src</code> we can arrange our Sass (or Less, Stylus, etc),
-scripts, and images however we&rsquo;d like. Saves to files in this folder won&rsquo;t
-trigger Hugo to reload, which means we can use NPM scripts to do the magic and
-then send the built assets to the <code>static</code> directory.</p>
+<h3 id="the-behavior-of-hugo-s-watcher:cbe9e3adfe4b24f79a8f2fb4b155e5bf">The Behavior of Hugo&rsquo;s Watcher</h3>
 
-<h4 id="organizing-static-src:cbe9e3adfe4b24f79a8f2fb4b155e5bf">Organizing <code>static-src</code></h4>
+<p>One really nice thing about Hugo&rsquo;s watcher is that <strong>it only watches for changes inside of the above core Hugo directories.</strong></p>
 
-<p>Organize <code>static-src</code> however you&rsquo;d like. Even call it whatever you&rsquo;d like.
-These things don&rsquo;t matter. What matters is that there&rsquo;s logic to your naming
-that make sense to you (and any others that you may be working with).</p>
+<h4 id="why-is-this-good:cbe9e3adfe4b24f79a8f2fb4b155e5bf">Why is this good?</h4>
 
-<p>Let&rsquo;s say we organize <code>static-src</code> like this:</p>
+<p>This is good because it allows us source-file-organization freedom and gives NPM scripts a way to harness Hugos watcher.</p>
+
+<p>In other words, this allows us to:</p>
+
+<ul>
+<li>organize our unprocessed asset files (unprocessed CSS and Js) however we&rsquo;d like (so long as they&rsquo;re outside of Hugo&rsquo;s core directories.</li>
+<li>utilize NPM to watch for changes and send the processed versions to Hugo&rsquo;s core directories that will then trigger Hugo&rsquo;s watcher to reload.</li>
+</ul>
+
+<blockquote>
+<p>Before learning the above behavior of Hugo&rsquo;s watcher I was organizing my unprocessed asset files outside of the root. Learning that I didn&rsquo;t need to do this brought incredible joy - no joke.</p>
+</blockquote>
+
+<h3 id="unprocessed-css-and-js-source-organization:cbe9e3adfe4b24f79a8f2fb4b155e5bf">Unprocessed CSS and Js Source Organization</h3>
+
+<p>In efforts to keep things simple, I organize all project assets in a project (or theme) root directory named <code>static-src/</code>. Inside of <code>static-src/</code> I like to more-or-less mirror directory structure to the structure inside of Hugo&rsquo;s <code>static/</code> directory. Doing this reduces mental overhead (which is a really good thing).</p>
+
+<p>Let&rsquo;s add it into our directory structure:</p>
+
+<pre><code>// Hugo-project-root
+
+content/
+layouts/
+archetypes/
+data/
+static/
+static-src/ --- our custom directory
+</code></pre>
+
+<p>Now, inside of <code>static-src</code> we can arrange our unprocessed CSS (Sass, Less, Stylus, etc),
+Js, and other assets (like images and such) as we please.</p>
+
+<p>Changes to files inside of <code>static-src</code> won&rsquo;t trigger Hugo&rsquo;s watcher, which means we can use NPM scripts to do the magic and send the built assets to the <code>static</code> directory.</p>
+
+<h4 id="understand-how-hugo-handles-the-static-directory:cbe9e3adfe4b24f79a8f2fb4b155e5bf">Understand How Hugo Handles the <code>static/</code> Directory</h4>
+
+<p>It&rsquo;s important to understand that everything inside of Hugo&rsquo;s <code>static/</code> directory goes to the root of the built site (or, <code>public/</code>)</p>
+
+<p>Essentially, this:</p>
+
+<pre><code>// Hugo-project-root
+
+static/
+	assets/
+		main.css
+		bundle.js
+</code></pre>
+
+<p>Gets built to this:</p>
+
+<pre><code>// Hugo-project-root
+
+public/
+	assets/
+		main.css
+		bundle.js
+</code></pre>
+
+<h3 id="static-src-organization:cbe9e3adfe4b24f79a8f2fb4b155e5bf"><code>static-src</code> Organization</h3>
+
+<p>You can organize your source files however you or your team prefer. For this demo, let&rsquo;s do it like this:</p>
 
 <pre><code>static-src/
   /assets
     /src-sass
-      main.sass -- and the rest of our pre-processed css here
+      main.sass -- and the rest of our unprocessed css here
     /src-js
-      index.js -- and the rest of our pre-processed js here
+      index.js -- and the rest of our unprocessed js here
 </code></pre>
 
-<p>Now, lets wire up the build steps in <code>package.json</code>.</p>
+<h3 id="creating-the-npm-build-chain:cbe9e3adfe4b24f79a8f2fb4b155e5bf">Creating the NPM Build Chain</h3>
+
+<p>First off, if you&rsquo;re not familiar with the general idea of using NPM as a build tool, I highly recommend giving <a href="http://blog.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/">this excelletn article on the topic</a> a read.</p>
+
+<p>Now, with a general understanding of harnessing NPM build-tool potential, lets wire up our <code>package.json</code> file.</p>
 
 <pre><code>// package.json
 
-  &quot;scripts&quot;: {
-    &quot;css:build&quot;: &quot;scss-cli --output-style compressed './static-src/src-assets/sass/**/*.{scss,sass}' --glob -o static/assets/css&quot;,
+&quot;scripts&quot;: {
+    &quot;css:build&quot;: &quot;scss-cli --source-map --output-style compressed './static-src/src-assets/sass/**/*.{scss,sass}' --glob -o static/assets/css&quot;,
     &quot;postcss:build&quot;: &quot;autoprefixer -b 'last 2 versions' static/src-assets/css/*.css&quot;,
     &quot;css:watch&quot;: &quot;onchange './static-src/assets/src-sass/' -- npm run css:build&quot;,
     &quot;js:build&quot;: &quot;browserify static-src/assets/js/index.js -o static/assets/js/bundle.js&quot;,
@@ -129,30 +187,40 @@ that make sense to you (and any others that you may be working with).</p>
     &quot;prewatch&quot;: &quot;npm run build&quot;,
     &quot;watch&quot;: &quot;parallelshell 'npm run css:watch' 'npm run js:watch'&quot;,
     &quot;start&quot;: &quot;npm run watch&quot;,
-  },
+},
 </code></pre>
 
 <h4 id="a-few-things-here-to-note:cbe9e3adfe4b24f79a8f2fb4b155e5bf">A few things here to note:</h4>
 
-<p><code>paralellshell</code> is <a href="https://github.com/keithamus/parallelshell">a package</a> for doing exactly what it says: running tasks in parallel. It&rsquo;s written and maintained by Keith Cirkel, who wrote an <a href="http://blog.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/">awesome article</a> on using NPM as a build tool. If you&rsquo;re famliar with bash commands you may be wondering why to use this package instead of the <code>&amp;</code> operator. If so, <a href="https://github.com/keithamus/parallelshell/issues/5">see Keith&rsquo;s great answer</a> to my asking of this question.</p>
+<h5 id="package-parallelshell:cbe9e3adfe4b24f79a8f2fb4b155e5bf">Package <code>parallelshell</code></h5>
+
+<p><code>paralellshell</code> is <a href="https://github.com/keithamus/parallelshell">a package</a> for doing exactly what it says: running tasks in parallel. It&rsquo;s written and maintained by Keith Cirkel, who wrote an <a href="http://blog.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/">awesome article mentioned above</a> on using NPM as a build tool. If you&rsquo;re familiar with bash commands you may be wondering why to use this package instead of the <code>&amp;</code> operator. If so, <a href="https://github.com/keithamus/parallelshell/issues/5">see Keith&rsquo;s answer</a> to my asking of this question.</p>
+
+<h5 id="package-onchange:cbe9e3adfe4b24f79a8f2fb4b155e5bf">Package <code>onchange</code></h5>
+
+<p>Since we still need to watch for changes in our source assets it&rsquo;s necessary to use a specific package. After trying several, I found the <code>onchange</code> <a href="https://github.com/Qard/onchange">package</a> to work best for my particular approach.</p>
+
+<h5 id="npm-pre-and-post-hooks:cbe9e3adfe4b24f79a8f2fb4b155e5bf">NPM <code>pre</code> and <code>post</code> hooks</h5>
 
 <p>NPM gives <code>pre</code> and <code>post</code> hooks for each script command you create. These are
 really handy. They let us <code>build</code> before we <code>watch</code> and autoprefix our css after
-it&rsquo;s been de-sassified.</p>
+it&rsquo;s been de-pre-processor-ified.</p>
 
-<h3 id="why-not-just-use-gulp-grunt-broccli-et-all:cbe9e3adfe4b24f79a8f2fb4b155e5bf">Why not just use Gulp, Grunt, Broccli, et all?</h3>
+<h5 id="the-state-of-libsass-cli-tools:cbe9e3adfe4b24f79a8f2fb4b155e5bf">The State of Libsass CLI Tools</h5>
 
-<p>Because I find it&rsquo;s beneficial to minimize mental overhead where possible.</p>
+<p>Libsass is written in C++. This means we have to use a compiled implementation that has a command line interface (cli). From <a href="https://github.com/sass/libsass/wiki/Implementations">the many compiled implementations</a>  only some of them have mature CLIs. Still, I&rsquo;ve yet to find one that I&rsquo;m completely happy with. <a href="https://github.com/sass/node-sass">Node Sass</a> has a very good CLI but I haven&rsquo;t yet gotten it to compile both <code>.scss</code> and <code>.sass</code> Sass versions (as I prefer to use both). I&rsquo;ve also tried working directly with the <a href="https://github.com/sass/sassc">the official Sass C CLI</a> but it&rsquo;s feature set is still rather sparse. The I found <code>scss-cli</code> (<a href="https://github.com/paulcpederson/scss-cli">here on Github</a>) that fills in Node-Sass&rsquo;s gaps (not accepting file globs and ignoring files that start with an underscore). So <code>scss-cli</code> it is for now.</p>
 
-<p>Using NPM as a build tool means that I can <code>cat package.json</code> in the terminal to
-quickly glance at my entire build pipeline - usually without scrolling. As
-a convert from Gulp (which I still use for some things) this is quite nice. Bugs
-in things like wrong paths are also much easier to prevent (and catch).</p>
+<h3 id="more-is-possible:cbe9e3adfe4b24f79a8f2fb4b155e5bf">More is Possible</h3>
 
-<p>Not having to use wrappers is also beneficial. Grunt, Gulp, and all the others
-certainly have handy collections of plugins and such, but most of these are just
-wrappers for their elder vanilla-js upstream superiors. This means that package
-bugs are fewer and updates quicker.</p>
+<p>It&rsquo;s possible to use NPM&rsquo;s build-tool superpowers for much more than the above. Asset versioning is one. Deployment another. Image spriting and minification yet another.</p>
+
+<h3 id="this-is-how-i-m-currently-building-thecodestead:cbe9e3adfe4b24f79a8f2fb4b155e5bf">This is How I&rsquo;m Currently Building TheCodestead</h3>
+
+<p>If you <a href="https://github.com/igregson/theCodestead.com">checkout theCodestead&rsquo;s source</a> you&rsquo;ll see my implementation of something close to the above. One difference is that I&rsquo;m building things with a theme in order to stay module (should/when I want to do an overhaul).</p>
+
+<h3 id="improvements:cbe9e3adfe4b24f79a8f2fb4b155e5bf">Improvements?</h3>
+
+<p>See anything above that could be improved, let me know!</p>
 
       </div>
 
@@ -216,6 +284,16 @@ bugs are fewer and updates quicker.</p>
     </script>
     
     
+    
+    <script type="text/javascript">
+      var disqus_shortname = "thecodestead";
+      
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
     
 
   <script>document.write('<script src="http://'

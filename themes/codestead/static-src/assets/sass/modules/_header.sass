@@ -1,25 +1,28 @@
-.header--main 
+.header--inner
   max-width: $width--content-with-sb
   padding-left: $space-container
   padding-right: $space-container
 
 .has-sb--right, .has-sb--left, .template--index
-  .header--main 
+  .header--inner
     max-width: $width-contain
     
 
 .header--main 
   height: 100px
-  margin: 0 auto
-  position: relative
   // padding: 0 10px
   z-index: 1
   overflow: hidden
   width: 100%
+  background: rgb(77, 77, 77)
   *
     color: $c-white
   @include bpMax(800px)
     height: 137px
+.header--inner
+  position: relative
+  margin: 0 auto
+  width: $width-contain
 .header--title, .header--subtitle 
   display: inline-block
   @include bpMax(800px)
@@ -51,6 +54,7 @@
       @include bpMax(800px)
         content: ""
 .header--nav 
+  font-family: $font-family-heading
   margin-top: 38px
   display: inline-block
   @include bpMax(800px)

@@ -27,11 +27,11 @@ I didn't want a blog at myname.com. I'd rather create something beyond myself.
 
 When reading *The Codestead* folks likely either smile or scratch heads.  
 
-###### What's a Codestead? 
+##### What's a Codestead? 
 
 A *codestead* is like a homestead, only for coders (and virtual, of course).
 
-###### What does this mean? 
+##### What does this mean? 
 
 Though it's certainly no longer the 1990's, I still tend think of the web as a modern-day "wild west" of sorts. US history is filled with examples of folks "going west to settle." Often they settled on homesteads, near-self-sufficient harbors of rogue and royal alike. Homestead's are places for jacks-of-all-trades. 
 

@@ -11,8 +11,8 @@ html
     meta name=viewport content=width=device-width initial-scale=1.0
 
     link rel=stylesheet href=/assets/css/main.css id=defaultStyle
-    link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,200italic,300italic,400italic,600italic' rel='stylesheet' type='text/css'
-    
+    / link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,200italic,300italic,400italic,600italic' rel='stylesheet' type='text/css'
+    link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,300italic,400italic,600italic|Source+Serif+Pro:400,600,700' rel='stylesheet' type='text/css'> 
     link rel=apple-touch-icon sizes=57x57 href=/assets/images/favicons/apple-touch-icon-57x57.png
     link rel=apple-touch-icon sizes=60x60 href=/assets/images/favicons/apple-touch-icon-60x60.png
     link rel=apple-touch-icon sizes=72x72 href=/assets/images/favicons/apple-touch-icon-72x72.png
@@ -40,26 +40,27 @@ html
     {{ partial "icons--svg.html" . }}
 
     header.header--main
-      .header--title
-        h1
-          {{if ne .Url "/"}}
-            a href=/
+      .header--inner
+        .header--title
+          h1
+            {{if ne .Url "/"}}
+              a href=/
+                {{ partial "logo.html" . }}
+            {{else}}
               {{ partial "logo.html" . }}
-          {{else}}
-            {{ partial "logo.html" . }}
-          {{end}}
-      
-      // a.icon--twitter href=http://twitter.com/thecodestead
-        img src="/assets/images/icon-twitter.svg"
+            {{end}}
+        
+        // a.icon--twitter href=http://twitter.com/thecodestead
+          img src="/assets/images/icon-twitter.svg"
 
-      nav.header--nav
-        ul
-          li
-            a href=/ class="{{if or (eq .Section "post") (eq .Url "/" )}}nav--active{{end}}"
-              | Blog
-            / a href=/resources class="{{ if eq .Params.nav "Resources" }}nav--active{{end}}" 
-              | Resources
-            / a href=/about class="{{ if eq .Params.nav "About" }}nav--active{{end}}"
-              | About
-            a href=/contact class="{{ if eq .Params.nav "Contact" }}nav--active{{end}}"
-              | Contact
+        nav.header--nav
+          ul
+            li
+              a href=/ class="{{if or (eq .Section "post") (eq .Url "/" )}}nav--active{{end}}"
+                | Blog
+              / a href=/resources class="{{ if eq .Params.nav "Resources" }}nav--active{{end}}" 
+                | Resources
+              / a href=/about class="{{ if eq .Params.nav "About" }}nav--active{{end}}"
+                | About
+              a href=/contact class="{{ if eq .Params.nav "Contact" }}nav--active{{end}}"
+                | Contact

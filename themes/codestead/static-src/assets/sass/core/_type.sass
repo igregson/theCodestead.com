@@ -8,14 +8,14 @@ $c-link: lighten($c-bg, 13)
 $c-link-hover: $c-type
 
 $font-family-heading: 'Source Sans Pro', sans-serif
-$font-family-body: 'Source Sans Pro', sans-serif
+$font-family-body: 'Source Serif Pro', sans-serif
 
 $c-selection: white
 $c-selection-bg: tan
 
 $c-line: #bbb
 $c-hr: $c-line
-
+$c-p: darken(rgb(83,85,93), 7)
 
 // -----------------------------------------
 // Type 
@@ -23,7 +23,8 @@ $c-hr: $c-line
 body
   line-height: 1.5
   font-family: $font-family-body
-  color: $c-type
+  color: $c-p
+  // color: $c-type
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 
   font-family: $font-family-heading
@@ -31,12 +32,12 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6
   color: $c-heading
   &.inline
     display: inline
-p +
+p +, ul +, ol +, img +, pre +, blockquote +
   h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6
     // !important unfortunately needed to override
     // the owl selector from _base.sass 
     // TODO: find a better approach to this
-    margin-top: 40px !important
+    margin-top: 50px !important
 
 
 h1, .h1
@@ -47,16 +48,16 @@ h2, .h2
   font-weight: 600
 h3, .h3
   font-size: 1.74em
-  font-weight: 600
+  font-weight: 400
 h4, .h4
   font-size: 1.5em
-  font-weight: 600
+  font-weight: 400
 h5, .h5
   font-size: 1.3em
-  font-weight: 600
+  font-weight: 400
 h6, .h6
   font-size: 1em
-  font-weight: 600
+  font-weight: 400
 
 $font-size--p: 18px
 $line-height--p: 1.6
@@ -100,8 +101,9 @@ blockquote
   padding: 0 1.5rem
   padding-right: 0
   margin-top: 2.5rem !important
+  margin-bottom: 2.5rem !important
   border-left: 4px solid lighten($c-line, 7)
-  color: $c-type
+  color: darken($c-p, 5)
   *
     font-style: italic
   @include bpMax(650px)
@@ -134,8 +136,9 @@ figcaption
   ol
     list-style: decimal
   ul ul, ul ol, ol ol, ol ul
-    margin: 1.5rem 0 1.5rem 3rem
-    font-size: 90%
+    margin: 5px 0 5px 2.5rem
+    font-size: 95%
+    list-style: circle
   li
     margin-top: 0
     margin-bottom: .5rem
