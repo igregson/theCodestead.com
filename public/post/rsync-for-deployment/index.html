@@ -1,4 +1,4 @@
-<html><head><meta charset="utf-8"><meta content="IE=edge" http-equiv="X-UA-Compatible"><title>Rsync For Deployment - The Codestead</title><meta name="description" content="The Codestead is a resources for developers of the modern web. Think &#34;homestead,&#34; only for coders"><meta name="keywords" content="web-developement code-communities dev-blogs css golang flat-file-themes static-site-generators "><meta name="HandheldFriendly" content="True"><meta content="width=device-width" initial-scale="1.0" name="viewport"><link id="defaultStyle" rel="stylesheet" href="/assets/css/main.css"><link href="'http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,200italic,300italic,400italic,600italic'" rel="'stylesheet'" type="'text/css'"><link rel="apple-touch-icon" sizes="57x57" href="/assets/images/favicons/apple-touch-icon-57x57.png"><link sizes="60x60" href="/assets/images/favicons/apple-touch-icon-60x60.png" rel="apple-touch-icon"><link href="/assets/images/favicons/apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72"><link rel="apple-touch-icon" sizes="76x76" href="/assets/images/favicons/apple-touch-icon-76x76.png"><link rel="apple-touch-icon" sizes="114x114" href="/assets/images/favicons/apple-touch-icon-114x114.png"><link rel="apple-touch-icon" sizes="120x120" href="/assets/images/favicons/apple-touch-icon-120x120.png"><link rel="apple-touch-icon" sizes="144x144" href="/assets/images/favicons/apple-touch-icon-144x144.png"><link sizes="152x152" href="/assets/images/favicons/apple-touch-icon-152x152.png" rel="apple-touch-icon"><link href="/assets/images/favicons/apple-touch-icon-180x180.png" rel="apple-touch-icon" sizes="180x180"><link sizes="32x32" rel="icon" type="image/png" href="/assets/images/favicons/favicon-32x32.png"><link rel="icon" type="image/png" href="/assets/images/favicons/android-chrome-192x192.png" sizes="192x192"><link sizes="96x96" rel="icon" type="image/png" href="/assets/images/favicons/favicon-96x96.png"><link type="image/png" href="/assets/images/favicons/favicon-16x16.png" sizes="16x16" rel="icon"><link rel="manifest" href="/assets/images/favicons/manifest.json"><link rel="shortcut icon" href="/assets/images/favicons/favicon.ico"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-TileImage" content="/assets/images/favicons/mstile-144x144.png"><meta name="msapplication-config" content="/assets/images/favicons/browserconfig.xml"><meta name="theme-color" content="#ffffff"></head><body id="" class="post-template page page-template-rsync-for-deployment   "><div id="top"></div><header class="header--main"><div class="header--title"><h1><a href="/"><svg width="266px" height="30px" viewBox="0 0 266 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+<html><head><meta charset="utf-8"><meta content="IE=edge" http-equiv="X-UA-Compatible"><title>Rsync For Deployment - The Codestead</title><meta name="description" content="The Codestead is a resources for developers of the modern web. Think &#34;homestead,&#34; only for coders"><meta name="keywords" content="web-developement code-communities dev-blogs css golang flat-file-themes static-site-generators "><meta content="True" name="HandheldFriendly"><meta name="viewport" content="width=device-width" initial-scale="1.0"><link id="defaultStyle" rel="stylesheet" href="/assets/css/main.css"><link type="'text/css'>" href="'http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,300italic,400italic,600italic|Source+Serif+Pro:400,600,700'" rel="'stylesheet'"><link rel="apple-touch-icon" sizes="57x57" href="/assets/images/favicons/apple-touch-icon-57x57.png"><link sizes="60x60" href="/assets/images/favicons/apple-touch-icon-60x60.png" rel="apple-touch-icon"><link rel="apple-touch-icon" sizes="72x72" href="/assets/images/favicons/apple-touch-icon-72x72.png"><link rel="apple-touch-icon" sizes="76x76" href="/assets/images/favicons/apple-touch-icon-76x76.png"><link rel="apple-touch-icon" sizes="114x114" href="/assets/images/favicons/apple-touch-icon-114x114.png"><link rel="apple-touch-icon" sizes="120x120" href="/assets/images/favicons/apple-touch-icon-120x120.png"><link rel="apple-touch-icon" sizes="144x144" href="/assets/images/favicons/apple-touch-icon-144x144.png"><link href="/assets/images/favicons/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152"><link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicons/apple-touch-icon-180x180.png"><link rel="icon" type="image/png" href="/assets/images/favicons/favicon-32x32.png" sizes="32x32"><link rel="icon" type="image/png" href="/assets/images/favicons/android-chrome-192x192.png" sizes="192x192"><link rel="icon" type="image/png" href="/assets/images/favicons/favicon-96x96.png" sizes="96x96"><link rel="icon" type="image/png" href="/assets/images/favicons/favicon-16x16.png" sizes="16x16"><link rel="manifest" href="/assets/images/favicons/manifest.json"><link rel="shortcut icon" href="/assets/images/favicons/favicon.ico"><meta content="#da532c" name="msapplication-TileColor"><meta name="msapplication-TileImage" content="/assets/images/favicons/mstile-144x144.png"><meta name="msapplication-config" content="/assets/images/favicons/browserconfig.xml"><meta name="theme-color" content="#ffffff"></head><body id="" class="post-template page page-template-rsync-for-deployment   "><div id="top"></div><header class="header--main"><div class="header--inner"><div class="header--title"><h1><a href="/"><svg width="266px" height="30px" viewBox="0 0 266 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
     <g id="Page-1" fill-rule="evenodd" sketch:type="MSPage">
         <g id="THE-+-CODESTEAD" sketch:type="MSLayerGroup" transform="translate(1.000000, 2.000000)">
             <path d="M4.42,14.04 L0.08,14.04 L0.08,11.84 L11.28,11.84 L11.28,14.04 L6.94,14.04 L6.94,26 L4.42,26 L4.42,14.04 Z M12.92,11.84 L15.44,11.84 L15.44,17.56 L22.06,17.56 L22.06,11.84 L24.58,11.84 L24.58,26 L22.06,26 L22.06,19.72 L15.44,19.72 L15.44,26 L12.92,26 L12.92,11.84 Z M27.7,11.84 L37.08,11.84 L37.08,14.04 L30.22,14.04 L30.22,17.64 L36.72,17.64 L36.72,19.76 L30.22,19.76 L30.22,23.76 L37.44,23.76 L37.44,26 L27.7,26 L27.7,11.84 Z" id="THE" sketch:type="MSShapeGroup"></path>
@@ -9,10 +9,7 @@
 </a></h1></div><!-- a.icon--twitter href=http://twitter.com/thecodestead
 img src="/assets/images/icon-twitter.svg"
 
---><nav class="header--nav"><ul><li><a class="nav--active" href="/">Blog</a><a class="" href="/resources">Resources</a><a class="" href="/about">About</a><a class="" href="/contact">Contact</a></li></ul></nav></header><script>document.write('<script src="http://'
-        + (location.host || 'localhost').split(':')[0]
-		+ ':1313/livereload.js?mindelay=10"></'
-        + 'script>')</script></body></html>
+--><nav class="header--nav"><ul><li><a class="nav--active" href="/">Blog</a><a class="" href="/contact">Contact</a></li></ul></nav></div></header></body></html>
 
 
 <div class="divider--top"></div>
@@ -28,8 +25,8 @@ img src="/assets/images/icon-twitter.svg"
   <main class="content" role="main">
     <article class="post ">
     
-      <h2 class="post--title">Rsync for Deployment</h2>
-      <p class="post--meta">By Isaac Gregson on 03/19/2015</p>
+      <h1 class="post--title">Rsync for Deployment</h1>
+      <p class="post--meta">By Isaac Gregson on 03/15/2015</p>
       <div class="post--post">
         
 
@@ -40,11 +37,11 @@ img src="/assets/images/icon-twitter.svg"
 
 <p>Deployment options abound. This means that choosing one can be quite overwhelming.</p>
 
-<p>Rather than try and provide a complete list of deployment options (Chris Coyier <a href="https://css-tricks.com/deployment/">already did that</a> a while back), I&rsquo;d like to share (and suggest consideration of) just one: rsync.</p>
+<p>Rather than try and provide a complete list of deployment options (Chris Coyier <a href="https://css-tricks.com/deployment/">already did that</a> a while back), I&rsquo;d like to share about one that I&rsquo;ve recently begun using on a number of small projects: rsync.</p>
 
 <h3 id="rsync-the-big-picture:f1d04fc53cd377626ea68f849c5f9c97">rsync - the big picture</h3>
 
-<p>The geeek-way of learning about a cli is to simply &ldquo;man the command.&rdquo; In other words, bring up the <a href="http://en.wikipedia.org/wiki/Man_page">man page</a> for the command in question.</p>
+<p><code>rsync</code> is a simple but powerful command line utility. The nerdy-way of learning about a such things is to simply &ldquo;man the command.&rdquo; In other words, bring up the <a href="http://en.wikipedia.org/wiki/Man_page">man page</a> for the command in question.</p>
 
 <pre><code>$ man rsync
 </code></pre>
@@ -76,29 +73,33 @@ A mere <em>1-line</em> rsync command can send your entire site to a remote serve
 
 <p>Let&rsquo;s learn how to use it.</p>
 
-<h3 id="rsync-usage:f1d04fc53cd377626ea68f849c5f9c97">rsync &ndash; Usage</h3>
+<h2 id="deploying-with-rsync:f1d04fc53cd377626ea68f849c5f9c97">Deploying with <code>rsync</code></h2>
 
-<p>Formula:</p>
+<h4 id="formula:f1d04fc53cd377626ea68f849c5f9c97">Formula:</h4>
 
 <p><code>$ rsync options source destination</code></p>
 
-<p>Example:</p>
+<h4 id="examples:f1d04fc53cd377626ea68f849c5f9c97">Examples:</h4>
 
-<pre><code>        ⊢-- options --⊣   ⊢-- source ---⊣   ⊢------------- destination ---------------⊣
-$ rsync   --delete -r        ./public       user@domain.com:/path/to/location/on/remote
+<pre><code>        ⊢-- options --⊣   ⊢-- source path ---⊣   ⊢---- destination path -----⊣
+$ rsync   --delete -r        ./public            user@domain.com:/path/to/location/on/remote
 </code></pre>
 
-<h5 id="local-8594-remote:f1d04fc53cd377626ea68f849c5f9c97">Local &#8594; Remote</h5>
+<h4 id="local-8594-remote:f1d04fc53cd377626ea68f849c5f9c97">Local &#8594; Remote</h4>
 
 <pre><code>$ rsync --delete -r public/ user@your-domain.com:/path/to/location/on/remote
 </code></pre>
 
-<h5 id="remote-8594-local:f1d04fc53cd377626ea68f849c5f9c97">Remote &#8594; Local</h5>
+<h4 id="remote-8594-local:f1d04fc53cd377626ea68f849c5f9c97">Remote &#8594; Local</h4>
 
 <pre><code>$ rsync --delete -r user@your-domain.com:/path/to/location/on/remote ./
 </code></pre>
 
 <h3 id="tips:f1d04fc53cd377626ea68f849c5f9c97">Tips</h3>
+
+<h4 id="delete:f1d04fc53cd377626ea68f849c5f9c97"><code>--delete</code></h4>
+
+<p>Passing this flag as an option deletes the destination target before copying-over the new. This is handy to ensure exact replication between development and production environments. In some cases, though, this isn&rsquo;t desired - - use it wisely.</p>
 
 <h4 id="test-first:f1d04fc53cd377626ea68f849c5f9c97">Test First</h4>
 
@@ -132,6 +133,12 @@ add <code>--dry-drun</code> or <code>n</code> to the options</p>
 /path/to/remote/site/root/file4
 [...etc]
 </code></pre>
+
+<h3 id="when-rsync-isn-t-good-for-deployment:f1d04fc53cd377626ea68f849c5f9c97">When <code>rsync</code> Isn&rsquo;t Good For Deployment</h3>
+
+<p><code>rsync</code> won&rsquo;t work for deployment when one needs to trigger or perform certain server tasks pre or post deploying. Perhaps the most common need here in restarting a service. Sites running on Ghost are a good example of this, though of course there are plenty of others. For these types of scenarios, a formal continuous integration setup is a good route.</p>
+
+<p>For folks who want to integrate as thoroughly as possible with Git or another form of version control, it&rsquo;d still be possible to trigger an <code>rsync</code> command via custom pre and post commit hooks. I just make sure to only run an <code>rsync</code> deployment after commiting and pushing any changes.</p>
 
       </div>
 
@@ -196,10 +203,17 @@ add <code>--dry-drun</code> or <code>n</code> to the options</p>
     
     
     
+    <script type="text/javascript">
+      var disqus_shortname = "thecodestead";
+      
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+    
 
-  <script>document.write('<script src="http://'
-        + (location.host || 'localhost').split(':')[0]
-		+ ':1313/livereload.js?mindelay=10"></'
-        + 'script>')</script></body>
+  </body>
 </html>
 

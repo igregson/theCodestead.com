@@ -293,6 +293,126 @@ it&amp;rsquo;s been de-pre-processor-ified.&lt;/p&gt;
     </item>
     
     <item>
+      <title>Rsync for Deployment</title>
+      <link>http://thecodestead.com/post/rsync-for-deployment/</link>
+      <pubDate>Sun, 15 Mar 2015 09:31:12 +0300</pubDate>
+      
+      <guid>http://thecodestead.com/post/rsync-for-deployment/</guid>
+      <description>
+
+&lt;!--see:
+ http://www.thegeekstuff.com/2010/09/rsync-command-examples/ 
+ http://aaronlord.is/deploying-to-multiple-environments-via-git/
+--&gt;
+
+&lt;p&gt;Deployment options abound. This means that choosing one can be quite overwhelming.&lt;/p&gt;
+
+&lt;p&gt;Rather than try and provide a complete list of deployment options (Chris Coyier &lt;a href=&#34;https://css-tricks.com/deployment/&#34;&gt;already did that&lt;/a&gt; a while back), I&amp;rsquo;d like to share about one that I&amp;rsquo;ve recently begun using on a number of small projects: rsync.&lt;/p&gt;
+
+&lt;h3 id=&#34;rsync-the-big-picture:f1d04fc53cd377626ea68f849c5f9c97&#34;&gt;rsync - the big picture&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;rsync&lt;/code&gt; is a simple but powerful command line utility. The nerdy-way of learning about a such things is to simply &amp;ldquo;man the command.&amp;rdquo; In other words, bring up the &lt;a href=&#34;http://en.wikipedia.org/wiki/Man_page&#34;&gt;man page&lt;/a&gt; for the command in question.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ man rsync
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Rsync is a fast and extraordinarily versatile file copying tool. It can copy locally, to/from another host over any remote shell, or to/from a remote rsync daemon. It offers a large number of options that control every aspect of its behavior and permit very flexible specification of the set of files to be copied. It is famous for its delta-transfer algorithm, which reduces the amount of data sent over the network by sending only the differences between the source files and the existing files in the destination. Rsync is widely used for backups and mirror‐ing and as an improved copy command for everyday use.&lt;/p&gt;
+
+&lt;p&gt;Rsync finds files that need to be transferred using a &amp;ldquo;quick check&amp;rdquo; algorithm (by default) that looks for files that have changed in size or in last-modified time. Any changes in the other preserved attributes (as requested by options) are made on the destination file directly when the quick check indicates that the file’s data does not need to be updated.&lt;/p&gt;
+
+&lt;p&gt;Some of the additional features of rsync are:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;support for copying links, devices, owners, groups, and permissions&lt;/li&gt;
+&lt;li&gt;exclude and exclude-from options similar to GNU tar&lt;/li&gt;
+&lt;li&gt;a CVS exclude mode for ignoring the same files that CVS would ignore&lt;/li&gt;
+&lt;li&gt;can use any transparent remote shell, including ssh or rsh&lt;/li&gt;
+&lt;li&gt;does not require super-user privileges&lt;/li&gt;
+&lt;li&gt;pipelining of file transfers to minimize latency costs&lt;/li&gt;
+&lt;li&gt;support for anonymous or authenticated rsync daemons (ideal for mirroring)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;small&gt;Note: the above is a bit abbreviated from the original&lt;/small&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;in-other-words:f1d04fc53cd377626ea68f849c5f9c97&#34;&gt;In Other Words:&lt;/h4&gt;
+
+&lt;p&gt;Rsync is a command line interface tool with superpowers.&lt;br /&gt;
+A mere &lt;em&gt;1-line&lt;/em&gt; rsync command can send your entire site to a remote server (or do the opposite), quickly and securely.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s learn how to use it.&lt;/p&gt;
+
+&lt;h2 id=&#34;deploying-with-rsync:f1d04fc53cd377626ea68f849c5f9c97&#34;&gt;Deploying with &lt;code&gt;rsync&lt;/code&gt;&lt;/h2&gt;
+
+&lt;h4 id=&#34;formula:f1d04fc53cd377626ea68f849c5f9c97&#34;&gt;Formula:&lt;/h4&gt;
+
+&lt;p&gt;&lt;code&gt;$ rsync options source destination&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;examples:f1d04fc53cd377626ea68f849c5f9c97&#34;&gt;Examples:&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;        ⊢-- options --⊣   ⊢-- source path ---⊣   ⊢---- destination path -----⊣
+$ rsync   --delete -r        ./public            user@domain.com:/path/to/location/on/remote
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;local-8594-remote:f1d04fc53cd377626ea68f849c5f9c97&#34;&gt;Local &amp;#8594; Remote&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;$ rsync --delete -r public/ user@your-domain.com:/path/to/location/on/remote
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;remote-8594-local:f1d04fc53cd377626ea68f849c5f9c97&#34;&gt;Remote &amp;#8594; Local&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;$ rsync --delete -r user@your-domain.com:/path/to/location/on/remote ./
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;tips:f1d04fc53cd377626ea68f849c5f9c97&#34;&gt;Tips&lt;/h3&gt;
+
+&lt;h4 id=&#34;delete:f1d04fc53cd377626ea68f849c5f9c97&#34;&gt;&lt;code&gt;--delete&lt;/code&gt;&lt;/h4&gt;
+
+&lt;p&gt;Passing this flag as an option deletes the destination target before copying-over the new. This is handy to ensure exact replication between development and production environments. In some cases, though, this isn&amp;rsquo;t desired - - use it wisely.&lt;/p&gt;
+
+&lt;h4 id=&#34;test-first:f1d04fc53cd377626ea68f849c5f9c97&#34;&gt;Test First&lt;/h4&gt;
+
+&lt;p&gt;Rsync has the option to do a &amp;ldquo;dry run,&amp;rdquo; meaning it will not actually copy anything. This is great for testing your rsync command to ensure you&amp;rsquo;re not going to break anything.&lt;/p&gt;
+
+&lt;p&gt;To do a dry run:
+add &lt;code&gt;--dry-drun&lt;/code&gt; or &lt;code&gt;n&lt;/code&gt; to the options&lt;/p&gt;
+
+&lt;h4 id=&#34;understand-the-trailing-slash:f1d04fc53cd377626ea68f849c5f9c97&#34;&gt;Understand the trailing slash &lt;code&gt;/&lt;/code&gt;&lt;/h4&gt;
+
+&lt;p&gt;For the source string of an rsync command a trailing slash (or lack thereof) &lt;strong&gt;is significant.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Include&lt;/strong&gt; the trailing slash to include the directory itself:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ rsync /my/local/site/ user@domain.com/path/to/remote/root
+[result...]
+/path/to/remote/root/file1
+/path/to/remote/root/file2
+/path/to/remote/root/file3
+/path/to/remote/root/file4
+[...etc]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Do not include&lt;/strong&gt; the trailing slash to not include the directory itself.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ rsync /my/local/site user@domain.com/path/to/remote/root
+[result...]
+/path/to/remote/site/root/file1
+/path/to/remote/site/root/file2
+/path/to/remote/site/root/file3
+/path/to/remote/site/root/file4
+[...etc]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;when-rsync-isn-t-good-for-deployment:f1d04fc53cd377626ea68f849c5f9c97&#34;&gt;When &lt;code&gt;rsync&lt;/code&gt; Isn&amp;rsquo;t Good For Deployment&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;rsync&lt;/code&gt; won&amp;rsquo;t work for deployment when one needs to trigger or perform certain server tasks pre or post deploying. Perhaps the most common need here in restarting a service. Sites running on Ghost are a good example of this, though of course there are plenty of others. For these types of scenarios, a formal continuous integration setup is a good route.&lt;/p&gt;
+
+&lt;p&gt;For folks who want to integrate as thoroughly as possible with Git or another form of version control, it&amp;rsquo;d still be possible to trigger an &lt;code&gt;rsync&lt;/code&gt; command via custom pre and post commit hooks. I just make sure to only run an &lt;code&gt;rsync&lt;/code&gt; deployment after commiting and pushing any changes.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Beginner Friendly Linux Dev Setup</title>
       <link>http://thecodestead.com/post/beginner-friendly-linux-dev-setup/</link>
       <pubDate>Tue, 03 Mar 2015 23:01:09 +0300</pubDate>
