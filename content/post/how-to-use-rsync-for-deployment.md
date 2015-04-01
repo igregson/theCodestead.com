@@ -1,6 +1,6 @@
 ---
 date: 2015-03-15T09:31:12+03:00
-title: Rsync for Deployment 
+title: How To Use Rsync for Deployment 
 summary: Deployment options abound. This means that choosing one can be quite overwhelming. One simple yet effective approach is to use `rsync`, a handy command line utility.
 ---
 

@@ -1,6 +1,6 @@
 ---
 date: 2015-04-04T22:57:35+03:00
-title: NPM as a Build Tool with Hugo
+title: How To Use NPM as a Build Tool with Hugo
 description: Hugo is a fast and all-around awesome tool for creating website. NPM has build-tool superpowers that folks seem to just now be realizing. Combining the two makes for a sweet setup. Let's learn how.
 summary: Hugo is a fast and all-around awesome tool for creating website. NPM has build-tool superpowers that folks seem to just now be realizing. Combining the two makes for a sweet setup. Let's learn how.
 ---
