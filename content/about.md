@@ -4,5 +4,4 @@ nav: About
 title: About
 ---
 
-Comming Soon!
-This is an about page... 
+TODO: write about page.

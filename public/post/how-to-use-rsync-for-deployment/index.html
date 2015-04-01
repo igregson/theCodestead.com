@@ -1,4 +1,4 @@
-<html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Beginner Friendly Linux Dev Setup - The Codestead</title><meta name="description" content="The Codestead is a resources for developers of the modern web. Think &#34;homestead,&#34; only for coders"><meta name="keywords" content="web-developement code-communities dev-blogs css golang flat-file-themes static-site-generators "><meta name="HandheldFriendly" content="True"><meta name="viewport" content="width=device-width" initial-scale="1.0"><link id="defaultStyle" rel="stylesheet" href="/assets/css/main.css"><link href="'http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,300italic,400italic,600italic|Source+Serif+Pro:400,600,700'" rel="'stylesheet'" type="'text/css'>"><link rel="apple-touch-icon" sizes="57x57" href="/assets/images/favicons/apple-touch-icon-57x57.png"><link rel="apple-touch-icon" sizes="60x60" href="/assets/images/favicons/apple-touch-icon-60x60.png"><link sizes="72x72" href="/assets/images/favicons/apple-touch-icon-72x72.png" rel="apple-touch-icon"><link rel="apple-touch-icon" sizes="76x76" href="/assets/images/favicons/apple-touch-icon-76x76.png"><link href="/assets/images/favicons/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114"><link rel="apple-touch-icon" sizes="120x120" href="/assets/images/favicons/apple-touch-icon-120x120.png"><link sizes="144x144" href="/assets/images/favicons/apple-touch-icon-144x144.png" rel="apple-touch-icon"><link rel="apple-touch-icon" sizes="152x152" href="/assets/images/favicons/apple-touch-icon-152x152.png"><link href="/assets/images/favicons/apple-touch-icon-180x180.png" rel="apple-touch-icon" sizes="180x180"><link rel="icon" type="image/png" href="/assets/images/favicons/favicon-32x32.png" sizes="32x32"><link rel="icon" type="image/png" href="/assets/images/favicons/android-chrome-192x192.png" sizes="192x192"><link rel="icon" type="image/png" href="/assets/images/favicons/favicon-96x96.png" sizes="96x96"><link rel="icon" type="image/png" href="/assets/images/favicons/favicon-16x16.png" sizes="16x16"><link href="/assets/images/favicons/manifest.json" rel="manifest"><link rel="shortcut icon" href="/assets/images/favicons/favicon.ico"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-TileImage" content="/assets/images/favicons/mstile-144x144.png"><meta name="msapplication-config" content="/assets/images/favicons/browserconfig.xml"><meta name="theme-color" content="#ffffff"></head><body id="" class="post-template page page-template-beginner-friendly-linux-dev-setup   "><div id="top"></div><header class="header--main"><div class="header--inner"><div class="header--title"><h1><a href="/"><svg width="266px" height="30px" viewBox="0 0 266 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+<html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><title>How To Use Rsync For Deployment - The Codestead</title><meta name="description" content="The Codestead is a resources for developers of the modern web. Think &#34;homestead,&#34; only for coders"><meta name="keywords" content="web-developement code-communities dev-blogs css golang flat-file-themes static-site-generators "><meta name="HandheldFriendly" content="True"><meta name="viewport" content="width=device-width" initial-scale="1.0"><link id="defaultStyle" rel="stylesheet" href="/assets/css/main.css"><link href="'http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,300italic,400italic,600italic|Source+Serif+Pro:400,600,700'" rel="'stylesheet'" type="'text/css'>"><link rel="apple-touch-icon" sizes="57x57" href="/assets/images/favicons/apple-touch-icon-57x57.png"><link rel="apple-touch-icon" sizes="60x60" href="/assets/images/favicons/apple-touch-icon-60x60.png"><link sizes="72x72" href="/assets/images/favicons/apple-touch-icon-72x72.png" rel="apple-touch-icon"><link rel="apple-touch-icon" sizes="76x76" href="/assets/images/favicons/apple-touch-icon-76x76.png"><link href="/assets/images/favicons/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114"><link rel="apple-touch-icon" sizes="120x120" href="/assets/images/favicons/apple-touch-icon-120x120.png"><link sizes="144x144" href="/assets/images/favicons/apple-touch-icon-144x144.png" rel="apple-touch-icon"><link rel="apple-touch-icon" sizes="152x152" href="/assets/images/favicons/apple-touch-icon-152x152.png"><link href="/assets/images/favicons/apple-touch-icon-180x180.png" rel="apple-touch-icon" sizes="180x180"><link rel="icon" type="image/png" href="/assets/images/favicons/favicon-32x32.png" sizes="32x32"><link rel="icon" type="image/png" href="/assets/images/favicons/android-chrome-192x192.png" sizes="192x192"><link rel="icon" type="image/png" href="/assets/images/favicons/favicon-96x96.png" sizes="96x96"><link rel="icon" type="image/png" href="/assets/images/favicons/favicon-16x16.png" sizes="16x16"><link href="/assets/images/favicons/manifest.json" rel="manifest"><link rel="shortcut icon" href="/assets/images/favicons/favicon.ico"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-TileImage" content="/assets/images/favicons/mstile-144x144.png"><meta name="msapplication-config" content="/assets/images/favicons/browserconfig.xml"><meta name="theme-color" content="#ffffff"></head><body id="" class="post-template page page-template-how-to-use-rsync-for-deployment   "><div id="top"></div><header class="header--main"><div class="header--inner"><div class="header--title"><h1><a href="/"><svg width="266px" height="30px" viewBox="0 0 266 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
     <g id="Page-1" fill-rule="evenodd" sketch:type="MSPage">
         <g id="THE-+-CODESTEAD" sketch:type="MSLayerGroup" transform="translate(1.000000, 2.000000)">
             <path d="M4.42,14.04 L0.08,14.04 L0.08,11.84 L11.28,11.84 L11.28,14.04 L6.94,14.04 L6.94,26 L4.42,26 L4.42,14.04 Z M12.92,11.84 L15.44,11.84 L15.44,17.56 L22.06,17.56 L22.06,11.84 L24.58,11.84 L24.58,26 L22.06,26 L22.06,19.72 L15.44,19.72 L15.44,26 L12.92,26 L12.92,11.84 Z M27.7,11.84 L37.08,11.84 L37.08,14.04 L30.22,14.04 L30.22,17.64 L36.72,17.64 L36.72,19.76 L30.22,19.76 L30.22,23.76 L37.44,23.76 L37.44,26 L27.7,26 L27.7,11.84 Z" id="THE" sketch:type="MSShapeGroup"></path>
@@ -25,90 +25,120 @@ img src="/assets/images/icon-twitter.svg"
   <main class="content" role="main">
     <article class="post ">
     
-      <h1 class="post--title">Beginner Friendly Linux Dev Setup</h1>
-      <p class="post--meta">By Isaac Gregson on 03/03/2015</p>
+      <h1 class="post--title">How To Use Rsync for Deployment</h1>
+      <p class="post--meta">By Isaac Gregson on 03/15/2015</p>
       <div class="post--post">
         
 
-<p>A developer&rsquo;s operating system is akin to the cowboy&rsquo;s horse. It should be chosen wisely. There&rsquo;ll be lots of time spent on it. The better one knows it the more one can get from it. So do choose wisely.</p>
+<!--see:
+ http://www.thegeekstuff.com/2010/09/rsync-command-examples/ 
+ http://aaronlord.is/deploying-to-multiple-environments-via-git/
+-->
 
-<p>Lots of web devs simply buy a Mac and go to town with OSX. Most of these folks would never think of leaving their land of milk and honey. But for those not yet initiated into the Mac-world but knowing there must be something better then their Windows reality, consider a beginner-friendly Linux setup.</p>
+<p>Deployment options abound. This means that choosing one can be quite overwhelming.</p>
 
-<h3 id="modern-linux:40874660f1122584356d35784ba0aabd">Modern Linux</h3>
+<p>Rather than try and provide a complete list of deployment options (Chris Coyier <a href="https://css-tricks.com/deployment/">already did that</a> a while back), I&rsquo;d like to share about one that I&rsquo;ve recently begun using on a number of small projects: rsync.</p>
 
-<p>That&rsquo;s right, <em>modern Linux</em>.</p>
+<h3 id="rsync-the-big-picture:5477c1257ee88cc3950d8530e7196f5c">rsync - the big picture</h3>
 
-<p>Many folks seem to <em>exclusively</em> associate <em>Linux</em> with  <em>hacker.</em> While the platform is <em>certainly</em> well suited for the hacker-minded codesteader type, it&rsquo;s also quite friendly for closer-to-normal users.</p>
+<p><code>rsync</code> is a simple but powerful command line utility. The nerdy-way of learning about a such things is to simply &ldquo;man the command.&rdquo; In other words, bring up the <a href="http://en.wikipedia.org/wiki/Man_page">man page</a> for the command in question.</p>
 
-<p>I&rsquo;ve been using Linux as my primary work machine for well over 14 months. I came from Windows 7. I don&rsquo;t have a CS degree and barely knew the command line (before the switch).</p>
+<pre><code>$ man rsync
+</code></pre>
 
-<p>Changing from Windows to Linux was like going from a clumsy half-working mini-van to a supped-up SUV.</p>
+<blockquote>
+<p>Rsync is a fast and extraordinarily versatile file copying tool. It can copy locally, to/from another host over any remote shell, or to/from a remote rsync daemon. It offers a large number of options that control every aspect of its behavior and permit very flexible specification of the set of files to be copied. It is famous for its delta-transfer algorithm, which reduces the amount of data sent over the network by sending only the differences between the source files and the existing files in the destination. Rsync is widely used for backups and mirror‐ing and as an improved copy command for everyday use.</p>
 
-<h3 id="primary-linux-from-windows-benefits:40874660f1122584356d35784ba0aabd">Primary Linux from Windows Benefits</h3>
+<p>Rsync finds files that need to be transferred using a &ldquo;quick check&rdquo; algorithm (by default) that looks for files that have changed in size or in last-modified time. Any changes in the other preserved attributes (as requested by options) are made on the destination file directly when the quick check indicates that the file’s data does not need to be updated.</p>
 
-<p>The primary things I was grateful for when switching were:</p>
-
-<ul>
-<li>An awesome terminal (hello bash and z-shell)</li>
-<li>dev-environment == production-environment</li>
-<li>speed</li>
-<li>security (goodbye viruses and spy/mal/bad-ware)</li>
-<li>stability (no more <code>crtl</code>+<code>alt</code>+<code>delete</code>ing!)</li>
-<li>old-hardware friendliness (I&rsquo;m a resourceful fellow and like to keep old things around for as long as it makes sense)</li>
-</ul>
-
-<h3 id="choose-the-right-distro-desktop-environment:40874660f1122584356d35784ba0aabd">Choose the Right Distro / Desktop Environment</h3>
-
-<p>There&rsquo;s no one default &ldquo;flavor&rdquo; of Linux. Instead, there are lots (and lots) of different variations which come from a number of <em>distributions</em> (referred to as <em>distros</em>) for which developers have created many <em>desktop environments</em>.</p>
-
-<p>It&rsquo;s important to understand the line between distro and desktop environment. In normal-folk terms, think &ldquo;close-to-the-metal&rdquo; low-level stuff for distros &ndash; like <em>Ubuntu</em>, <em>Debian</em>, <em>Arch</em>, and <em>Suse</em>.  For desktop environments, think &ldquo;icing on top.&rdquo; For context, Linux servers run a specific distro (Ubuntu and Fedora are two common ones) with no desktop environment.</p>
-
-<p>If you&rsquo;re considering the switch, you&rsquo;ll need to choose the right distro/desktop environment. Though there&rsquo;s no ubiquitous choice, there <em>are</em> several great options worth considering.</p>
-
-<p>If you have time, experiment with as many of these as you can. But do be warned: distro-hopping is a real (and likely paralyzing) thing. Try and settle on one sooner than latter.</p>
-
-<p>Before I settled on my distro-of-choice I was a weary distro-hopper. At the time it brought nothing but toil. Now it brings valuable insight.</p>
-
-<p>Here&rsquo;s my take on some of the best Linux distros for web-devs and general code enthusiasts (though they&rsquo;re not really limited to anyone particular, they&rsquo;re just all-around good choices).</p>
-
-<p>To be clear, I&rsquo;d recommend any of these to anyone looking to switch to Linux.</p>
-
-<h4 id="elementary-os-http-elementary-io:40874660f1122584356d35784ba0aabd"><a href="http://elementary.io/">Elementary OS</a></h4>
-
-<p>Elementary OS feels a lot like OSX. It&rsquo;s clean, incredibly smooth, quick and easy to install and get started with but still decently customizable. It&rsquo;s built on Ubuntu, which some say is good and others say is bad.</p>
-
-<p>I nearly settled on Elementary but eventually moved-on due to wanting finer-grained control over customizations.</p>
-
-<h4 id="ubuntu-unity-https-unity-ubuntu-com:40874660f1122584356d35784ba0aabd"><a href="https://unity.ubuntu.com/">Ubuntu Unity</a></h4>
-
-<p>Ubuntu&rsquo;s Unity disto is a future-now feeling os that packed with features and bold in its overall implementations. It received a fair amount of criticism early on but has since seemed to win-over more followers.</p>
-
-<p>I liked Unity, but I wanted something a bit more &ldquo;traditionally-Linux&rdquo; feeling. It also seemed to hog my systems resources. But otherwise, perhaps if I were a bit younger, I&rsquo;d have stuck with it.</p>
-
-<h4 id="ubuntu-gnome-3-http-ubuntugnome-org:40874660f1122584356d35784ba0aabd"><a href="http://ubuntugnome.org/">Ubuntu Gnome 3</a></h4>
-
-<p>Ubuntu&rsquo;s Gnome distro is legendary. I find it to be more traditional than the Unity desktop but still modern and &ldquo;generally awesome.&rdquo; There&rsquo;s an add-on called the <a href="https://apps.ubuntu.com/cat/applications/gnome-tweak-tool/">Tweak Tool</a> that lets you tweak different settings and such (I consider it a mandatory addition).</p>
-
-<p>I used Gnome 3 for a while and was generally happy with it. It&rsquo;s powerful, quite customizable, and it&rsquo;s Ubuntu (which I work with on the server-side). The only reason I switched was because I found something that I liked more.</p>
-
-<h4 id="antergos-http-antergos-com:40874660f1122584356d35784ba0aabd"><a href="http://antergos.com/">Antergos</a></h4>
-
-<p>Meet my dev-desktop of choice. Built on Arch Linux, the Antergos desktop distro provides a great balance of power, features, stability, and &ldquo;customizability.&rdquo;</p>
-
-<p>Arch Linux is a minimalist approach to Linux where you essentially pick-and-choose the different components you&rsquo;d like to have makeup your system. While this is a great and powerful thing, it&rsquo;s also extremely daunting (especially for Linux newbies). But with Antergos there&rsquo;s the best of both worlds: a quick and easy installer and an Arch-based system.</p>
-
-<p>What&rsquo;s so great about Arch? The fact that it&rsquo;s a &ldquo;rolling&rdquo; distribution (which means that it&rsquo;s always up to date). This comes with the slight downside that sometimes (and really, only perhaps once every 3 months or so) there&rsquo;s a hiccup after updating. In my mind it&rsquo;s a small price to pay.</p>
-
-<h4 id="others-worth-a-look:40874660f1122584356d35784ba0aabd">Others Worth a Look</h4>
+<p>Some of the additional features of rsync are:</p>
 
 <ul>
-<li><a href="http://www.linuxmint.com/">Linux Mint</a></li>
-<li><a href="https://manjaro.github.io/">Manjara</a></li>
+<li>support for copying links, devices, owners, groups, and permissions</li>
+<li>exclude and exclude-from options similar to GNU tar</li>
+<li>a CVS exclude mode for ignoring the same files that CVS would ignore</li>
+<li>can use any transparent remote shell, including ssh or rsh</li>
+<li>does not require super-user privileges</li>
+<li>pipelining of file transfers to minimize latency costs</li>
+<li>support for anonymous or authenticated rsync daemons (ideal for mirroring)</li>
 </ul>
+</blockquote>
 
-<h3 id="more-linux-info-to-come:40874660f1122584356d35784ba0aabd">More Linux Info to Come</h3>
+<p><small>Note: the above is a bit abbreviated from the original</small></p>
 
-<p>That&rsquo;s all for now. There are a number of other Linux-related articles already on the to-do list, so stay tuned.</p>
+<h4 id="in-other-words:5477c1257ee88cc3950d8530e7196f5c">In Other Words:</h4>
+
+<p>Rsync is a command line interface tool with superpowers.<br />
+A mere <em>1-line</em> rsync command can send your entire site to a remote server (or do the opposite), quickly and securely.</p>
+
+<p>Let&rsquo;s learn how to use it.</p>
+
+<h2 id="deploying-with-rsync:5477c1257ee88cc3950d8530e7196f5c">Deploying with <code>rsync</code></h2>
+
+<h4 id="formula:5477c1257ee88cc3950d8530e7196f5c">Formula:</h4>
+
+<p><code>$ rsync options source destination</code></p>
+
+<h4 id="examples:5477c1257ee88cc3950d8530e7196f5c">Examples:</h4>
+
+<pre><code>        ⊢-- options --⊣   ⊢-- source path ---⊣   ⊢---- destination path -----⊣
+$ rsync   --delete -r        ./public            user@domain.com:/path/to/location/on/remote
+</code></pre>
+
+<h4 id="local-8594-remote:5477c1257ee88cc3950d8530e7196f5c">Local &#8594; Remote</h4>
+
+<pre><code>$ rsync --delete -r public/ user@your-domain.com:/path/to/location/on/remote
+</code></pre>
+
+<h4 id="remote-8594-local:5477c1257ee88cc3950d8530e7196f5c">Remote &#8594; Local</h4>
+
+<pre><code>$ rsync --delete -r user@your-domain.com:/path/to/location/on/remote ./
+</code></pre>
+
+<h3 id="tips:5477c1257ee88cc3950d8530e7196f5c">Tips</h3>
+
+<h4 id="delete:5477c1257ee88cc3950d8530e7196f5c"><code>--delete</code></h4>
+
+<p>Passing this flag as an option deletes the destination target before copying-over the new. This is handy to ensure exact replication between development and production environments. In some cases, though, this isn&rsquo;t desired - - use it wisely.</p>
+
+<h4 id="test-first:5477c1257ee88cc3950d8530e7196f5c">Test First</h4>
+
+<p>Rsync has the option to do a &ldquo;dry run,&rdquo; meaning it will not actually copy anything. This is great for testing your rsync command to ensure you&rsquo;re not going to break anything.</p>
+
+<p>To do a dry run:
+add <code>--dry-drun</code> or <code>n</code> to the options</p>
+
+<h4 id="understand-the-trailing-slash:5477c1257ee88cc3950d8530e7196f5c">Understand the trailing slash <code>/</code></h4>
+
+<p>For the source string of an rsync command a trailing slash (or lack thereof) <strong>is significant.</strong></p>
+
+<p><strong>Include</strong> the trailing slash to include the directory itself:</p>
+
+<pre><code>$ rsync /my/local/site/ user@domain.com/path/to/remote/root
+[result...]
+/path/to/remote/root/file1
+/path/to/remote/root/file2
+/path/to/remote/root/file3
+/path/to/remote/root/file4
+[...etc]
+</code></pre>
+
+<p><strong>Do not include</strong> the trailing slash to not include the directory itself.</p>
+
+<pre><code>$ rsync /my/local/site user@domain.com/path/to/remote/root
+[result...]
+/path/to/remote/site/root/file1
+/path/to/remote/site/root/file2
+/path/to/remote/site/root/file3
+/path/to/remote/site/root/file4
+[...etc]
+</code></pre>
+
+<h3 id="when-rsync-isn-t-good-for-deployment:5477c1257ee88cc3950d8530e7196f5c">When <code>rsync</code> Isn&rsquo;t Good For Deployment</h3>
+
+<p><code>rsync</code> won&rsquo;t work for deployment when one needs to trigger or perform certain server tasks pre or post deploying. Perhaps the most common need here in restarting a service. Sites running on Ghost are a good example of this, though of course there are plenty of others. For these types of scenarios, a formal continuous integration setup is a good route.</p>
+
+<p>For folks who want to integrate as thoroughly as possible with Git or another form of version control, it&rsquo;d still be possible to trigger an <code>rsync</code> command via custom pre and post commit hooks. I just make sure to only run an <code>rsync</code> deployment after commiting and pushing any changes.</p>
 
       </div>
 
@@ -121,15 +151,15 @@ img src="/assets/images/icon-twitter.svg"
 
 <section class="container post--share">
   <div class="content">
-    <a class="share--twitter" href="https://twitter.com/share?text=&amp;url=http://thecodestead.com%2fpost%2fbeginner-friendly-linux-dev-setup%2f"
+    <a class="share--twitter" href="https://twitter.com/share?text=&amp;url=http://thecodestead.com%2fpost%2fhow-to-use-rsync-for-deployment%2f"
     onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
       <span>Twitter</span>
     </a>
-    <a class="share--facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://thecodestead.com%2fpost%2fbeginner-friendly-linux-dev-setup%2f"
+    <a class="share--facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://thecodestead.com%2fpost%2fhow-to-use-rsync-for-deployment%2f"
     onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
       <span>Facebook</span>
     </a>
-    <a class="share--googleplus" href="https://plus.google.com/share?url=http://thecodestead.com%2fpost%2fbeginner-friendly-linux-dev-setup%2f"
+    <a class="share--googleplus" href="https://plus.google.com/share?url=http://thecodestead.com%2fpost%2fhow-to-use-rsync-for-deployment%2f"
     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
       <span>Google+</span>
     </a>

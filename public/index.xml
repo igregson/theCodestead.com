@@ -10,11 +10,11 @@
     <atom:link href="http://thecodestead.com/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>NPM as a Build Tool with Hugo</title>
-      <link>http://thecodestead.com/post/npm-as-a-build-tool-with-hugo/</link>
+      <title>How To Use NPM as a Build Tool with Hugo</title>
+      <link>http://thecodestead.com/post/how-to-use-npm-as-a-build-tool-with-hugo/</link>
       <pubDate>Sat, 04 Apr 2015 22:57:35 +0300</pubDate>
       
-      <guid>http://thecodestead.com/post/npm-as-a-build-tool-with-hugo/</guid>
+      <guid>http://thecodestead.com/post/how-to-use-npm-as-a-build-tool-with-hugo/</guid>
       <description>
 
 &lt;p&gt;Hugo&amp;rsquo;s a rather powerful tool for making websites. At its core it&amp;rsquo;s a static
@@ -25,7 +25,7 @@ tool.&lt;/p&gt;
 
 &lt;p&gt;Let&amp;rsquo;s learn how to setup NPM with Hugo to process our scripts and styles.&lt;/p&gt;
 
-&lt;h3 id=&#34;requirements:cbe9e3adfe4b24f79a8f2fb4b155e5bf&#34;&gt;Requirements&lt;/h3&gt;
+&lt;h3 id=&#34;requirements:336fcd34c16239fc150cded8eb9c4125&#34;&gt;Requirements&lt;/h3&gt;
 
 &lt;p&gt;Here are the bare-bones requirements of what I&amp;rsquo;d consider essential for
 developing a modern site:&lt;/p&gt;
@@ -38,13 +38,13 @@ developing a modern site:&lt;/p&gt;
 &lt;li&gt;Js and CSS source maps (for easy debugging)&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;hugo-provides-the-watcher:cbe9e3adfe4b24f79a8f2fb4b155e5bf&#34;&gt;Hugo Provides the Watcher&lt;/h3&gt;
+&lt;h3 id=&#34;hugo-provides-the-watcher:336fcd34c16239fc150cded8eb9c4125&#34;&gt;Hugo Provides the Watcher&lt;/h3&gt;
 
 &lt;p&gt;Out of the box, Hugo includes a super fast and resource friendly &lt;code&gt;watch&lt;/code&gt; feature
 that &amp;ldquo;just works&amp;rdquo;. There are of course fancier ways to watch a build
 environment, but when working with Hugo I&amp;rsquo;m grateful for the simplicity and &amp;ldquo;just-works&amp;rdquo; nature of its built-in watch feature.&lt;/p&gt;
 
-&lt;h3 id=&#34;hugo-s-directory-structure:cbe9e3adfe4b24f79a8f2fb4b155e5bf&#34;&gt;Hugo&amp;rsquo;s Directory Structure&lt;/h3&gt;
+&lt;h3 id=&#34;hugo-s-directory-structure:336fcd34c16239fc150cded8eb9c4125&#34;&gt;Hugo&amp;rsquo;s Directory Structure&lt;/h3&gt;
 
 &lt;p&gt;Here&amp;rsquo;s the default Hugo directory structrue:&lt;/p&gt;
 
@@ -58,7 +58,7 @@ data/
 public/  --- where the site is built to, of no interest now
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;hugo-s-theme-directory:cbe9e3adfe4b24f79a8f2fb4b155e5bf&#34;&gt;Hugo&amp;rsquo;s Theme Directory&lt;/h4&gt;
+&lt;h4 id=&#34;hugo-s-theme-directory:336fcd34c16239fc150cded8eb9c4125&#34;&gt;Hugo&amp;rsquo;s Theme Directory&lt;/h4&gt;
 
 &lt;p&gt;Hugo theme directories mirror the parent project root:&lt;/p&gt;
 
@@ -77,11 +77,11 @@ themes/
 			archetypes/
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;the-behavior-of-hugo-s-watcher:cbe9e3adfe4b24f79a8f2fb4b155e5bf&#34;&gt;The Behavior of Hugo&amp;rsquo;s Watcher&lt;/h3&gt;
+&lt;h3 id=&#34;the-behavior-of-hugo-s-watcher:336fcd34c16239fc150cded8eb9c4125&#34;&gt;The Behavior of Hugo&amp;rsquo;s Watcher&lt;/h3&gt;
 
 &lt;p&gt;One really nice thing about Hugo&amp;rsquo;s watcher is that &lt;strong&gt;it only watches for changes inside of the above core Hugo directories.&lt;/strong&gt;&lt;/p&gt;
 
-&lt;h4 id=&#34;why-is-this-good:cbe9e3adfe4b24f79a8f2fb4b155e5bf&#34;&gt;Why is this good?&lt;/h4&gt;
+&lt;h4 id=&#34;why-is-this-good:336fcd34c16239fc150cded8eb9c4125&#34;&gt;Why is this good?&lt;/h4&gt;
 
 &lt;p&gt;This is good because it allows us source-file-organization freedom and gives NPM scripts a way to harness Hugos watcher.&lt;/p&gt;
 
@@ -96,7 +96,7 @@ themes/
 &lt;p&gt;Before learning the above behavior of Hugo&amp;rsquo;s watcher I was organizing my unprocessed asset files outside of the root. Learning that I didn&amp;rsquo;t need to do this brought incredible joy - no joke.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;unprocessed-css-and-js-source-organization:cbe9e3adfe4b24f79a8f2fb4b155e5bf&#34;&gt;Unprocessed CSS and Js Source Organization&lt;/h3&gt;
+&lt;h3 id=&#34;unprocessed-css-and-js-source-organization:336fcd34c16239fc150cded8eb9c4125&#34;&gt;Unprocessed CSS and Js Source Organization&lt;/h3&gt;
 
 &lt;p&gt;In efforts to keep things simple, I organize all project assets in a project (or theme) root directory named &lt;code&gt;static-src/&lt;/code&gt;. Inside of &lt;code&gt;static-src/&lt;/code&gt; I like to more-or-less mirror directory structure to the structure inside of Hugo&amp;rsquo;s &lt;code&gt;static/&lt;/code&gt; directory. Doing this reduces mental overhead (which is a really good thing).&lt;/p&gt;
 
@@ -117,7 +117,7 @@ Js, and other assets (like images and such) as we please.&lt;/p&gt;
 
 &lt;p&gt;Changes to files inside of &lt;code&gt;static-src&lt;/code&gt; won&amp;rsquo;t trigger Hugo&amp;rsquo;s watcher, which means we can use NPM scripts to do the magic and send the built assets to the &lt;code&gt;static&lt;/code&gt; directory.&lt;/p&gt;
 
-&lt;h4 id=&#34;understand-how-hugo-handles-the-static-directory:cbe9e3adfe4b24f79a8f2fb4b155e5bf&#34;&gt;Understand How Hugo Handles the &lt;code&gt;static/&lt;/code&gt; Directory&lt;/h4&gt;
+&lt;h4 id=&#34;understand-how-hugo-handles-the-static-directory:336fcd34c16239fc150cded8eb9c4125&#34;&gt;Understand How Hugo Handles the &lt;code&gt;static/&lt;/code&gt; Directory&lt;/h4&gt;
 
 &lt;p&gt;It&amp;rsquo;s important to understand that everything inside of Hugo&amp;rsquo;s &lt;code&gt;static/&lt;/code&gt; directory goes to the root of the built site (or, &lt;code&gt;public/&lt;/code&gt;)&lt;/p&gt;
 
@@ -141,7 +141,7 @@ public/
 		bundle.js
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;static-src-organization:cbe9e3adfe4b24f79a8f2fb4b155e5bf&#34;&gt;&lt;code&gt;static-src&lt;/code&gt; Organization&lt;/h3&gt;
+&lt;h3 id=&#34;static-src-organization:336fcd34c16239fc150cded8eb9c4125&#34;&gt;&lt;code&gt;static-src&lt;/code&gt; Organization&lt;/h3&gt;
 
 &lt;p&gt;You can organize your source files however you or your team prefer. For this demo, let&amp;rsquo;s do it like this:&lt;/p&gt;
 
@@ -153,7 +153,7 @@ public/
       index.js -- and the rest of our unprocessed js here
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;creating-the-npm-build-chain:cbe9e3adfe4b24f79a8f2fb4b155e5bf&#34;&gt;Creating the NPM Build Chain&lt;/h3&gt;
+&lt;h3 id=&#34;creating-the-npm-build-chain:336fcd34c16239fc150cded8eb9c4125&#34;&gt;Creating the NPM Build Chain&lt;/h3&gt;
 
 &lt;p&gt;First off, if you&amp;rsquo;re not familiar with the general idea of using NPM as a build tool, I highly recommend giving &lt;a href=&#34;http://blog.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/&#34;&gt;this excelletn article on the topic&lt;/a&gt; a read.&lt;/p&gt;
 
@@ -174,35 +174,35 @@ public/
 },
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;a-few-things-here-to-note:cbe9e3adfe4b24f79a8f2fb4b155e5bf&#34;&gt;A few things here to note:&lt;/h4&gt;
+&lt;h4 id=&#34;a-few-things-here-to-note:336fcd34c16239fc150cded8eb9c4125&#34;&gt;A few things here to note:&lt;/h4&gt;
 
-&lt;h5 id=&#34;package-parallelshell:cbe9e3adfe4b24f79a8f2fb4b155e5bf&#34;&gt;Package &lt;code&gt;parallelshell&lt;/code&gt;&lt;/h5&gt;
+&lt;h5 id=&#34;package-parallelshell:336fcd34c16239fc150cded8eb9c4125&#34;&gt;Package &lt;code&gt;parallelshell&lt;/code&gt;&lt;/h5&gt;
 
 &lt;p&gt;&lt;code&gt;paralellshell&lt;/code&gt; is &lt;a href=&#34;https://github.com/keithamus/parallelshell&#34;&gt;a package&lt;/a&gt; for doing exactly what it says: running tasks in parallel. It&amp;rsquo;s written and maintained by Keith Cirkel, who wrote an &lt;a href=&#34;http://blog.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/&#34;&gt;awesome article mentioned above&lt;/a&gt; on using NPM as a build tool. If you&amp;rsquo;re familiar with bash commands you may be wondering why to use this package instead of the &lt;code&gt;&amp;amp;&lt;/code&gt; operator. If so, &lt;a href=&#34;https://github.com/keithamus/parallelshell/issues/5&#34;&gt;see Keith&amp;rsquo;s answer&lt;/a&gt; to my asking of this question.&lt;/p&gt;
 
-&lt;h5 id=&#34;package-onchange:cbe9e3adfe4b24f79a8f2fb4b155e5bf&#34;&gt;Package &lt;code&gt;onchange&lt;/code&gt;&lt;/h5&gt;
+&lt;h5 id=&#34;package-onchange:336fcd34c16239fc150cded8eb9c4125&#34;&gt;Package &lt;code&gt;onchange&lt;/code&gt;&lt;/h5&gt;
 
 &lt;p&gt;Since we still need to watch for changes in our source assets it&amp;rsquo;s necessary to use a specific package. After trying several, I found the &lt;code&gt;onchange&lt;/code&gt; &lt;a href=&#34;https://github.com/Qard/onchange&#34;&gt;package&lt;/a&gt; to work best for my particular approach.&lt;/p&gt;
 
-&lt;h5 id=&#34;npm-pre-and-post-hooks:cbe9e3adfe4b24f79a8f2fb4b155e5bf&#34;&gt;NPM &lt;code&gt;pre&lt;/code&gt; and &lt;code&gt;post&lt;/code&gt; hooks&lt;/h5&gt;
+&lt;h5 id=&#34;npm-pre-and-post-hooks:336fcd34c16239fc150cded8eb9c4125&#34;&gt;NPM &lt;code&gt;pre&lt;/code&gt; and &lt;code&gt;post&lt;/code&gt; hooks&lt;/h5&gt;
 
 &lt;p&gt;NPM gives &lt;code&gt;pre&lt;/code&gt; and &lt;code&gt;post&lt;/code&gt; hooks for each script command you create. These are
 really handy. They let us &lt;code&gt;build&lt;/code&gt; before we &lt;code&gt;watch&lt;/code&gt; and autoprefix our css after
 it&amp;rsquo;s been de-pre-processor-ified.&lt;/p&gt;
 
-&lt;h5 id=&#34;the-state-of-libsass-cli-tools:cbe9e3adfe4b24f79a8f2fb4b155e5bf&#34;&gt;The State of Libsass CLI Tools&lt;/h5&gt;
+&lt;h5 id=&#34;the-state-of-libsass-cli-tools:336fcd34c16239fc150cded8eb9c4125&#34;&gt;The State of Libsass CLI Tools&lt;/h5&gt;
 
 &lt;p&gt;Libsass is written in C++. This means we have to use a compiled implementation that has a command line interface (cli). From &lt;a href=&#34;https://github.com/sass/libsass/wiki/Implementations&#34;&gt;the many compiled implementations&lt;/a&gt;  only some of them have mature CLIs. Still, I&amp;rsquo;ve yet to find one that I&amp;rsquo;m completely happy with. &lt;a href=&#34;https://github.com/sass/node-sass&#34;&gt;Node Sass&lt;/a&gt; has a very good CLI but I haven&amp;rsquo;t yet gotten it to compile both &lt;code&gt;.scss&lt;/code&gt; and &lt;code&gt;.sass&lt;/code&gt; Sass versions (as I prefer to use both). I&amp;rsquo;ve also tried working directly with the &lt;a href=&#34;https://github.com/sass/sassc&#34;&gt;the official Sass C CLI&lt;/a&gt; but it&amp;rsquo;s feature set is still rather sparse. The I found &lt;code&gt;scss-cli&lt;/code&gt; (&lt;a href=&#34;https://github.com/paulcpederson/scss-cli&#34;&gt;here on Github&lt;/a&gt;) that fills in Node-Sass&amp;rsquo;s gaps (not accepting file globs and ignoring files that start with an underscore). So &lt;code&gt;scss-cli&lt;/code&gt; it is for now.&lt;/p&gt;
 
-&lt;h3 id=&#34;more-is-possible:cbe9e3adfe4b24f79a8f2fb4b155e5bf&#34;&gt;More is Possible&lt;/h3&gt;
+&lt;h3 id=&#34;more-is-possible:336fcd34c16239fc150cded8eb9c4125&#34;&gt;More is Possible&lt;/h3&gt;
 
 &lt;p&gt;It&amp;rsquo;s possible to use NPM&amp;rsquo;s build-tool superpowers for much more than the above. Asset versioning is one. Deployment another. Image spriting and minification yet another.&lt;/p&gt;
 
-&lt;h3 id=&#34;this-is-how-i-m-currently-building-thecodestead:cbe9e3adfe4b24f79a8f2fb4b155e5bf&#34;&gt;This is How I&amp;rsquo;m Currently Building TheCodestead&lt;/h3&gt;
+&lt;h3 id=&#34;this-is-how-i-m-currently-building-thecodestead:336fcd34c16239fc150cded8eb9c4125&#34;&gt;This is How I&amp;rsquo;m Currently Building TheCodestead&lt;/h3&gt;
 
 &lt;p&gt;If you &lt;a href=&#34;https://github.com/igregson/theCodestead.com&#34;&gt;checkout theCodestead&amp;rsquo;s source&lt;/a&gt; you&amp;rsquo;ll see my implementation of something close to the above. One difference is that I&amp;rsquo;m building things with a theme in order to stay module (should/when I want to do an overhaul).&lt;/p&gt;
 
-&lt;h3 id=&#34;improvements:cbe9e3adfe4b24f79a8f2fb4b155e5bf&#34;&gt;Improvements?&lt;/h3&gt;
+&lt;h3 id=&#34;improvements:336fcd34c16239fc150cded8eb9c4125&#34;&gt;Improvements?&lt;/h3&gt;
 
 &lt;p&gt;See anything above that could be improved, let me know!&lt;/p&gt;
 </description>
@@ -293,11 +293,11 @@ it&amp;rsquo;s been de-pre-processor-ified.&lt;/p&gt;
     </item>
     
     <item>
-      <title>Rsync for Deployment</title>
-      <link>http://thecodestead.com/post/rsync-for-deployment/</link>
+      <title>How To Use Rsync for Deployment</title>
+      <link>http://thecodestead.com/post/how-to-use-rsync-for-deployment/</link>
       <pubDate>Sun, 15 Mar 2015 09:31:12 +0300</pubDate>
       
-      <guid>http://thecodestead.com/post/rsync-for-deployment/</guid>
+      <guid>http://thecodestead.com/post/how-to-use-rsync-for-deployment/</guid>
       <description>
 
 &lt;!--see:
@@ -309,7 +309,7 @@ it&amp;rsquo;s been de-pre-processor-ified.&lt;/p&gt;
 
 &lt;p&gt;Rather than try and provide a complete list of deployment options (Chris Coyier &lt;a href=&#34;https://css-tricks.com/deployment/&#34;&gt;already did that&lt;/a&gt; a while back), I&amp;rsquo;d like to share about one that I&amp;rsquo;ve recently begun using on a number of small projects: rsync.&lt;/p&gt;
 
-&lt;h3 id=&#34;rsync-the-big-picture:f1d04fc53cd377626ea68f849c5f9c97&#34;&gt;rsync - the big picture&lt;/h3&gt;
+&lt;h3 id=&#34;rsync-the-big-picture:5477c1257ee88cc3950d8530e7196f5c&#34;&gt;rsync - the big picture&lt;/h3&gt;
 
 &lt;p&gt;&lt;code&gt;rsync&lt;/code&gt; is a simple but powerful command line utility. The nerdy-way of learning about a such things is to simply &amp;ldquo;man the command.&amp;rdquo; In other words, bring up the &lt;a href=&#34;http://en.wikipedia.org/wiki/Man_page&#34;&gt;man page&lt;/a&gt; for the command in question.&lt;/p&gt;
 
@@ -336,49 +336,49 @@ it&amp;rsquo;s been de-pre-processor-ified.&lt;/p&gt;
 
 &lt;p&gt;&lt;small&gt;Note: the above is a bit abbreviated from the original&lt;/small&gt;&lt;/p&gt;
 
-&lt;h4 id=&#34;in-other-words:f1d04fc53cd377626ea68f849c5f9c97&#34;&gt;In Other Words:&lt;/h4&gt;
+&lt;h4 id=&#34;in-other-words:5477c1257ee88cc3950d8530e7196f5c&#34;&gt;In Other Words:&lt;/h4&gt;
 
 &lt;p&gt;Rsync is a command line interface tool with superpowers.&lt;br /&gt;
 A mere &lt;em&gt;1-line&lt;/em&gt; rsync command can send your entire site to a remote server (or do the opposite), quickly and securely.&lt;/p&gt;
 
 &lt;p&gt;Let&amp;rsquo;s learn how to use it.&lt;/p&gt;
 
-&lt;h2 id=&#34;deploying-with-rsync:f1d04fc53cd377626ea68f849c5f9c97&#34;&gt;Deploying with &lt;code&gt;rsync&lt;/code&gt;&lt;/h2&gt;
+&lt;h2 id=&#34;deploying-with-rsync:5477c1257ee88cc3950d8530e7196f5c&#34;&gt;Deploying with &lt;code&gt;rsync&lt;/code&gt;&lt;/h2&gt;
 
-&lt;h4 id=&#34;formula:f1d04fc53cd377626ea68f849c5f9c97&#34;&gt;Formula:&lt;/h4&gt;
+&lt;h4 id=&#34;formula:5477c1257ee88cc3950d8530e7196f5c&#34;&gt;Formula:&lt;/h4&gt;
 
 &lt;p&gt;&lt;code&gt;$ rsync options source destination&lt;/code&gt;&lt;/p&gt;
 
-&lt;h4 id=&#34;examples:f1d04fc53cd377626ea68f849c5f9c97&#34;&gt;Examples:&lt;/h4&gt;
+&lt;h4 id=&#34;examples:5477c1257ee88cc3950d8530e7196f5c&#34;&gt;Examples:&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code&gt;        ⊢-- options --⊣   ⊢-- source path ---⊣   ⊢---- destination path -----⊣
 $ rsync   --delete -r        ./public            user@domain.com:/path/to/location/on/remote
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;local-8594-remote:f1d04fc53cd377626ea68f849c5f9c97&#34;&gt;Local &amp;#8594; Remote&lt;/h4&gt;
+&lt;h4 id=&#34;local-8594-remote:5477c1257ee88cc3950d8530e7196f5c&#34;&gt;Local &amp;#8594; Remote&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code&gt;$ rsync --delete -r public/ user@your-domain.com:/path/to/location/on/remote
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;remote-8594-local:f1d04fc53cd377626ea68f849c5f9c97&#34;&gt;Remote &amp;#8594; Local&lt;/h4&gt;
+&lt;h4 id=&#34;remote-8594-local:5477c1257ee88cc3950d8530e7196f5c&#34;&gt;Remote &amp;#8594; Local&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code&gt;$ rsync --delete -r user@your-domain.com:/path/to/location/on/remote ./
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;tips:f1d04fc53cd377626ea68f849c5f9c97&#34;&gt;Tips&lt;/h3&gt;
+&lt;h3 id=&#34;tips:5477c1257ee88cc3950d8530e7196f5c&#34;&gt;Tips&lt;/h3&gt;
 
-&lt;h4 id=&#34;delete:f1d04fc53cd377626ea68f849c5f9c97&#34;&gt;&lt;code&gt;--delete&lt;/code&gt;&lt;/h4&gt;
+&lt;h4 id=&#34;delete:5477c1257ee88cc3950d8530e7196f5c&#34;&gt;&lt;code&gt;--delete&lt;/code&gt;&lt;/h4&gt;
 
 &lt;p&gt;Passing this flag as an option deletes the destination target before copying-over the new. This is handy to ensure exact replication between development and production environments. In some cases, though, this isn&amp;rsquo;t desired - - use it wisely.&lt;/p&gt;
 
-&lt;h4 id=&#34;test-first:f1d04fc53cd377626ea68f849c5f9c97&#34;&gt;Test First&lt;/h4&gt;
+&lt;h4 id=&#34;test-first:5477c1257ee88cc3950d8530e7196f5c&#34;&gt;Test First&lt;/h4&gt;
 
 &lt;p&gt;Rsync has the option to do a &amp;ldquo;dry run,&amp;rdquo; meaning it will not actually copy anything. This is great for testing your rsync command to ensure you&amp;rsquo;re not going to break anything.&lt;/p&gt;
 
 &lt;p&gt;To do a dry run:
 add &lt;code&gt;--dry-drun&lt;/code&gt; or &lt;code&gt;n&lt;/code&gt; to the options&lt;/p&gt;
 
-&lt;h4 id=&#34;understand-the-trailing-slash:f1d04fc53cd377626ea68f849c5f9c97&#34;&gt;Understand the trailing slash &lt;code&gt;/&lt;/code&gt;&lt;/h4&gt;
+&lt;h4 id=&#34;understand-the-trailing-slash:5477c1257ee88cc3950d8530e7196f5c&#34;&gt;Understand the trailing slash &lt;code&gt;/&lt;/code&gt;&lt;/h4&gt;
 
 &lt;p&gt;For the source string of an rsync command a trailing slash (or lack thereof) &lt;strong&gt;is significant.&lt;/strong&gt;&lt;/p&gt;
 
@@ -404,7 +404,7 @@ add &lt;code&gt;--dry-drun&lt;/code&gt; or &lt;code&gt;n&lt;/code&gt; to the opt
 [...etc]
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;when-rsync-isn-t-good-for-deployment:f1d04fc53cd377626ea68f849c5f9c97&#34;&gt;When &lt;code&gt;rsync&lt;/code&gt; Isn&amp;rsquo;t Good For Deployment&lt;/h3&gt;
+&lt;h3 id=&#34;when-rsync-isn-t-good-for-deployment:5477c1257ee88cc3950d8530e7196f5c&#34;&gt;When &lt;code&gt;rsync&lt;/code&gt; Isn&amp;rsquo;t Good For Deployment&lt;/h3&gt;
 
 &lt;p&gt;&lt;code&gt;rsync&lt;/code&gt; won&amp;rsquo;t work for deployment when one needs to trigger or perform certain server tasks pre or post deploying. Perhaps the most common need here in restarting a service. Sites running on Ghost are a good example of this, though of course there are plenty of others. For these types of scenarios, a formal continuous integration setup is a good route.&lt;/p&gt;
 
