@@ -2,43 +2,43 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://localhost:1313/</loc>
+    <loc>http://thecodestead.com/</loc>
     <lastmod>2015-04-04T22:57:35+03:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/npm-as-a-build-tool-with-hugo/</loc>
+    <loc>http://thecodestead.com/post/npm-as-a-build-tool-with-hugo/</loc>
     <lastmod>2015-04-04T22:57:35+03:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/the-developer-dip/</loc>
+    <loc>http://thecodestead.com/post/the-developer-dip/</loc>
     <lastmod>2015-03-19T09:31:12+03:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/beginner-friendly-linux-dev-setup/</loc>
+    <loc>http://thecodestead.com/post/beginner-friendly-linux-dev-setup/</loc>
     <lastmod>2015-03-03T23:01:09+03:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/birth-of-the-codestead/</loc>
+    <loc>http://thecodestead.com/post/birth-of-the-codestead/</loc>
     <lastmod>2015-03-03T22:05:08+03:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/resources/</loc>
+    <loc>http://thecodestead.com/resources/</loc>
     <lastmod>2015-03-03T18:49:32+03:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/about/</loc>
+    <loc>http://thecodestead.com/about/</loc>
     <lastmod>2015-03-03T18:49:20+03:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/contact/</loc>
+    <loc>http://thecodestead.com/contact/</loc>
     <lastmod>2015-03-03T18:49:13+03:00</lastmod>
   </url>
   

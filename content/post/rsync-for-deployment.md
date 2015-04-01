@@ -1,7 +1,7 @@
 ---
 date: 2015-03-19T09:31:12+03:00
 title: Rsync for Deployment 
-draft: true
+summary: Deployment options abound. This means that choosing one can be quite overwhelming. One simple yet effective approach is to use `rsync`, a handy command line utility.
 ---
 
 <!--see:
@@ -11,13 +11,13 @@ draft: true
 
 Deployment options abound. This means that choosing one can be quite overwhelming.
 
-Rather than try and provide a complete list of deployment options (Chris Coyier [already did that](https://css-tricks.com/deployment/) a while back), I'd like to share (and suggest consideration of) just one: rsync.
+Rather than try and provide a complete list of deployment options (Chris Coyier [already did that](https://css-tricks.com/deployment/) a while back), I'd like to share about one that I've recently begun using on a number of small projects: rsync.
 
 <!--more-->
 
 ### rsync - the big picture
 
-The geeek-way of learning about a cli is to simply "man the command." In other words, bring up the [man page](http://en.wikipedia.org/wiki/Man_page) for the command in question. 
+`rsync` is a simple but powerful command line utility. The nerdy-way of learning about a such things is to simply "man the command." In other words, bring up the [man page](http://en.wikipedia.org/wiki/Man_page) for the command in question. 
 
 ```
 $ man rsync
@@ -49,30 +49,27 @@ A mere *1-line* rsync command can send your entire site to a remote server (or d
 Let's learn how to use it. 
 
 
-### rsync -- Usage
+## Deploying with `rsync`
 
-Formula:  
+#### Formula:  
 
 `$ rsync options source destination`
 
-
-Example:  
+#### Examples:  
 
 ```
-        ⊢-- options --⊣   ⊢-- source ---⊣   ⊢------------- destination ---------------⊣
-$ rsync   --delete -r        ./public       user@domain.com:/path/to/location/on/remote
+        ⊢-- options --⊣   ⊢-- source path ---⊣   ⊢---- destination path -----⊣
+$ rsync   --delete -r        ./public            user@domain.com:/path/to/location/on/remote
 ```
 
-
-
-##### Local &#8594; Remote
+#### Local &#8594; Remote
 
 
 ```
 $ rsync --delete -r public/ user@your-domain.com:/path/to/location/on/remote
 ```
 
-##### Remote &#8594; Local
+#### Remote &#8594; Local
 
 
 ```
@@ -82,6 +79,10 @@ $ rsync --delete -r user@your-domain.com:/path/to/location/on/remote ./
 
 
 ### Tips
+
+#### `--delete`
+
+Passing this flag as an option deletes the destination target before copying-over the new. This is handy to ensure exact replication between development and production environments. In some cases, though, this isn't desired - - use it wisely. 
 
 #### Test First
 
@@ -119,3 +120,11 @@ $ rsync /my/local/site user@domain.com/path/to/remote/root
 /path/to/remote/site/root/file4
 [...etc]
 ```
+
+
+### When `rsync` Isn't Good For Deployment
+
+`rsync` won't work for deployment when one needs to trigger or perform certain server tasks pre or post deploying. Perhaps the most common need here in restarting a service. Sites running on Ghost are a good example of this, though of course there are plenty of others. For these types of scenarios, a formal continuous integration setup is a good route.
+
+For folks who want to integrate as thoroughly as possible with Git or another form of version control, it'd still be possible to trigger an `rsync` command via custom pre and post commit hooks. I just make sure to only run an `rsync` deployment after commiting and pushing any changes. 
+
