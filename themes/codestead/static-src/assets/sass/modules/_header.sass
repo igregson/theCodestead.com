@@ -19,10 +19,12 @@
     color: $c-white
   @include bpMax(800px)
     height: 137px
+
 .header--inner
   position: relative
   margin: 0 auto
   width: $width-contain
+
 .header--title, .header--subtitle 
   display: inline-block
   @include bpMax(800px)
@@ -32,7 +34,7 @@
 .header--title 
   margin: 33px 0
   float: left
-  margin-right: 67px
+  margin-right: 55px
   h1
     svg 
       fill: white
@@ -55,12 +57,13 @@
         content: ""
 .header--nav 
   font-family: $font-family-heading
-  margin-top: 38px
+  margin-top: 42px
   display: inline-block
   @include bpMax(800px)
     text-align: center
     display: block
   li a 
+    font-size: 14px
     font-weight: 500
     padding: 5px 15px 10px
     &:first-of-type
