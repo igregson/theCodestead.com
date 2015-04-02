@@ -245,10 +245,10 @@ it&amp;rsquo;s been de-pre-processor-ified.&lt;/p&gt;
 &lt;h3 id=&#34;what-is-the-developer-dip:3c8129ef12fc5e08f1639b4f509fb10d&#34;&gt;What &lt;em&gt;is&lt;/em&gt; the &amp;ldquo;Developer Dip?&amp;rdquo;&lt;/h3&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;So what is &amp;ldquo;the dip&amp;rdquo; that those seeking to be &lt;em&gt;really good developers&lt;/em&gt; need to get through? Doesn&amp;rsquo;t it vary with the particular realm of development that one is interested in?&lt;/p&gt;
+&lt;p&gt;What is &amp;ldquo;the dip&amp;rdquo; that those seeking to be &lt;em&gt;really good developers&lt;/em&gt; need to get through? Doesn&amp;rsquo;t it vary with the particular realm of development that one is interested in?&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;To my younger self, and anyone else who might benefit from it, here&amp;rsquo;s my take on &amp;ldquo;the developer dip,&amp;rdquo; roughly in some type of helpful order (of course the learning process for these things isn&amp;rsquo;t really sequential, and it&amp;rsquo;s certainly always dynamic):&lt;/p&gt;
+&lt;p&gt;To my younger self, and anyone else who might benefit, here&amp;rsquo;s my take on &amp;ldquo;the developer dip,&amp;rdquo; roughly in some type of helpful order (of course the learning process for these things isn&amp;rsquo;t really sequential, and it&amp;rsquo;s certainly always dynamic):&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Javascript without jQuery (at least the basic DOM manipulation stuff)&lt;/li&gt;

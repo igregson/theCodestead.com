@@ -31,9 +31,9 @@ Why? Because staying at this point doesn't take one very far. Remember, "the dip
 
 ### What *is* the "Developer Dip?"
 
-> So what is "the dip" that those seeking to be *really good developers* need to get through? Doesn't it vary with the particular realm of development that one is interested in? 
+> What is "the dip" that those seeking to be *really good developers* need to get through? Doesn't it vary with the particular realm of development that one is interested in? 
 
-To my younger self, and anyone else who might benefit from it, here's my take on "the developer dip," roughly in some type of helpful order (of course the learning process for these things isn't really sequential, and it's certainly always dynamic): 
+To my younger self, and anyone else who might benefit, here's my take on "the developer dip," roughly in some type of helpful order (of course the learning process for these things isn't really sequential, and it's certainly always dynamic): 
 
 - Javascript without jQuery (at least the basic DOM manipulation stuff)
 - intimate familiarity with at least one text editor
