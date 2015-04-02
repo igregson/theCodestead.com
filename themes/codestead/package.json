@@ -13,7 +13,7 @@
     "js:w": "watchify static-src/assets/js/index.js -o static/assets/js/bundle.js",
     "build": "npm run css:b && npm run js:b",
     "prewatch": "npm run build",
-    "watch": "npm run hugo:w && parallelshell 'npm run css:watch' 'npm run js:w'",
+    "watch": "parallelshell 'npm run css:w' 'npm run js:w'",
     "start": "npm run watch",
     "deploy": "npm run hugo:b && cd ../../ && rsync --delete -r public/ root@isaacgregson.com:/var/www/thecodestead/thecodestead.com",
     "predeploy": "npm run build",
