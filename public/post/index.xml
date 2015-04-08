@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on The Codestead</title>
-    <link>http://thecodestead.com/post/</link>
+    <link>http://localhost:1313/post/</link>
     <description>Recent content in Posts on The Codestead</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 04 Apr 2015 22:57:35 +0300</lastBuildDate>
-    <atom:link href="http://thecodestead.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>How To Use NPM as a Build Tool with Hugo</title>
-      <link>http://thecodestead.com/post/how-to-use-npm-as-a-build-tool-with-hugo/</link>
+      <link>http://localhost:1313/post/how-to-use-npm-as-a-build-tool-with-hugo/</link>
       <pubDate>Sat, 04 Apr 2015 22:57:35 +0300</pubDate>
       
-      <guid>http://thecodestead.com/post/how-to-use-npm-as-a-build-tool-with-hugo/</guid>
+      <guid>http://localhost:1313/post/how-to-use-npm-as-a-build-tool-with-hugo/</guid>
       <description>
 
 &lt;p&gt;Hugo&amp;rsquo;s a rather powerful tool for making websites. At its core it&amp;rsquo;s a static
@@ -210,10 +210,10 @@ it&amp;rsquo;s been de-pre-processor-ified.&lt;/p&gt;
     
     <item>
       <title>The Developer Dip</title>
-      <link>http://thecodestead.com/post/the-developer-dip/</link>
+      <link>http://localhost:1313/post/the-developer-dip/</link>
       <pubDate>Thu, 19 Mar 2015 09:31:12 +0300</pubDate>
       
-      <guid>http://thecodestead.com/post/the-developer-dip/</guid>
+      <guid>http://localhost:1313/post/the-developer-dip/</guid>
       <description>
 
 &lt;p&gt;Seth Godin articulates an important concept of &amp;ldquo;the dip&amp;rdquo; in his book &lt;em&gt;&lt;a href=&#34;http://amzn.to/19EM2Nn&#34;&gt;The Dip&lt;/a&gt;&lt;/em&gt;. If you haven&amp;rsquo;t read it, think &amp;ldquo;learning curve&amp;rdquo; or &amp;ldquo;barrier of entry&amp;rdquo;. But it&amp;rsquo;s more than that. It&amp;rsquo;s the thing that separates the novices from the pros. It&amp;rsquo;s the thing standing between you and becoming &amp;ldquo;the best in the world&amp;rdquo; at whatever it is you&amp;rsquo;re aspiring to.&lt;/p&gt;
@@ -294,10 +294,10 @@ it&amp;rsquo;s been de-pre-processor-ified.&lt;/p&gt;
     
     <item>
       <title>How To Use Rsync for Deployment</title>
-      <link>http://thecodestead.com/post/how-to-use-rsync-for-deployment/</link>
+      <link>http://localhost:1313/post/how-to-use-rsync-for-deployment/</link>
       <pubDate>Sun, 15 Mar 2015 09:31:12 +0300</pubDate>
       
-      <guid>http://thecodestead.com/post/how-to-use-rsync-for-deployment/</guid>
+      <guid>http://localhost:1313/post/how-to-use-rsync-for-deployment/</guid>
       <description>
 
 &lt;!--see:
@@ -414,10 +414,10 @@ add &lt;code&gt;--dry-drun&lt;/code&gt; or &lt;code&gt;n&lt;/code&gt; to the opt
     
     <item>
       <title>Beginner Friendly Linux Dev Setup</title>
-      <link>http://thecodestead.com/post/beginner-friendly-linux-dev-setup/</link>
+      <link>http://localhost:1313/post/beginner-friendly-linux-dev-setup/</link>
       <pubDate>Tue, 03 Mar 2015 23:01:09 +0300</pubDate>
       
-      <guid>http://thecodestead.com/post/beginner-friendly-linux-dev-setup/</guid>
+      <guid>http://localhost:1313/post/beginner-friendly-linux-dev-setup/</guid>
       <description>
 
 &lt;p&gt;A developer&amp;rsquo;s operating system is akin to the cowboy&amp;rsquo;s horse. It should be chosen wisely. There&amp;rsquo;ll be lots of time spent on it. The better one knows it the more one can get from it. So do choose wisely.&lt;/p&gt;
@@ -504,10 +504,10 @@ add &lt;code&gt;--dry-drun&lt;/code&gt; or &lt;code&gt;n&lt;/code&gt; to the opt
     
     <item>
       <title>Birth of The Codestead</title>
-      <link>http://thecodestead.com/post/birth-of-the-codestead/</link>
+      <link>http://localhost:1313/post/birth-of-the-codestead/</link>
       <pubDate>Tue, 03 Mar 2015 22:05:08 +0300</pubDate>
       
-      <guid>http://thecodestead.com/post/birth-of-the-codestead/</guid>
+      <guid>http://localhost:1313/post/birth-of-the-codestead/</guid>
       <description>
 
 &lt;p&gt;Here&amp;rsquo;s to the obligatory first post. The post to stake-out initial intentions and potential directions.&lt;/p&gt;

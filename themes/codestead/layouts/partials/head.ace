@@ -53,6 +53,7 @@ html
         // a.icon--twitter href=http://twitter.com/thecodestead
           img src="/assets/images/icon-twitter.svg"
 
+        a.follow--rss href="/index.xml" RSS
         a.follow--twitter href="http://twitter.com/thecodestead" TWITTER
 
         nav.header--nav

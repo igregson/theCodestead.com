@@ -1,10 +1,12 @@
 baseurl: "http://thecodestead.com"
 canonifyurls: false
 languageCode: en-us
+copyright: "Creative Commons"
 metaDataFormat: yaml
 title: The Codestead
 theme: codestead
-
+author: 
+  name: Isaac Gregson
 params: 
   subtitle: for Crafters of the Modern Web
   disqus_shortname: "thecodestead"
