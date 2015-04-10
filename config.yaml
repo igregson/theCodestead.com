@@ -11,6 +11,7 @@ params:
   subtitle: for Crafters of the Modern Web
   disqus_shortname: "thecodestead"
   author_default: "Isaac Gregson"
+  author_default_email: "isaac@thecodestead.com"
 
   meta_default: 
     description: 'The Codestead is a resources for developers of the modern web. Think "homestead," only for coders'

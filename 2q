@@ -28,7 +28,6 @@ html
     link rel=icon type=image/png href=/assets/images/favicons/favicon-16x16.png sizes=16x16
     link rel=manifest href=/assets/images/favicons/manifest.json
     link rel="shortcut icon" href=/assets/images/favicons/favicon.ico
-    link href="/index.xml" rel="alternate" type="application/rss+xml" title="The Codestead"
     meta name=msapplication-TileColor content=#da532c
     meta name=msapplication-TileImage content=/assets/images/favicons/mstile-144x144.png
     meta name=msapplication-config content=/assets/images/favicons/browserconfig.xml
@@ -51,7 +50,10 @@ html
               {{ partial "logo.html" . }}
             {{end}}
         
-        a.follow--rss href="/index.xml" title="RSS Feed" RSS
+        // a.icon--twitter href=http://twitter.com/thecodestead
+          img src="/assets/images/icon-twitter.svg"
+
+        a.follow--rss href="/index.xml" rel="alternate" type="application/rss+xml" title="RSS Feed" RSS
         a.follow--twitter href="http://twitter.com/thecodestead" TWITTER
         nav.header--nav
           ul
