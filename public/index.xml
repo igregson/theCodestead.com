@@ -2,30 +2,151 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>The Codestead</title>
-    <link>http://thecodestead.com/</link>
+    <link>http://localhost:1313/</link>
     <description>Recent content on The Codestead</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>isaac@thecodestead.com (Isaac Gregson)</managingEditor>
     <copyright>Creative Commons</copyright>
-    <lastBuildDate>Sat, 04 Apr 2015 22:57:35 +0300</lastBuildDate>
+    <lastBuildDate>Tue, 14 Apr 2015 20:15:01 +0300</lastBuildDate>
     <image>
       <url>http://thecodestead.com/assets/images/favicons/favicon-32x32.png</url>
       <title>The Codestead</title>
-      <link>http://thecodestead.com/</link>
+      <link>http://localhost:1313/</link>
       <width>32</width>
       <height>32</height>
       <description>The Codestead is a resources for developers of the modern web. Think &#34;homestead,&#34; only for coders</description>
     </image>
-    <atom:link href="http://thecodestead.com/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Linux Live USBs - 1 Simple, Powerful, &amp; Resourceful Use Case</title>
+      <link>http://localhost:1313/post/linux-live-usb-simple-powerful-resourceful-use-case/</link>
+      <author>Isaac Gregson</author>
+      <pubDate>Tue, 14 Apr 2015 20:15:01 +0300</pubDate>
+      
+      <guid>http://localhost:1313/post/linux-live-usb-simple-powerful-resourceful-use-case/</guid>
+      <description>
+
+&lt;p&gt;Linux live USBs are known as great tools for testing new distros, but they&amp;rsquo;re also handy for much more.&lt;/p&gt;
+
+&lt;p&gt;One such use case is &lt;strong&gt;securely wiping hard drives&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;While doing some spring computer cleaning I finally got around to recycling an old desktop. Before doing so however, I wanted to be responsible and securely wipe its hard drives.&lt;/p&gt;
+
+&lt;p&gt;Initially I went down the path of using a dedicated boot-level program. Perhaps the most well known of these is &lt;a href=&#34;http://www.dban.org/&#34;&gt;DBAN&lt;/a&gt;. After some hangups deciding on the best way to create a DBAN usb from a Linux system (which I run as my primary development machine), I explored some alternatives.&lt;/p&gt;
+
+&lt;p&gt;Shortly thereafter while scrolling through comments on a forum thread (a forum with good info but dated design, which means I unfortunately don&amp;rsquo;t remember the url) someone recommended to &amp;ldquo;simply use a Linux live USB.&amp;rdquo; Since I like to always have at least one of these around the approach gained immediate fondness. On I went to learn the details and implement them.&lt;/p&gt;
+
+&lt;h2 id=&#34;the-process-overview:264ce52634298253cb923e4e2143ba44&#34;&gt;The Process Overview&lt;/h2&gt;
+
+&lt;p&gt;Essentially, here&amp;rsquo;s the process:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;boot with the live USB&lt;/li&gt;
+&lt;li&gt;open a terminal&lt;/li&gt;
+&lt;li&gt;find out the name of the drive to be wiped&lt;/li&gt;
+&lt;li&gt;run a simple but powerful command&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;the-process-nitty-gritty:264ce52634298253cb923e4e2143ba44&#34;&gt;The Process Nitty-Gritty&lt;/h2&gt;
+
+&lt;p&gt;To expand with explanation and details (nitty-gritty) on the above steps:&lt;/p&gt;
+
+&lt;h3 id=&#34;1-boot-with-the-live-usb:264ce52634298253cb923e4e2143ba44&#34;&gt;1. boot with the live USB&lt;/h3&gt;
+
+&lt;p&gt;Assuming you have a Linux live USB (find out how to create one &lt;a href=&#34;https://www.google.ru/webhp?sourceid=chrome-instant&amp;amp;ion=1&amp;amp;espv=2&amp;amp;ie=UTF-8#q=how%20to%20create%20a%20linux%20live%20usb&#34;&gt;via Google&lt;/a&gt;), insert it into the turned-off machine, then boot. If nothing changes (it still boots into your default operating system) you&amp;rsquo;ll need to move the &amp;ldquo;USB&amp;rdquo; option to first priority in your computer&amp;rsquo;s BIOS (&lt;a href=&#34;https://www.google.ru/webhp?sourceid=chrome-instant&amp;amp;ion=1&amp;amp;espv=2&amp;amp;ie=UTF-8#q=how%20to%20access%20bios&#34;&gt;Google can teach you that&lt;/a&gt;, too). Otherwise, your system should boot into a live USB-based Linux session.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Which Linux Distro? I prefer &lt;a href=&#34;https://tails.boum.org/&#34;&gt;Tails Linux&lt;/a&gt; for this type of thing. Since it&amp;rsquo;s a USB-only distro, it&amp;rsquo;s fast and does well on older hardware.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;2-open-a-terminal:264ce52634298253cb923e4e2143ba44&#34;&gt;2. open a terminal&lt;/h3&gt;
+
+&lt;p&gt;Simple enough.&lt;/p&gt;
+
+&lt;h3 id=&#34;3-find-out-the-name-of-the-drive-to-be-wiped:264ce52634298253cb923e4e2143ba44&#34;&gt;3. find out the name of the drive to be wiped&lt;/h3&gt;
+
+&lt;p&gt;There are multiple ways to do this. I used the &lt;code&gt;fdisk&lt;/code&gt; utility with its list flag: &lt;code&gt;fdisk -l&lt;/code&gt;. This should show something like the following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Disk /dev/sdb: 698.7 GiB, 750156374016 bytes, 1465149168 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x4d876080
+
+
+Disk /dev/sda: 111.8 GiB, 120034123776 bytes, 234441648 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x000efe9d
+
+
+Partition table entries are not in disk order.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The part we&amp;rsquo;re interested in is on the initial line for each device, after &amp;ldquo;Disk,&amp;rdquo; the &lt;code&gt;/dev/...&lt;/code&gt; part, the device name.&lt;/p&gt;
+
+&lt;p&gt;For this example, let&amp;rsquo;s say the disk we&amp;rsquo;re wanting to wipe is the first above: &lt;code&gt;/dev/sdb&lt;/code&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;NOTE: You need root privileges for the above command to work (ie: append it with &lt;code&gt;sudo&lt;/code&gt;). If you have trouble using sudo in the live USB session it should provide instructions on how to do so when the trouble arises.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;FOR TAILS LINUX: If using Tails Linux, you setup a root password right at the beginning of the live USB session.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;4-run-a-simple-but-powerful-command:264ce52634298253cb923e4e2143ba44&#34;&gt;4. run a simple but powerful command&lt;/h3&gt;
+
+&lt;p&gt;Now the fun part.&lt;/p&gt;
+
+&lt;p&gt;Though there are several command utilities that we could use, &lt;code&gt;dd&lt;/code&gt; is the most commonly suggested.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s how to use it to write zeros to the drive (effectively deleting all of a drive&amp;rsquo;s data):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;dd if=/dev/zero of=/dev/sdb bs=1M
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And here&amp;rsquo;s how to use it to write random data, rather than zeros (which is likely more secure, but might take a little longer):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;dd if=/dev/urandom of=/dev/sdb bs=1M
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;IMPORTANT: Replace &lt;code&gt;sdb&lt;/code&gt; with the name of the drive you&amp;rsquo;re wanting to wipe.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;NOTE: For more on the &lt;code&gt;dd&lt;/code&gt; utility, check out &lt;a href=&#34;http://en.wikipedia.org/wiki/Dd_(Unix&#34;&gt;this wiki&lt;/a&gt;) - (it&amp;rsquo;s worth it, &lt;code&gt;dd&lt;/code&gt; can be used for a lot more, such as cloning/backing up drives, recovering data, benchmarking drive performance, and other low/disk level operations)&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&#34;byte-size:264ce52634298253cb923e4e2143ba44&#34;&gt;Byte Size&lt;/h4&gt;
+
+&lt;p&gt;Specifying the byte size (the &lt;code&gt;bs=1M&lt;/code&gt; part) to 1 Megabyte is optional. The default is 512 bytes. Setting it to 1M speeds up the process without having any negative side effects.&lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s possible that there might be a better optimal byte size for your disk, but to find it you&amp;rsquo;ll need to do a benchmark test or use a utility like &lt;a href=&#34;https://github.com/sampablokuper/dd-opt&#34;&gt;dd-opt&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;lots-of-other-uses-for-linux-live-usbs:264ce52634298253cb923e4e2143ba44&#34;&gt;Lots of Other Uses for Linux Live USBs&lt;/h2&gt;
+
+&lt;p&gt;In completely general terms without any concrete examples (those are still to come in later posts), there are tons of other resourceful and generally nifty ways to utilize Linux live USBs.&lt;/p&gt;
+
+&lt;p&gt;The general (and beautifully powerful) concept is that the USB session virtually harnesses and has access to querying and manipulating your hardware - without installing a thing. In other words, you get an entire operating system (and it&amp;rsquo;s tools), rather than limited and often clumsy BIOS like tools.&lt;/p&gt;
+
+&lt;p&gt;Linux live USBs are powerful tools that no modern day codesteader should be without :)&lt;/p&gt;
+
+&lt;p&gt;Now you know how to use one to wipe data from a drive.&lt;/p&gt;
+
+&lt;p&gt;Happy spring computer cleaning.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>How To Use NPM as a Build Tool with Hugo</title>
-      <link>http://thecodestead.com/post/how-to-use-npm-as-a-build-tool-with-hugo/</link>
+      <link>http://localhost:1313/post/how-to-use-npm-as-a-build-tool-with-hugo/</link>
       <author>Isaac Gregson</author>
       <pubDate>Sat, 04 Apr 2015 22:57:35 +0300</pubDate>
       
-      <guid>http://thecodestead.com/post/how-to-use-npm-as-a-build-tool-with-hugo/</guid>
+      <guid>http://localhost:1313/post/how-to-use-npm-as-a-build-tool-with-hugo/</guid>
       <description>
 
 &lt;p&gt;Hugo&amp;rsquo;s a rather powerful tool for making websites. At its core it&amp;rsquo;s a static
@@ -221,11 +342,11 @@ it&amp;rsquo;s been de-pre-processor-ified.&lt;/p&gt;
     
     <item>
       <title>The Developer Dip</title>
-      <link>http://thecodestead.com/post/the-developer-dip/</link>
+      <link>http://localhost:1313/post/the-developer-dip/</link>
       <author>Isaac Gregson</author>
       <pubDate>Thu, 19 Mar 2015 09:31:12 +0300</pubDate>
       
-      <guid>http://thecodestead.com/post/the-developer-dip/</guid>
+      <guid>http://localhost:1313/post/the-developer-dip/</guid>
       <description>
 
 &lt;p&gt;Seth Godin articulates an important concept of &amp;ldquo;the dip&amp;rdquo; in his book &lt;em&gt;&lt;a href=&#34;http://amzn.to/19EM2Nn&#34;&gt;The Dip&lt;/a&gt;&lt;/em&gt;. If you haven&amp;rsquo;t read it, think &amp;ldquo;learning curve&amp;rdquo; or &amp;ldquo;barrier of entry&amp;rdquo;. But it&amp;rsquo;s more than that. It&amp;rsquo;s the thing that separates the novices from the pros. It&amp;rsquo;s the thing standing between you and becoming &amp;ldquo;the best in the world&amp;rdquo; at whatever it is you&amp;rsquo;re aspiring to.&lt;/p&gt;
@@ -306,11 +427,11 @@ it&amp;rsquo;s been de-pre-processor-ified.&lt;/p&gt;
     
     <item>
       <title>How To Use Rsync for Deployment</title>
-      <link>http://thecodestead.com/post/how-to-use-rsync-for-deployment/</link>
+      <link>http://localhost:1313/post/how-to-use-rsync-for-deployment/</link>
       <author>Isaac Gregson</author>
       <pubDate>Sun, 15 Mar 2015 09:31:12 +0300</pubDate>
       
-      <guid>http://thecodestead.com/post/how-to-use-rsync-for-deployment/</guid>
+      <guid>http://localhost:1313/post/how-to-use-rsync-for-deployment/</guid>
       <description>
 
 &lt;!--see:
@@ -427,11 +548,11 @@ add &lt;code&gt;--dry-drun&lt;/code&gt; or &lt;code&gt;n&lt;/code&gt; to the opt
     
     <item>
       <title>Beginner Friendly Linux Dev Setup</title>
-      <link>http://thecodestead.com/post/beginner-friendly-linux-dev-setup/</link>
+      <link>http://localhost:1313/post/beginner-friendly-linux-dev-setup/</link>
       <author>Isaac Gregson</author>
       <pubDate>Tue, 03 Mar 2015 23:01:09 +0300</pubDate>
       
-      <guid>http://thecodestead.com/post/beginner-friendly-linux-dev-setup/</guid>
+      <guid>http://localhost:1313/post/beginner-friendly-linux-dev-setup/</guid>
       <description>
 
 &lt;p&gt;A developer&amp;rsquo;s operating system is akin to the cowboy&amp;rsquo;s horse. It should be chosen wisely. There&amp;rsquo;ll be lots of time spent on it. The better one knows it the more one can get from it. So do choose wisely.&lt;/p&gt;
@@ -518,11 +639,11 @@ add &lt;code&gt;--dry-drun&lt;/code&gt; or &lt;code&gt;n&lt;/code&gt; to the opt
     
     <item>
       <title>Birth of The Codestead</title>
-      <link>http://thecodestead.com/post/birth-of-the-codestead/</link>
+      <link>http://localhost:1313/post/birth-of-the-codestead/</link>
       <author>Isaac Gregson</author>
       <pubDate>Tue, 03 Mar 2015 22:05:08 +0300</pubDate>
       
-      <guid>http://thecodestead.com/post/birth-of-the-codestead/</guid>
+      <guid>http://localhost:1313/post/birth-of-the-codestead/</guid>
       <description>
 
 &lt;p&gt;Here&amp;rsquo;s to the obligatory first post. The post to stake-out initial intentions and potential directions.&lt;/p&gt;
@@ -564,11 +685,11 @@ add &lt;code&gt;--dry-drun&lt;/code&gt; or &lt;code&gt;n&lt;/code&gt; to the opt
     
     <item>
       <title>Resources</title>
-      <link>http://thecodestead.com/resources/</link>
+      <link>http://localhost:1313/resources/</link>
       <author>Isaac Gregson</author>
       <pubDate>Tue, 03 Mar 2015 18:49:32 +0300</pubDate>
       
-      <guid>http://thecodestead.com/resources/</guid>
+      <guid>http://localhost:1313/resources/</guid>
       <description>&lt;p&gt;Ahhhhhh, yeah. Resources.&lt;/p&gt;
 
 &lt;p&gt;Coming Soon.&lt;/p&gt;
@@ -577,22 +698,22 @@ add &lt;code&gt;--dry-drun&lt;/code&gt; or &lt;code&gt;n&lt;/code&gt; to the opt
     
     <item>
       <title>About</title>
-      <link>http://thecodestead.com/about/</link>
+      <link>http://localhost:1313/about/</link>
       <author>Isaac Gregson</author>
       <pubDate>Tue, 03 Mar 2015 18:49:20 +0300</pubDate>
       
-      <guid>http://thecodestead.com/about/</guid>
+      <guid>http://localhost:1313/about/</guid>
       <description>&lt;p&gt;TODO: write about page.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Contact</title>
-      <link>http://thecodestead.com/contact/</link>
+      <link>http://localhost:1313/contact/</link>
       <author>Isaac Gregson</author>
       <pubDate>Tue, 03 Mar 2015 18:49:13 +0300</pubDate>
       
-      <guid>http://thecodestead.com/contact/</guid>
+      <guid>http://localhost:1313/contact/</guid>
       <description>&lt;p&gt;The Codestead is a personal project. It&amp;rsquo;s a place where I write and share about
 things I&amp;rsquo;m finding useful as I work as a frontend developer.&lt;/p&gt;
 
