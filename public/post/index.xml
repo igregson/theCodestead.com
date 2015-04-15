@@ -332,7 +332,7 @@ it&amp;rsquo;s been de-pre-processor-ified.&lt;/p&gt;
 
 &lt;h3 id=&#34;this-is-how-i-m-currently-building-thecodestead:336fcd34c16239fc150cded8eb9c4125&#34;&gt;This is How I&amp;rsquo;m Currently Building TheCodestead&lt;/h3&gt;
 
-&lt;p&gt;If you &lt;a href=&#34;https://github.com/igregson/theCodestead.com&#34;&gt;checkout theCodestead&amp;rsquo;s source&lt;/a&gt; you&amp;rsquo;ll see my implementation of something close to the above. One difference is that I&amp;rsquo;m building things with a theme in order to stay module (should/when I want to do an overhaul).&lt;/p&gt;
+&lt;p&gt;If you &lt;a href=&#34;https://github.com/igregson/theCodestead.com&#34;&gt;checkout theCodestead&amp;rsquo;s source&lt;/a&gt; you&amp;rsquo;ll see my implementation of something close to the above. One difference is that I&amp;rsquo;m building things within the context of a theme in order to stay module (should/when I want to do an overhaul). There are also a few additional tasks.&lt;/p&gt;
 
 &lt;h3 id=&#34;improvements:336fcd34c16239fc150cded8eb9c4125&#34;&gt;Improvements?&lt;/h3&gt;
 

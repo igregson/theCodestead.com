@@ -1,4 +1,4 @@
 # theCodestead
 Source for theCodestead.com website. 
 
-Utilizing a custom theme built for Hugo.
+Utilizes a custom Hugo theme and harnesses NPM as a build tool.

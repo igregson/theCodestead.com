@@ -188,7 +188,7 @@ It's possible to use NPM's build-tool superpowers for much more than the above. 
 
 ### This is How I'm Currently Building TheCodestead
 
-If you [checkout theCodestead's source](https://github.com/igregson/theCodestead.com) you'll see my implementation of something close to the above. One difference is that I'm building things with a theme in order to stay module (should/when I want to do an overhaul). 
+If you [checkout theCodestead's source](https://github.com/igregson/theCodestead.com) you'll see my implementation of something close to the above. One difference is that I'm building things within the context of a theme in order to stay module (should/when I want to do an overhaul). There are also a few additional tasks.
 
 ### Improvements?
 
