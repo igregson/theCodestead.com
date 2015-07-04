@@ -6,30 +6,31 @@
 
   aside.sb--right
     .sb--box
-      h4.sb--header 
+      h4.sb--header
         i codesteading
-      ul 
+      ul
         li Exploring Tech-Frontiers
         li Mastering Toolsets
         li Optimizing Resources
         li Perpetually Learning
         li Continually Shipping
-        li 
+        li
           i Code as Craft
-
-
 
   .content.excerpts
     {{ range where .Data.Pages "Section" "post" }}
-    
+
       .excerpt
         h2.excerpt--header
           a href={{.RelPermalink }} {{.Title}}
+
         {{if isset .Params "summary"}}
-          {{.Params.summary | markdownify}}
+          p
+            {{.Params.summary | markdownify}}
         {{else}}
           {{.Summary}}
         {{end}}
+
         a.excerpt--readFull href={{.RelPermalink}} Go To Article &#8594;
 
       hr.excerpt--divider
@@ -37,7 +38,7 @@
     {{ end }}
 
 
-  .clearfix  
+  .clearfix
 
 
 

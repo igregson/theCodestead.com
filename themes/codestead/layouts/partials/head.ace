@@ -11,8 +11,7 @@ html
     meta name=viewport content=width=device-width initial-scale=1.0
 
     link rel=stylesheet href=/assets/css/main.css id=defaultStyle
-    / link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,200italic,300italic,400italic,600italic' rel='stylesheet' type='text/css'
-    link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,300italic,400italic,600italic|Source+Serif+Pro:400,600,700' rel='stylesheet' type='text/css'> 
+    link href=http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,300italic,400italic,600italic|Source+Serif+Pro:400,600,700 rel=stylesheet type=text/css
     link rel=apple-touch-icon sizes=57x57 href=/assets/images/favicons/apple-touch-icon-57x57.png
     link rel=apple-touch-icon sizes=60x60 href=/assets/images/favicons/apple-touch-icon-60x60.png
     link rel=apple-touch-icon sizes=72x72 href=/assets/images/favicons/apple-touch-icon-72x72.png
@@ -34,7 +33,7 @@ html
     meta name=msapplication-config content=/assets/images/favicons/browserconfig.xml
     meta name=theme-color content=#ffffff
 
-    
+
   body class="{{if ne .Url "/"}}post-template page{{end}} page-template-{{with .Title | urlize}}{{.}}{{end}} {{ if eq .Url "/" }} template--index{{end}} {{if .Params.sidebar}}has-sb--right{{end}} {{if eq .Url "/"}}has-sb--right{{end}}" id="{{with .Site.Params.bg_img}}{{.}}{{end}}"
     #top
 
@@ -50,7 +49,7 @@ html
             {{else}}
               {{ partial "logo.html" . }}
             {{end}}
-        
+
         a.follow--rss href="/index.xml" title="RSS Feed" RSS
         a.follow--twitter href="http://twitter.com/thecodestead" TWITTER
         nav.header--nav
@@ -58,7 +57,7 @@ html
             li
               a href=/ class="{{if or (eq .Section "post") (eq .Url "/" )}}nav--active{{end}}"
                 | Blog
-              / a href=/resources class="{{ if eq .Params.nav "Resources" }}nav--active{{end}}" 
+              / a href=/resources class="{{ if eq .Params.nav "Resources" }}nav--active{{end}}"
                 | Resources
               / a href=/about class="{{ if eq .Params.nav "About" }}nav--active{{end}}"
                 | About
