@@ -5,25 +5,26 @@ copyright: "Creative Commons"
 metaDataFormat: yaml
 title: The Codestead
 theme: codestead
-author: 
+author:
   name: Isaac Gregson
-params: 
+params:
   subtitle: for Crafters of the Modern Web
   disqus_shortname: "thecodestead"
   author_default: "Isaac Gregson"
   author_default_email: "isaac@thecodestead.com"
 
-  meta_default: 
+  meta_default:
     description: 'The Codestead is a resources for developers of the modern web. Think "homestead," only for coders'
-    keywords: 
+    keywords:
       - web developement
       - code communities
       - dev blogs
-      - css 
+      - css
       - golang
       - flat file themes
       - static site generators
   google_analytics: UA-60678621-1
 
-  footer: 
-    bottom: '[Built with Hugo](href="http://gohugo.io/)  -  [Lives on Github](https://github.com/isaacgregson/theCodestead.com)  -  [Hosted on Digital Ocean](https://www.digitalocean.com/?refcode=9f25736ced94)'
+  footer:
+    bottom: >
+     [Built with Hugo](href="http://gohugo.io/)  –  [Source on Github](https://github.com/isaacgregson/theCodestead.com)

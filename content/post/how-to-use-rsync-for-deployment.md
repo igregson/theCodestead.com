@@ -1,7 +1,8 @@
 ---
 date: 2015-03-15T09:31:12+03:00
 title: How To Use Rsync for Deployment 
-summary: Deployment options abound. This means that choosing one can be quite overwhelming. One simple yet effective approach is to use `rsync`, a handy command line utility.
+summary: > 
+  Deployment options abound. This means that choosing one can be quite overwhelming. One simple yet effective approach is to use `rsync`, a handy command line utility.
 ---
 
 <!--see:
@@ -12,8 +13,6 @@ summary: Deployment options abound. This means that choosing one can be quite ov
 Deployment options abound. This means that choosing one can be quite overwhelming.
 
 Rather than try and provide a complete list of deployment options (Chris Coyier [already did that](https://css-tricks.com/deployment/) a while back), I'd like to share about one that I've recently begun using on a number of small projects: rsync.
-
-<!--more-->
 
 ### rsync - the big picture
 
@@ -126,5 +125,5 @@ $ rsync /my/local/site user@domain.com/path/to/remote/root
 
 `rsync` won't work for deployment when one needs to trigger or perform certain server tasks pre or post deploying. Perhaps the most common need here in restarting a service. Sites running on Ghost are a good example of this, though of course there are plenty of others. For these types of scenarios, a formal continuous integration setup is a good route.
 
-For folks who want to integrate as thoroughly as possible with Git or another form of version control, it'd still be possible to trigger an `rsync` command via custom pre and post commit hooks. I just make sure to only run an `rsync` deployment after commiting and pushing any changes. 
+For folks who want to integrate as thoroughly as possible with Git or another form of version control, it'd still be possible to trigger an `rsync` command via custom pre and post commit hooks. I just make sure to only run an `rsync` deployment after committing and pushing any changes. 
 

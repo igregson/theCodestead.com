@@ -1,19 +1,26 @@
 ---
 date: 2015-04-04T22:57:35+03:00
 title: How To Use NPM as a Build Tool with Hugo
-description: Hugo is a fast and all-around awesome tool for creating website. NPM has build-tool superpowers that folks seem to just now be realizing. Combining the two makes for a sweet setup. Let's learn how.
-summary: Hugo is a fast and all-around awesome tool for creating website. NPM has build-tool superpowers that folks seem to just now be realizing. Combining the two makes for a sweet setup. Let's learn how.
+keywords: 
+  - hugo 
+  - npm as build tool
+  - hugo preprocessor
+  - golang build tool
+  - golang static build tool
+  - hipster website building
+description: >
+  Hugo is a fast and all-around awesome tool for creating website. NPM has build-tool superpowers that folks seem to just now be realizing. Combining the two makes for a sweet setup. Let's learn how.
+summary: >
+  Hugo is a fast and all-around awesome tool for creating website. NPM has build-tool superpowers that folks seem to just now be realizing. Combining the two makes for a sweet setup. Let's learn how.
 ---
 
-Hugo's a rather powerful tool for making websites. At its core it's a static
-site generator, but it's also capable of quite a bit more. 
+> **TL;DR** &ndash; Use NPM as a build tool for processing raw-asset files into one of Hugo's default directories which will trigger's Hugo's watcher to reload (which makes for a simple yet powerful development setup).
 
-NPM's a rather powerful package manager. It's also a powerful build
-tool. 
+[Hugo](http://gohugo.io/) is ~~a rather~~ an incredibly powerful tool for building websites. At its core it's a static site generator. It's built in the Go programming language. It's *incredibly* fast.
 
-Let's learn how to setup NPM with Hugo to process our scripts and styles.
+NPM is a package manager. Though the acronym stands for **Node** **P**ackage **M**anager its use extends beyond Node.js projects. Namely, it can be used as a simple yet powerful build tool. 
 
-<!--more-->
+Let's learn how to use NPM with Hugo to process our scripts and styles.
 
 ### Requirements
 
@@ -21,38 +28,82 @@ Here are the bare-bones requirements of what I'd consider essential for
 developing a modern site:
 
 - CSS pre & post processing
-- Js concatination/bundling
-- Minification of CSS & Js
+- JS concatenation/bundling
+- Minification of CSS & JS
 - A live-reloading dev environment
-- Js and CSS source maps (for easy debugging)
+- JS and CSS source maps (for easy debugging)
 
-### Hugo Provides the Watcher
+### Hugo Provides the Watcher (live reloading)
 
-Out of the box, Hugo includes a super fast and resource friendly `watch` feature
-that "just works". There are of course fancier ways to watch a build
+Out of the box, Hugo includes a super fast and resource-friendly `watch` feature that "just works." There are of course fancier ways to watch a build
 environment, but when working with Hugo I'm grateful for the simplicity and "just-works" nature of its built-in watch feature. 
 
-### Hugo's Directory Structure
+### A Hugo Project's Default Structure
 
-Here's the default Hugo directory structrue:
+Creating a new Hugo-based project is easily done by running `hugo new site`. This tells Hugo to setup a new project with a default directory structure, which looks like this:
 
-```
-// Hugo-project-root
-
+```html
 content/
 layouts/
 static/
 archetypes/
 data/
-public/  --- where the site is built to, of no interest now
+public/
 ```
+> Note: `public` is the root directory of the built site. If desired, this can be changed in your project config file (via the `publishdir` key, see [here in the Hugo docs](http://gohugo.io/overview/configuration/)).
 
 #### Hugo's Theme Directory
 
-Hugo theme directories mirror the parent project root:
+Hugo has a theme feature (and it's pretty sweet). To use it, add a `themes` directory to the default project structure (outlined above). Theme directories go inside of the `themes` directory. It's that simple. 
+
+Let's add a `themes` directory to our Hugo project and the default structure for a theme (notice how it mirrors the structure of the base project's root):
 
 ```
-// Hugo-project-foot
+content/
+layouts/
+static/
+archetypes/
+data/
+themes/
+  my-hugo-theme/
+    content/
+    layouts/
+    static/
+    archetypes/
+```
+
+### The Behavior of Hugo's Watcher
+
+Hugo's watcher **only watches for changes inside of default Hugo directories,** the ones listed above.
+
+#### Being resourceful codesteaders...
+
+The fact that Hugo only watches for changes in its default directories is very handy for our purposes. Essentially, this allows us to harness the Hugo watcher for our development/building purposes via NPM.
+
+Broken down, with Hugo's watcher we can...
+
+- organize our unprocessed styles, scripts, and other files (`.scss|.sass|.styl|.less|.etc` `.coffee|.js|.etc`) however we'd like, only **they cannot be inside of Hugo's core directories**. 
+- utilize NPM build tasks (scripts) to process and send post/ready files to Hugo's core directories that will then trigger Hugo's watcher to reload. 
+
+> Aside: Before learning about this behavior of Hugo's watcher I was organizing my unprocessed asset files outside of my Hugo projects' roots. Learning that I didn't need to do this brought great happiness.
+
+### Unprocessed CSS and JS Source Organization
+
+In efforts to keep things simple, I organize all project assets in a project (or theme) root directory named `static-src/`. I like to more-or-less mirror the directory structure of `static-src/` to the structure inside of Hugo's `static/` directory. Why? Doing so seems intuitive, reduces mental overhead, and generally keeps things simple.
+
+Let's add it into our directory structure (with examples of using and not using a theme): 
+
+```html
+<!-- Without a theme -->
+
+content/
+layouts/
+archetypes/
+data/
+static/
+static-src/  <!-- our custom directory -->
+
+<!-- With a theme -->
 
 content/
 layouts/
@@ -60,136 +111,100 @@ static/
 archetypes/
 data/
 themes/
-	my-hugo-theme/
-			content/
-			layouts/
-			static/
-			archetypes/
+  my-hugo-theme/
+    content/
+    layouts/
+    static/
+    archetypes/
+    static-src/  <!-- our custom directory -->
 ```
 
-### The Behavior of Hugo's Watcher
+Now, inside of `static-src` we can arrange our unprocessed CSS (Sass, Stylus, Less, etc), JS, and other assets (like images and such) as we please. 
 
-One really nice thing about Hugo's watcher is that **it only watches for changes inside of the above core Hugo directories.** 
-
-#### Why is this good?
-
-This is good because it allows us source-file-organization freedom and gives NPM scripts a way to harness Hugos watcher. 
-
-In other words, this allows us to:
-
-- organize our unprocessed asset files (unprocessed CSS and Js) however we'd like (so long as they're outside of Hugo's core directories. 
-- utilize NPM to watch for changes and send the processed versions to Hugo's core directories that will then trigger Hugo's watcher to reload. 
-
-> Before learning the above behavior of Hugo's watcher I was organizing my unprocessed asset files outside of the root. Learning that I didn't need to do this brought incredible joy - no joke.
-
-### Unprocessed CSS and Js Source Organization
-
-In efforts to keep things simple, I organize all project assets in a project (or theme) root directory named `static-src/`. Inside of `static-src/` I like to more-or-less mirror directory structure to the structure inside of Hugo's `static/` directory. Doing this reduces mental overhead (which is a really good thing). 
-
-Let's add it into our directory structure: 
-
-```
-// Hugo-project-root
-
-content/
-layouts/
-archetypes/
-data/
-static/
-static-src/ --- our custom directory
-```
-
-Now, inside of `static-src` we can arrange our unprocessed CSS (Sass, Less, Stylus, etc),
-Js, and other assets (like images and such) as we please. 
-
-Changes to files inside of `static-src` won't trigger Hugo's watcher, which means we can use NPM scripts to do the magic and send the built assets to the `static` directory. 
+Changes to files inside of `static-src` won't trigger Hugo's watcher. We'll use NPM scripts to watch the files, process them as necessary, and send them to the `static` directory (which will trigger Hugo's watcher and reload our project). 
 
 
 #### Understand How Hugo Handles the `static/` Directory
 
-It's important to understand that everything inside of Hugo's `static/` directory goes to the root of the built site (or, `public/`) 
+It's important to understand that everything inside of Hugo's `static/` directory goes to the root of the built site (`public/`, by default).
 
 Essentially, this:
 
-```
-// Hugo-project-root
-
+```html
 static/
-	assets/
-		main.css
-		bundle.js
+  assets/
+    main.css
+    bundle.js
 ```
 
 Gets built to this:
 
 ```
-// Hugo-project-root
-
 public/
-	assets/
-		main.css
-		bundle.js
+  assets/
+    main.css
+    bundle.js
 ```
+
+In other words, there's no `static` directory in the built/deployable site.
 
 ### `static-src` Organization
 
-You can organize your source files however you or your team prefer. For this demo, let's do it like this: 
+You can organize your source files however you or your team prefer. For now, let's do it like this: 
 
-```
+```html
 static-src/
   /assets
     /src-sass
-      main.sass -- and the rest of our unprocessed css here
+      main.sass  <!-- and the rest of our unprocessed css here -->
     /src-js
-      index.js -- and the rest of our unprocessed js here
+      index.js  <!-- and the rest of our unprocessed js here -->
 ```
 
 ### Creating the NPM Build Chain
 
-First off, if you're not familiar with the general idea of using NPM as a build tool, I highly recommend giving [this excelletn article on the topic](http://blog.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/) a read.
+First off, if you're not familiar with the general idea of using NPM as a build tool, I recommend reading [this excellent article on the topic](http://blog.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/).
 
-Now, with a general understanding of harnessing NPM build-tool potential, lets wire up our `package.json` file.
+Now, with a general understanding of harnessing NPM's build-tool potential, lets wire up our `package.json` file.
 
 ```
 // package.json
 
 "scripts": {
-    "css:build": "scss-cli --source-map --output-style compressed './static-src/src-assets/sass/**/*.{scss,sass}' --glob -o static/assets/css",
-    "postcss:build": "autoprefixer -b 'last 2 versions' static/src-assets/css/*.css",
-    "css:watch": "onchange './static-src/assets/src-sass/' -- npm run css:build",
-    "js:build": "browserify static-src/assets/js/index.js -o static/assets/js/bundle.js",
-    "js:watch": "watchify static-src/assets/src-js/index.js -o static/assets/js/bundle.js",
-    "build": "npm run css:build && npm run js:build",
-    "prewatch": "npm run build",
-    "watch": "parallelshell 'npm run css:watch' 'npm run js:watch'",
-    "start": "npm run watch",
+  "css:build": "scss-cli --source-map --output-style compressed './static-src/src-assets/sass/**/*.{scss,sass}' --glob -o static/assets/css",
+  "postcss:build": "autoprefixer -b 'last 2 versions' static/src-assets/css/*.css",
+  "css:watch": "onchange './static-src/assets/src-sass/' -- npm run css:build",
+  "js:build": "browserify static-src/assets/js/index.js -o static/assets/js/bundle.js",
+  "js:watch": "watchify static-src/assets/src-js/index.js -o static/assets/js/bundle.js",
+  "build": "npm run css:build && npm run js:build",
+  "prewatch": "npm run build",
+  "watch": "parallelshell 'npm run css:watch' 'npm run js:watch'",
+  "start": "npm run watch",
 },
 ```
 
-#### A few things here to note:
+#### Notes on the above:
 
-##### Package `parallelshell`   
-`paralellshell` is [a package](https://github.com/keithamus/parallelshell) for doing exactly what it says: running tasks in parallel. It's written and maintained by Keith Cirkel, who wrote an [awesome article mentioned above](http://blog.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/) on using NPM as a build tool. If you're familiar with bash commands you may be wondering why to use this package instead of the `&` operator. If so, [see Keith's answer](https://github.com/keithamus/parallelshell/issues/5) to my asking of this question.
+- **Package `parallelshell`**  
+`paralellshell` is [a package](https://github.com/keithamus/parallelshell) for doing exactly what it says: running tasks in parallel. It's written and maintained by Keith Cirkel, who wrote the [above mentioned article](http://blog.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/) on using NPM as a build tool. If you're familiar with bash commands you may be curious about the reasons to use this package instead of the `&` operator. If so, [see Keith's answer](https://github.com/keithamus/parallelshell/issues/5) to my asking of this question.
 
-##### Package `onchange`
-Since we still need to watch for changes in our source assets it's necessary to use a specific package. After trying several, I found the `onchange` [package](https://github.com/Qard/onchange) to work best for my particular approach. 
+- **Package `onchange`**  
+Since we still need to watch for changes in our source assets it's necessary to use a specific package. There are several out there. I settled on the [onChange package](https://github.com/Qard/onchange) for now.
 
-##### NPM `pre` and `post` hooks
+- **NPM `pre` and `post` hooks**  
 NPM gives `pre` and `post` hooks for each script command you create. These are
-really handy. They let us `build` before we `watch` and autoprefix our css after
-it's been de-pre-processor-ified. 
-
-##### The State of Libsass CLI Tools  
-Libsass is written in C++. This means we have to use a compiled implementation that has a command line interface (cli). From [the many compiled implementations](https://github.com/sass/libsass/wiki/Implementations)  only some of them have mature CLIs. Still, I've yet to find one that I'm completely happy with. [Node Sass](https://github.com/sass/node-sass) has a very good CLI but I haven't yet gotten it to compile both `.scss` and `.sass` Sass versions (as I prefer to use both). I've also tried working directly with the [the official Sass C CLI](https://github.com/sass/sassc) but its feature set is still rather sparse. The I found `scss-cli` ([here on Github](https://github.com/paulcpederson/scss-cli)) that fills-in the current limitations of Node-Sass (not accepting file globs and ignoring files that start with an underscore). So `scss-cli` it is for now. 
+*really* handy. They let us do things like building before we start watching and autoprefix our css after it's been de-pre-processorified. 
 
 ### More is Possible
 
-It's possible to use NPM's build-tool superpowers for much more than the above. Asset versioning is one. Deployment another. Image spriting and minification yet another. 
+It's possible to use NPM's build-tool superpowers for much more than the above. Asset versioning is one. Deployment another. Image sprinting and minification are others.
 
-### This is How I'm Currently Building TheCodestead
+### This is how I'm currently building The Codestead.
 
-If you [checkout theCodestead's source](https://github.com/igregson/theCodestead.com) you'll see my implementation of something close to the above. One difference is that I'm building things within the context of a theme in order to stay module (should/when I want to do an overhaul). There are also a few additional tasks.
+If you look at `package.json` in [The Codestead's source](https://github.com/igregson/theCodestead.com) you'll see something like the above.
+
+> UPDATE: High on my priority list is to switch from Sass to Stylus... stay tunned for an updated `package.json`
 
 ### Improvements?
 
-See anything above that could be improved, let me know!
+See something above that could be improved? Please share!

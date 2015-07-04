@@ -35,7 +35,7 @@ Why? Because staying at this point doesn't take one very far. Remember, "the dip
 
 To my younger self, and anyone else who might benefit, here's my take on "the developer dip," roughly in some type of helpful order (of course the learning process for these things isn't really sequential, and it's certainly always dynamic): 
 
-- Javascript without jQuery (at least the basic DOM manipulation stuff)
+- JavaScript without jQuery (at least the basic DOM manipulation stuff)
 - intimate familiarity with at least one text editor
 - the terminal (at least a minimal working knowledge)
 - system configuration/know-how 
