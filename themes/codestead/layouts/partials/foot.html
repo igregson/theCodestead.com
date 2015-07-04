@@ -9,10 +9,10 @@
       </footer>
     {{end}}
 
-    
+
     <script src="/assets/js/vendor.js"></script>
     <script src="/assets/js/bundle.js"></script>
-    
+
     {{ with .Site.Params.google_analytics }}
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -24,12 +24,12 @@
       ga('send', 'pageview');
     </script>
     {{ end }}
-    
+
     {{if isset .Params "comments" }}
     {{ else }}
     <script type="text/javascript">
       var disqus_shortname = {{ .Site.Params.disqus_shortname }};
-      
+
       (function() {
           var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
           dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
