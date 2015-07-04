@@ -3,7 +3,7 @@ html
     meta charset=utf-8
     meta http-equiv=X-UA-Compatible content=IE=edge
 
-    title {{.Title | title}}{{if ne .Url "/"}} - {{.Site.Title}}{{end}}
+    title {{.Title | title}}{{if ne .URL "/"}} - {{.Site.Title}}{{end}}
     meta name=description content={{with .Description}}{{.}}{{else}}{{.Site.Params.meta_default.description}}{{end}}
     meta name=keywords content="{{if .Keywords}}{{range .Keywords}}{{. | urlize}} {{end}} {{else}}{{range .Site.Params.meta_default.keywords}}{{. | urlize}} {{end}}{{end}}"
 
@@ -34,7 +34,7 @@ html
     meta name=theme-color content=#ffffff
 
 
-  body class="{{if ne .Url "/"}}post-template page{{end}} page-template-{{with .Title | urlize}}{{.}}{{end}} {{ if eq .Url "/" }} template--index{{end}} {{if .Params.sidebar}}has-sb--right{{end}} {{if eq .Url "/"}}has-sb--right{{end}}" id="{{with .Site.Params.bg_img}}{{.}}{{end}}"
+  body class="{{if ne .URL "/"}}post-template page{{end}} page-template-{{with .Title | urlize}}{{.}}{{end}} {{ if eq .URL "/" }} template--index{{end}} {{if .Params.sidebar}}has-sb--right{{end}} {{if eq .URL "/"}}has-sb--right{{end}}" id="{{with .Site.Params.bg_img}}{{.}}{{end}}"
     #top
 
     {{ partial "icons--svg.html" . }}
@@ -43,7 +43,7 @@ html
       .header--inner
         .header--title
           h1
-            {{if ne .Url "/"}}
+            {{if ne .URL "/"}}
               a href=/
                 {{ partial "logo.html" . }}
             {{else}}
@@ -55,7 +55,7 @@ html
         nav.header--nav
           ul
             li
-              a href=/ class="{{if or (eq .Section "post") (eq .Url "/" )}}nav--active{{end}}"
+              a href=/ class="{{if or (eq .Section "post") (eq .URL "/" )}}nav--active{{end}}"
                 | Blog
               / a href=/resources class="{{ if eq .Params.nav "Resources" }}nav--active{{end}}"
                 | Resources

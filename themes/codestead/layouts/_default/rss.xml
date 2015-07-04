@@ -17,7 +17,7 @@
       <height>32</height>
       <description>{{with .Description}}{{.}}{{else}}{{.Site.Params.meta_default.description}}{{end}}</description>
     </image>
-    <atom:link href="{{.Url}}" rel="self" type="application/rss+xml" />
+    <atom:link href="{{.URL}}" rel="self" type="application/rss+xml" />
     {{ range first 15 .Data.Pages }}
     <item>
       <title>{{ .Title }}</title>
