@@ -1,7 +1,8 @@
 ---
 date: 2015-04-14T20:15:01+03:00
 title: Linux Live USBs - Simple & Powerful Use Case
-summary: Linux live USBs are known as great tools for testing new distros, but they're also handy for much more. Here's one resourceful (and powerful) use case.
+summary: > 
+  Linux live USBs are known as great tools for testing new distros, but they're also handy for much more. Here's one resourceful (and powerful) use case.
 ---
 
 Linux live USBs are known as great tools for testing new distros, but they're also handy for much more. 

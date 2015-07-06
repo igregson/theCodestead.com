@@ -66,6 +66,6 @@ The soft skills are also part of "the dip." Perhaps they're even bigger than the
 
 ### Getting Through "The Dip"
 
-As the saying "nothing good happens overnight" reminds us, the path to most anything worthwhile in life takes time, energy, and hard work. This isn't what most of us want to hear. Most of us (including myself) tend to default to the paths of least resistance, those that don't lead us through "the dips."
+The saying "nothing good happens overnight" reminds us that the path to most anything worthwhile takes time, energy, and hard work. Most of us don't want to hear this. Most of us (including myself) tend to prefer the paths of least resistance. Not surprisingly, paths of least resistance do *not* lead us through the dips. These aren't the paths that lead to our ultimate potential, which we'd all do wise to work towards.
 
-Best of strength and luck in embracing and getting the "the dip."  
+May we all continue in the good work of journeying along the seldom-trodden paths that lead us through the dips and onwards to our ultimate success.

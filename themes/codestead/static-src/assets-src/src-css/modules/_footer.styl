@@ -4,7 +4,6 @@ $c-footer = darken($c-white, 37)
   font-family: $font-family-heading
   height: 5rem
   position: relative
-  @extend .container
 
 .siteFooter--text
   max-width: 100%
@@ -21,9 +20,11 @@ $c-footer = darken($c-white, 37)
     display: inline-block
     &:hover
       color: $c-white
-  img
-    max-width: 48px
-    margin-bottom: .7rem
+  svg
+    fill: $c-footer
+    transition: fill .2s ease
+    &:hover
+      fill: $c-white
 
 .has-sb--right .siteFooter--text
   max-width: 75%

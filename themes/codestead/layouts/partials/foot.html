@@ -1,9 +1,11 @@
     {{if isset .Params "footer" }}
     {{else}}
-      <footer class="siteFooter">
+      <footer class="siteFooter container">
         <div class="siteFooter--text">
           <div class="siteFooter--bottom">
-            <a href="/"><img src="/assets/images/favicons/favicon-96x96.png" alt=""></a>
+            <a href="/">
+              {{ partial "logo-icon.html" . }}
+            </a>
             <br>
             {{ .Site.Params.footer.bottom | markdownify}}
           </div>

@@ -7,15 +7,16 @@
 .excerpt
   padding: 4.3rem 2.3rem
   margin-top: 0
+  position: relative
+  overflow: hidden
 .excerpt--header
-  // display: inline
   margin-right: 10px
   line-height: 1.2
-  font-size: 2.4em
+  font-size: 1.9em
+  font-weight: 600
   a
     color: inherit
     font-weight: 600
-    font-size: .8em
 
 .excerpt--divider
   margin: 0
@@ -36,3 +37,45 @@
   &:hover
     color: $c-white
     background-color: lighten($c-type, 54)
+
+.quicktip-note
+  margin-top: 0
+  top: 2rem
+  left: 2.3rem
+  text-transform: uppercase
+  letter-spacing: 4px
+  font-size: 12px
+.quicktip-toggle
+  cursor: pointer
+  @extend .no-select
+
+
+.quicktip-open .quicktip-toggle-open
+  background: green
+
+.quicktip-toggle-open
+  width: 10px
+  height: 10px
+  border-radius: 50%
+  margin-left: 15px
+  display: inline-block
+  background: lightgray
+
+.quicktip-animations
+  transition: height .3s ease, opacity .1s ease
+
+// .excerpt-type-quicktip .excerpt--excerpt
+  // transition: height .4s ease, opacity .4s ease
+
+.quicktip-permalink svg
+  width: 20px
+  height: 20px
+  margin-left: 15px
+  fill: lightgray
+  stroke: lightgray
+  stroke-width: 4px
+  transition: stroke .2s ease, fill .2s ease
+  &:hover
+    fill: $c-type
+    stroke: $c-type
+
