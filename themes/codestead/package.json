@@ -3,16 +3,18 @@
   "version": "1.0.0",
   "description": "Hugo theme for theCodestead.com",
   "main": "static/assets/js/index.js",
+  "config": {
+    "postcssPlugins": "require('autoprefixer')()"
+  },
   "scripts": {
     "hugo:b": "cd ../../ && hugo",
     "hugo:w": "cd ../../ && hugo server -w",
-    "css:b": "scss-cli --source-map --output-style compressed './static-src/assets/sass/**/*.{scss,sass}' --glob -o static/assets/css",
-    "postcss:b": "autoprefixer -b 'last 2 versions' static/assets/css/*.css",
-    "css:w": "onchange './static-src/assets/sass/' -- npm run css:b",
-    "js:b": "browserify static-src/assets/js/index.js -d -p [minifyify --map bundle.map.json --output static/assets/js/bundle.map.json] > static/assets/js/bundle.js",
-    "js:w": "watchify static-src/assets/js/index.js -o static/assets/js/bundle.js",
-    "jsV:b": "cat static-src/assets/js/vendor/** > static/assets/js/vendor.js",
-    "jsV:w": "onchange './static-src/assets/js/vendor/' -- npm run jsV:b",
+    "css:b": "NODE_PATH=$PWD && stylus --compress --use poststylus --with \"[$npm_package_config_postcssPlugins]\" --use rupture ./static-src/assets-src/src-css/ --out ./static/assets/css",
+    "css:w": "NODE_PATH=$PWD && stylus --compress --use poststylus --with \"[$npm_package_config_postcssPlugins]\" --use rupture --sourcemap --sourcemap-base ./static-src/assets-src/src-css/ --watch ./static-src/assets-src/src-css/ --out ./static/assets/css",
+    "js:b": "browserify static-src/assets-src/src-js/index.js -d -p [minifyify --map bundle.map.json --output static/assets/js/bundle.map.json] > static/assets/js/bundle.js",
+    "js:w": "watchify static-src/assets-src/src-js/index.js -o static/assets/js/bundle.js",
+    "jsV:b": "cat static-src/assets-src/src-js/vendor/** > static/assets/js/vendor.js",
+    "jsV:w": "onchange './static-src/assets-src/src-js/vendor/' -- npm run jsV:b",
     "build": "npm run css:b && npm run js:b && npm run jsV:b",
     "prewatch": "npm run build",
     "watch": "parallelshell 'npm run css:w' 'npm run js:w'",
@@ -29,7 +31,10 @@
     "minifyify": "^6.4.0",
     "onchange": "^1.0.0",
     "parallelshell": "^1.1.1",
+    "poststylus": "^0.2.0",
+    "rupture": "^0.6.1",
     "scss-cli": "0.0.5",
+    "stylus": "^0.51.1",
     "watchify": "^3.1.0"
   }
 }

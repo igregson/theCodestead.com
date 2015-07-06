@@ -1,0 +1,36 @@
+.sb--right
+  font-family: $font-family-heading
+  margin-top: $container-offset * 2
+  float: right
+  max-width: 22%
+  width: 100%
+  *
+    color: $c-white
+  +below(800px)
+    display: none
+
+  ul, ol
+    font-size: 13px
+    padding-left: 0
+    margin-top: 1rem
+    margin-left: 1rem
+    font-weight: 400
+  ul
+    list-style: disc
+  ol
+    list-style: decimal
+  ul ul, ul ol, ol ol, ol ul
+    margin: 1.5rem 0 1.5rem 3rem
+    font-size: 90%
+  li
+    margin-top: 0
+    margin-bottom: .1rem
+  p + ul li,  p + ol li
+    margin-top: 0
+    margin-bottom: 5px
+
+.sb--header
+  text-transform: uppercase
+.sb--box, .sb--header
+  font-weight: 600
+  font-size: 1.1em

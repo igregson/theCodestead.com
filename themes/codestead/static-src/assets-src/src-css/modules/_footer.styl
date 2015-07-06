@@ -1,0 +1,31 @@
+$c-footer = darken($c-white, 37)
+
+.siteFooter
+  font-family: $font-family-heading
+  height: 5rem
+  position: relative
+  @extend .container
+
+.siteFooter--text
+  max-width: 100%
+  text-align: center
+  margin-top: 1rem
+  margin-bottom: 50px
+  color: $c-footer
+  text-align: center
+  font-weight: 600
+  font-size: .8em
+  a
+    color: $c-footer
+    border: none
+    display: inline-block
+    &:hover
+      color: $c-white
+  img
+    max-width: 48px
+    margin-bottom: .7rem
+
+.has-sb--right .siteFooter--text
+  max-width: 75%
+  +below(800px)
+    max-width: 100%

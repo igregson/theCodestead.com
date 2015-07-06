@@ -1,0 +1,91 @@
+.header--inner
+  max-width: $width--content-with-sb
+  width: 100%
+  padding-left: $space-container
+  padding-right: $space-container
+
+.has-sb--right, .has-sb--left, .template--index
+  .header--inner
+    max-width: $width-contain
+    width: 100%
+
+.header--main
+  height: 100px
+  z-index: 1
+  width: 100%
+  background: rgb(77, 77, 77)
+  *
+    color: $c-white
+  +below(800px)
+    height: 137px
+
+.header--inner
+  position: relative
+  margin: 0 auto
+
+.header--title
+  padding-top: 33px
+  float: left
+  margin-right: 55px
+  h1
+    svg
+      fill: white
+    a
+      color: lighten($c-link, 1)
+      transition: color .2s ease
+      &:hover
+        color: lighten($c-link, 27)
+
+.header--title
+  display: inline-block
+  +below(800px)
+    width: 100%
+    text-align: center
+    padding-top: 50px
+
+.header--nav
+  font-family: $font-family-heading
+  margin-top: 42px
+  display: inline-block
+  +below(800px)
+    text-align: center
+    margin-top: 0
+    display: block
+    padding-top: 100px
+  li a
+    font-size: 14px
+    font-weight: 500
+    padding: 5px 15px 10px
+    &:first-of-type
+      padding-left: 0
+    &:last-of-type
+      padding-right: 0
+    color: inherit
+    text-transform: uppercase
+    transition: color .2s ease
+    &.nav--active, &:hover
+      color: darken($c-white, 33)
+    +below(800px)
+      font-weight: 400
+
+.follow--twitter, .follow--rss
+  position: absolute
+  top: 0
+  font-family: $font-family-heading
+  padding: 3px 7px
+  font-size: .7em
+  font-weight: 600
+  border-radius: 0 0 2px 2px
+  transition: color .2s ease, background-color .2s ease
+  background-color: $c-white
+  color: $c-type
+.follow--twitter
+  right: 25px
+  &:hover
+    background-color: #047AC8
+    color: $c-white
+.follow--rss
+  right: 90px
+  &:hover
+    background-color: orange
+    color: $c-white

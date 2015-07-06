@@ -58,7 +58,7 @@ Hugo has a theme feature (and it's pretty sweet). To use it, add a `themes` dire
 
 Let's add a `themes` directory to our Hugo project and the default structure for a theme (notice how it mirrors the structure of the base project's root):
 
-```
+```html
 content/
 layouts/
 static/
@@ -203,7 +203,7 @@ It's possible to use NPM's build-tool superpowers for much more than the above. 
 
 If you look at `package.json` in [The Codestead's source](https://github.com/igregson/theCodestead.com) you'll see something like the above.
 
-> UPDATE: High on my priority list is to switch from Sass to Stylus... stay tunned for an updated `package.json`
+> UPDATE: I've recently switch from Sass to Stylus. Accordingly, the css build tasks for this site are entirely different than those above. For a breakdown of my current style build tasks, [see here](/post/npm-run-wordpress/#notes-on-the-above-build-tasks:45fd4ca170f3cd99cf08a6a13cb65c8a).
 
 ### Improvements?
 

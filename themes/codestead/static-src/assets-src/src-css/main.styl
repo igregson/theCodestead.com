@@ -1,0 +1,63 @@
+// Notes:
+// - Currently, files with @imports must use .scss synta;
+// - All other files can use .sass syntac
+// Aside: this is a bug with gulp-sass
+
+
+// sass includes
+
+// @import "debug";
+
+// // -
+
+// @import "core/reset";
+// @import "core/mediaQueries";
+// @import "core/base";
+// @import "core/type";
+// @import "core/helpers";
+// @import "core/states";
+// @import "core/syntax-skin-import";
+// @import "core/animate/animate";
+
+// // -
+
+// @import "shared-components/buttons";
+// @import "shared-components/lines";
+// @import "shared-components/images";
+// @import "shared-components/code";
+
+// // -
+
+// @import "modules/excerpts";
+// @import "modules/header";
+// @import "modules/sidebars";
+// @import "modules/divider-top";
+// @import "modules/comments";
+// @import "modules/footer";
+// @import "modules/share";
+// @import "modules/post";
+
+
+/* ----------------------------------------
+Global Styles
+
+Notes:
+  - Import single-level-deep files via glob from parent
+    ie: @require 'core/*'
+  - Import sub-sections by requiring their parent and
+    use an index.styl importing that directories files
+    either by glob or explicitly (if glob, be careful
+    about import order)
+    eg: @require 'modules/navbar/'
+*/
+
+@require 'lib/*'
+
+
+@require 'core/*'
+
+
+@require 'shared-components/*'
+
+
+@require 'modules/*'

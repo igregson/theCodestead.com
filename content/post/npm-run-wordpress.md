@@ -15,10 +15,10 @@ keywords:
 description: > 
   Learn a modern and nimble WordPress workflow for theme/plugin development that uses Node's package manager: NPM.
 summary: > 
-  Having to work with WordPress does not require abandonment of developer joy, at least to a certain extent. Learn a modern and nimble WordPress workflow for theme/plugin development that uses Node's package manager: NPM.
+  Having to work with WordPress doesn't require abandonment of developer joy, at least to a certain extent. Learn a modern and nimble WordPress workflow for theme/plugin development that uses Node's package manager: NPM.
 ---
 
-Having to work with WordPress does not require abandonment of developer joy, at least to a certain extent.
+Having to work with WordPress doesn't require abandonment of developer joy, at least to a certain extent.
 
 I've recently refined my general WordPress-based project development workflow. The catalyst was a recent Ghost theme created by my wife and I which we adapted/ported to WordPress ([Blockster](http://crtv.mk/q0ANV)). All the while, this workflow is useful for any WordPress related project: themes, plugins, specific sites, etc.
 
@@ -54,7 +54,7 @@ The key to using NPM as a build tool for WordPress is the surprisingly seldom-sp
 To start a PHP server from the command line simply type `php -S localhost:3000`. You can change `3000` to any open port. The root directory from where that command is run is the web root for that php process.
 
 This is an extremely handy way to quickly test different php applications without fiddling with monolithic LAMP stacks (XAMPP, MAMP, WAMP, etc, etc). For example, I recently learned about the incredibly-awesome-and-promising [Cockpit API-driven CMS](http://getcockpit.com/) and wanted to quickly give it a test flight. With the php cli-server, doing so was as simple as
-```
+```html
 git clone git@github.com:aheinze/cockpit.git
 cd cockpit
 php -S localhost:3000
@@ -76,9 +76,11 @@ Then, I simply opened a browser and went to localhost:3000. That was it!
 
 ### Step 2: Create a MySQL Database
 
+There's no reason to be afraid of working with MySQL directly from the command-line. It's really much easier than many may fear. 
+
 Adapted from the [official WP docs](http://codex.wordpress.org/Installing_WordPress#Using_the_MySQL_Client):
 
-```
+```sql
 $ mysql -u adminusername -p
 Enter password:
 
@@ -102,7 +104,7 @@ mysql> EXIT
 - Make a copy of `wp-config-sample.php` and name it to `wp-config.php`
 - In the `MySQL Settings` (around line 21), enter the appropriate credentials. For example:
 
-```
+```php
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
 define('DB_NAME', 'enter-database-name-here');
@@ -185,14 +187,15 @@ These will differ with the particular needs of each project. For the sake of com
 }
 ```
 
+
+#### Notes on the above build tasks:
+
 To start a work session, from the root directory of the theme I open two terminals and run a command in each:
 `npm run php`
 and
 `npm start`
 
-I then see php-speciic errors in the terminal running the php task (server) and style/script info in the other.
-
-A few further notes on the above build tasks:
+I then see php-specific errors in the terminal running the php task (server) and style/script info in the other.
 
 - there are really only a few core tasks:
   - styles

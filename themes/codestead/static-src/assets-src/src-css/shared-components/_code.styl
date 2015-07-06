@@ -1,0 +1,25 @@
+$code-color = lighten($c-type, 7)
+$code-bg = darken($c-white, 3)
+
+
+// Inline
+:not(pre)>code
+  color: $code-color
+  background-color: $code-bg
+  padding: 1px 5px
+  margin: 0 1px
+  border-radius: 2px
+  font-size: .8em
+  box-shadow: 0 0 1px 1px #CFCFCF
+
+// Block level
+pre
+  overflow: auto
+  word-wrap: normal
+  white-space: pre
+  border-radius: 5px
+  background: $code-bg
+  padding: 1rem
+  box-shadow: 0 0 1px 1px #CFCFCF
+.hljs
+  background: $code-bg

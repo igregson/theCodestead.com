@@ -1,0 +1,38 @@
+// modules are for page/element specifics styles
+// such as post excerpts
+
+.template--index .content
+  padding: 0
+
+.excerpt
+  padding: 4.3rem 2.3rem
+  margin-top: 0
+.excerpt--header
+  // display: inline
+  margin-right: 10px
+  line-height: 1.2
+  font-size: 2.4em
+  a
+    color: inherit
+    font-weight: 600
+    font-size: .8em
+
+.excerpt--divider
+  margin: 0
+  &:last-of-type
+    display: none
+
+.excerpt--readFull
+  text-transform: uppercase
+  letter-spacing: 2px
+  font-size: 90%
+  border: solid 1px lighten($c-type, 54)
+  border-radius: 2px
+  padding: 3px 5px
+  font-family: $font-family-heading
+  margin-top: 1.5rem
+  display: inline-block
+  transition: color .2s ease, background-color .2s ease
+  &:hover
+    color: $c-white
+    background-color: lighten($c-type, 54)
