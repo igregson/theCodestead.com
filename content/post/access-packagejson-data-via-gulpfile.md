@@ -1,5 +1,5 @@
 ---
-date: 2015-07-06T14:15:01+03:00
+date: 2015-07-03T14:15:01+03:00
 title: Access Package.json Data via Gulpfile
 type: quicktip
 keywords: 
