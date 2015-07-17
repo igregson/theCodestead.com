@@ -16,6 +16,9 @@
         li Continually Shipping
         li
           i Code as Craft
+    .sb--box
+      h4.sb--header Free Updates
+        {{ partial "signup-form-inline-light.html" . }}
 
   .content.excerpts
     {{ range where .Data.Pages "Section" "post" }}

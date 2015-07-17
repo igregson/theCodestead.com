@@ -1,0 +1,42 @@
+button,
+.button,
+.btn
+  display: block
+  text-align: center
+  margin-left: auto
+  margin-right: auto
+  text-transform: uppercase
+  font-weight: 600
+  line-height: 1
+  font-family: $font-family
+  cursor: pointer
+  border-radius: $btn-radius
+  border-width: 1px
+  padding: 3px
+  border-style: solid
+  background-color: transparent
+  transition: background-color $btn-hover-speed ease, color $btn-hover-speed ease, border-color $btn-hover-speed ease
+  a
+    display: block
+    border: none
+    +below(650px)
+      padding-bottom: 3px
+
+  &:hover
+    border-color: #565656
+    color: $body-color
+    a
+      color: $body-color
+      border: none
+
+.btn-light
+  border-color: $t-light
+  color: $t-light
+  &:hover, &:focus
+    border-color: $t-light
+    color: $t-dark
+    background-color: $t-light
+    outline: 0
+    a
+      color: $t-dark
+      border: none
