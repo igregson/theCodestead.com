@@ -52,21 +52,25 @@
     margin-top: 0
     display: block
     padding-top: 100px
-  li a
-    font-size: 14px
-    font-weight: 500
-    padding: 5px 15px 10px
-    &:first-of-type
-      padding-left: 0
-    &:last-of-type
-      padding-right: 0
-    color: inherit
-    text-transform: uppercase
-    transition: color .2s ease
-    &.nav--active, &:hover
-      color: darken($c-white, 33)
-    +below(800px)
-      font-weight: 400
+.header--nav-ul
+  display: inline-block
+.header--nav-li
+  display: inline-block
+  font-size: 14px
+  font-weight: 500
+  padding: 5px 15px 10px
+  &:first-of-type
+    padding-left: 0
+  &:last-of-type
+    padding-right: 0
+  color: inherit
+  text-transform: uppercase
+.header--nav-li-a
+  transition: color .2s ease
+  &.nav--active, &:hover
+    color: darken($c-white, 33)
+  +below(800px)
+    font-weight: 400
 
 .follow--twitter, .follow--rss
   position: absolute

@@ -1,0 +1,26 @@
+{{ partial "head.html" . }}
+
+.divider--top
+
+.container.page-page
+
+  main.content-outer role="main"
+    .section-nav-top
+      .section-nav-top-indexBar
+        a class="block {{ if eq .Title "Curated" }}nav--active{{end}}" href="/curated/" -
+      ul.section-nav-top-ul
+        li
+          a href="/curated/podcasts/" class="{{ if eq .Title "podcasts" }}nav--active{{end}}" Podcasts
+        li
+          a href="/curated/videos/" class="{{ if eq .Title "videos" }}nav--active{{end}}" Videos
+        li
+          a href="/curated/books/" class="{{ if eq .Title "books" }}nav--active{{end}}" Books
+        li
+          a href="/curated/articles/" class="{{ if eq .Title "articles" }}nav--active{{end}}" Articles
+
+    .content
+
+      {{.Content}}
+
+
+{{ partial "foot.html" . }}

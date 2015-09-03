@@ -1,0 +1,12 @@
+{{ partial "head.html" . }}
+
+.divider--top
+
+.container.page-page
+
+  main.content.center role="main"
+    h2.h3 Hmm... something went wrong.
+
+
+
+{{ partial "foot.html" . }}

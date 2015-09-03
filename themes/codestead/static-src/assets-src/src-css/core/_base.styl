@@ -49,15 +49,17 @@ html
   padding: 0 $space-container 50px
   margin-left: auto
   margin-right: auto
-.content
-  padding: $container-space-top $container-space-side $container-space-btm
-  position: relative
-  z-index: 10
+.content-outer
   background-color: $c-white
-  width: auto
+  border-radius: 3px
   margin-top: -($container-offset)
   margin-bottom: -17px
-  border-radius: 3px
+  z-index: 10
+  position: relative
+  width: auto
+.content
+  z-index: 15
+  padding: $container-space-top $container-space-side $container-space-btm
   +below(800px)
     padding: ($space-container/2)
 
@@ -67,7 +69,7 @@ html
     max-width: $width-contain
     +below(800px)
       max-width: 100%
-  .content
+  .content-outer
     max-width: 75%
     +below(800px)
       max-width: 100%

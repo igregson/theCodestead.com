@@ -13,48 +13,45 @@
 
   {{ partial "sidebar.html" .}}
 
-  <main class="content" role="main">
-    <article class="post {{ range .Params.tags }}tag-{{.}} {{end}}">
-
-      <div class="post--header">
-        <h1 class="post--title">{{.Title}}</h1>
-        <p class="post--meta">By {{with .Params.author}}{{.}}{{else}}{{.Site.Params.author_default}}{{end}} | {{.Date.Format "01/02/2006"}}</p>
-      </div>
-
-      <div class="post--post">
-        {{.Content}}
-      </div>
-
-    </article>
-  </main>
-
-
+  <div class="content-outer">
+    <main class="content" role="main">
+      <article class="post {{ range .Params.tags }}tag-{{.}} {{end}}">
+        <div class="post--header">
+          <h1 class="post--title">{{.Title}}</h1>
+          <p class="post--meta">By {{with .Params.author}}{{.}}{{else}}{{.Site.Params.author_default}}{{end}} | {{.Date.Format "01/02/2006"}}</p>
+        </div>
+        <div class="post--post">
+          {{.Content}}
+        </div>
+      </article>
+    </main>
+  </div>
 </div>
 
-<section class="container post--share">
-  <div class="content">
-    <a class="share--twitter" href="https://twitter.com/share?text=&amp;url=http://thecodestead.com{{.RelPermalink}}"
-    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
-      <span>Twitter</span>
-    </a>
-    <a class="share--facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://thecodestead.com{{.RelPermalink}}"
-    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
-      <span>Facebook</span>
-    </a>
-    <a class="share--googleplus" href="https://plus.google.com/share?url=http://thecodestead.com{{.RelPermalink}}"
-    onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
-      <span>Google+</span>
-    </a>
-  </div>
+<section class="container post--share" style="padding-top: 0; padding-bottom: 0; margin-top: -35px; margin-bottom: 30px">
+  <a class="share--twitter" href="https://twitter.com/share?text=&amp;url=http://thecodestead.com{{.RelPermalink}}"
+  onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+    <span>Twitter</span>
+  </a>
+  <a class="share--facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://thecodestead.com{{.RelPermalink}}"
+  onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+    <span>Facebook</span>
+  </a>
+  <a class="share--googleplus" href="https://plus.google.com/share?url=http://thecodestead.com{{.RelPermalink}}"
+  onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+    <span>Google+</span>
+  </a>
 </section>
 
 <section class="container">
-  <div class="content comments--wrap">
-    {{if isset .Params "comments" }}
-      <h5>Follow-up via <a href="https://twitter.com/isaacgregson">Twitter</a> / <a href="mailto:isaac@thecodestead.com">Email</a></h5>
-    {{else}}
-      <div id="disqus_thread"></div>
-    {{end}}
+  <div class="content-outer">
+    <div class="content comments--wrap">
+      {{if isset .Params "comments" }}
+        <h5>Follow-up via <a href="https://twitter.com/isaacgregson">Twitter</a> / <a href="mailto:isaac@thecodestead.com">Email</a></h5>
+      {{else}}
+        <div id="disqus_thread"></div>
+      {{end}}
+    </div>
   </div>
 </section>
 

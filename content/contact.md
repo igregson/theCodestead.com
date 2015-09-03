@@ -5,4 +5,5 @@ nav: Contact
 footer: false
 ---
 
-Be in touch by clicking or emailing here: [isaac@thecodestead.com](mailto:isaac@thecodestead.com)
+Email: [isaac@thecodestead.com](mailto:isaac@thecodestead.com)  
+Twitter: [@thecodestead](http://twitter.com/thecodestead)

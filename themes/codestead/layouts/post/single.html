@@ -13,20 +13,22 @@
 
   {{ partial "sidebar.html" .}}
 
-  <main class="content" role="main">
-    <article class="post {{ range .Params.tags }}tag-{{.}} {{end}}">
+  <div class="content-outer">
+    <main class="content" role="main">
+      <article class="post {{ range .Params.tags }}tag-{{.}} {{end}}">
 
-      <div class="post--header">
-        <h1 class="post--title">{{.Title}}</h1>
-        <p class="post--meta">By {{with .Params.author}}{{.}}{{else}}{{.Site.Params.author_default}}{{end}} | {{.Date.Format "01/02/2006"}}</p>
-      </div>
+        <div class="post--header">
+          <h1 class="post--title">{{.Title}}</h1>
+          <p class="post--meta">By {{with .Params.author}}{{.}}{{else}}{{.Site.Params.author_default}}{{end}} | {{.Date.Format "01/02/2006"}}</p>
+        </div>
 
-      <div class="post--post">
-        {{.Content}}
-      </div>
+        <div class="post--post">
+          {{.Content}}
+        </div>
 
-    </article>
-  </main>
+      </article>
+    </main>
+  </div>
 
 
 </div>
@@ -49,12 +51,14 @@
 </section>
 
 <section class="container">
-  <div class="content comments--wrap">
-    {{if isset .Params "comments" }}
-      <h5>Follow-up via <a href="https://twitter.com/isaacgregson">Twitter</a> / <a href="mailto:isaac@thecodestead.com">Email</a></h5>
-    {{else}}
-      <div id="disqus_thread"></div>
-    {{end}}
+  <div class="content-outer">
+    <div class="content comments--wrap">
+      {{if isset .Params "comments" }}
+        <h5>Follow-up via <a href="https://twitter.com/isaacgregson">Twitter</a> / <a href="mailto:isaac@thecodestead.com">Email</a></h5>
+      {{else}}
+        <div id="disqus_thread"></div>
+      {{end}}
+    </div>
   </div>
 </section>
 

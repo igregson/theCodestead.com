@@ -20,47 +20,50 @@
       h4.sb--header Free Updates
         {{ partial "signup-form-inline-light.html" . }}
 
-  .content.excerpts
-    {{ range where .Data.Pages "Section" "post" }}
 
-      section class="excerpt excerpt-type-{{.Type}}"
+  .content-outer
 
-        {{if eq .Type "quicktip"}}
-          .quicktip-note.quicktip-toggle Quicktip
-            span.quicktip-toggle-open
-        {{end}}
+    .content.excerpts
+      {{ range where .Data.Pages "Section" "post" }}
 
+        section class="excerpt excerpt-type-{{.Type}}"
 
-        {{if eq .Type "quicktip"}}
-          h2.excerpt--header
-            span.quicktip-toggle {{.Title}}
-            a.quicktip-permalink href={{.RelPermalink}}
-              svg.icon
-                use xlink:href="#icon-link"
-        {{else}}
-          h2.excerpt--header
-            a href={{.RelPermalink}} {{.Title}}
-        {{end}}
-
-        .excerpt--excerpt
-          {{if isset .Params "summary"}}
-            p
-              {{.Params.summary | markdownify}}
-          {{else}}
-            {{.Summary}}
+          {{if eq .Type "quicktip"}}
+            .quicktip-note.quicktip-toggle Quicktip
+              span.quicktip-toggle-open
           {{end}}
 
-        {{if eq .Type "post"}}
-          a.excerpt--readFull href={{.RelPermalink}} Full Article &#8594;
-        {{end}}
+
+          {{if eq .Type "quicktip"}}
+            h2.excerpt--header
+              span.quicktip-toggle {{.Title}}
+              a.quicktip-permalink href={{.RelPermalink}}
+                svg.icon
+                  use xlink:href="#icon-link"
+          {{else}}
+            h2.excerpt--header
+              a href={{.RelPermalink}} {{.Title}}
+          {{end}}
+
+          .excerpt--excerpt
+            {{if isset .Params "summary"}}
+              p
+                {{.Params.summary | markdownify}}
+            {{else}}
+              {{.Summary}}
+            {{end}}
+
+          {{if eq .Type "post"}}
+            a.excerpt--readFull href={{.RelPermalink}} Full Article &#8594;
+          {{end}}
 
 
-      hr.excerpt--divider
+        hr.excerpt--divider
 
-    {{ end }}
+      {{ end }}
 
 
-  .clearfix
+    .clearfix
 
 
 

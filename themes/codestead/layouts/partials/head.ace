@@ -53,13 +53,13 @@ html
         a.follow--rss href="/index.xml" title="RSS Feed" RSS
         a.follow--twitter href="http://twitter.com/thecodestead" TWITTER
         nav.header--nav
-          ul
-            li
-              a href=/ class="{{if or (eq .Section "post") (eq .URL "/" )}}nav--active{{end}}"
-                | Blog
-              / a href=/resources class="{{ if eq .Params.nav "Resources" }}nav--active{{end}}"
-                | Resources
-              / a href=/about class="{{ if eq .Params.nav "About" }}nav--active{{end}}"
-                | About
-              a href=/contact class="{{ if eq .Params.nav "Contact" }}nav--active{{end}}"
+          ul.header--nav-ul
+            li.header--nav-li
+              a.header--nav-li-a href=/ class="{{if or (eq .Section "post") (eq .URL "/" )}}nav--active{{end}}"
+                | Home
+            li.header--nav-li
+              a.header--nav-li-a href=/curated class="{{ if eq .Params.nav "Curated" }}nav--active{{end}}"
+                | Curated
+            li.header--nav-li
+              a.header--nav-li-a href=/contact class="{{ if eq .Params.nav "Contact" }}nav--active{{end}}"
                 | Contact

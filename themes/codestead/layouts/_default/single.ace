@@ -1,0 +1,16 @@
+{{ partial "head.html" . }}
+
+.divider--top
+
+.container.page-page
+
+  {{ partial "sidebar" . }}
+
+  main.content-outer
+    .content role="main"
+      h1.post--title {{.Title}}
+      {{.Content}}
+
+
+
+{{ partial "foot.html" . }}
