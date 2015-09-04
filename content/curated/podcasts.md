@@ -1,8 +1,13 @@
 ---
 date: 2015-09-03T16:53:33+03:00
-description: null
-footer: true
-keywords: null
+description: A curated collection of awesome podcasts for those who code.
+keywords:
+  - awesome dev resources
+  - dev resources
+  - curated dev
+  - curated code
+  - curated
+  - curated awesome
 nav: Curated
 title: podcasts
 curated_section: podcasts
@@ -65,4 +70,4 @@ podcasts:
 
 ---
 
-<p class="center caps">worthwhile podcasts</p>
+<p class="center caps">awesome podcasts</p>

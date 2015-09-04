@@ -1,8 +1,14 @@
 ---
 date: 2015-09-03T18:26:16+03:00
-description: null
+description: A curated collection of awesome talks for those who code.
 footer: true
-keywords: null
+keywords: 
+  - awesome dev resources
+  - dev resources
+  - curated dev
+  - curated code
+  - curated
+  - curated awesome
 nav: Curated
 # sidebar: right
 title: talks
@@ -40,4 +46,4 @@ talks:
     url: https://github.com/bolshchikov/js-must-watch
 ---
 
-<p class="center caps">Worthwhile Talks</p>
+<p class="center caps">awesome talks</p>

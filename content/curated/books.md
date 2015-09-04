@@ -1,8 +1,13 @@
 ---
 date: 2015-09-04T03:23:44+03:00
-description: null
-footer: true
-keywords: null
+description: A curated collection of awesome books for those who code.
+keywords: 
+  - awesome dev resources
+  - dev resources
+  - curated dev
+  - curated code
+  - curated
+  - curated awesome
 nav: Curated
 title: books
 curated_section: books
@@ -17,4 +22,4 @@ books:
     github: https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8&client=ubuntu#q=structure%20and%20interpretation%20of%20computer%20programs%20github
 ---
 
-<p class="center caps">Worthwhile Books</p>
+<p class="center caps">Awesome Books</p>

@@ -1,8 +1,12 @@
 ---
 date: 2015-09-03T18:26:31+03:00
-description: null
-footer: true
-keywords: null
+description: A curated collection of other awesomeness for those who code.
+  - awesome dev resources
+  - dev resources
+  - curated dev
+  - curated code
+  - curated
+  - curated awesome
 nav: Curated
 title: other
 articles: 
@@ -15,6 +19,6 @@ awesome:
     link: 
 ---
 
-<p class="center caps">Other of Worthwhile</p>
+<p class="center caps">Other Awesome</p>
 
 <p class="small center italic">Coming Soon...</p>
