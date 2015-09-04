@@ -1,10 +1,20 @@
 ---
-date: 2015-09-03T18:26:21+03:00
+date: 2015-09-04T03:23:44+03:00
 description: null
 footer: true
 keywords: null
 nav: Curated
 title: books
+curated_section: books
+books: 
+  - 
+    title: The Pragmatic Programmer
+    amzn: http://amzn.to/1Ur64jU
+  - 
+    title: SICP (Structure and Interpretation of Computer Programs)
+    amzn: http://amzn.to/1NQXs1B
+    online: https://mitpress.mit.edu/sicp/full-text/book/book.html
+    github: https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8&client=ubuntu#q=structure%20and%20interpretation%20of%20computer%20programs%20github
 ---
 
-curated books
+<p class="center caps">Worthwhile Books</p>

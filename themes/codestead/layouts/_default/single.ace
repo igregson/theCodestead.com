@@ -8,7 +8,7 @@
 
   main.content-outer
     .content role="main"
-      h1.post--title {{.Title}}
+      h1.mb3.caps.h4.center {{.Title}}
       {{.Content}}
 
 

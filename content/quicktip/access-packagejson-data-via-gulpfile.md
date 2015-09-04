@@ -1,7 +1,7 @@
 ---
 date: 2015-07-03T14:15:01+03:00
 title: Access Package.json Data via Gulpfile
-type: quicktip
+type: post
 keywords: 
   - package.json in gulp
   - package.json in gulpfile
@@ -9,7 +9,7 @@ keywords:
   - share variables gulp package.json
 description: > 
   An example of how to access a json-key's value from a package.json file inside of a gulpfile.
-url: quicktip/access-package-json-via-gulpfile
+#url: quicktip/access-package-json-via-gulpfile
 ---
 
 Much of development seems to consist of wiring together files/data/languages/etc/etc. While trivially easy in many cases, learning how isn't always obvious.

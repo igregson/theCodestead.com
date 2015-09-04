@@ -4,7 +4,7 @@
 
 .container.page-index
 
-  aside.sb--right
+  aside.sb--right.owl
     .sb--box
       h4.sb--header
         i codesteading
@@ -24,17 +24,17 @@
   .content-outer
 
     .content.excerpts
-      {{ range where .Data.Pages "Section" "post" }}
+      {{ range where .Data.Pages "Type" "post" }}
 
-        section class="excerpt excerpt-type-{{.Type}}"
+        section class="excerpt excerpt-type-{{.Section}}"
 
-          {{if eq .Type "quicktip"}}
+          {{if eq .Section "quicktip"}}
             .quicktip-note.quicktip-toggle Quicktip
               span.quicktip-toggle-open
           {{end}}
 
 
-          {{if eq .Type "quicktip"}}
+          {{if eq .Section "quicktip"}}
             h2.excerpt--header
               span.quicktip-toggle {{.Title}}
               a.quicktip-permalink href={{.RelPermalink}}
@@ -53,7 +53,7 @@
               {{.Summary}}
             {{end}}
 
-          {{if eq .Type "post"}}
+          {{if eq .Section "post"}}
             a.excerpt--readFull href={{.RelPermalink}} Full Article &#8594;
           {{end}}
 

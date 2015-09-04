@@ -4,23 +4,81 @@
 
 .container.page-page
 
+  {{ partial "sidebar.html" . }}
+
   main.content-outer role="main"
     .section-nav-top
-      .section-nav-top-indexBar
-        a class="block {{ if eq .Title "Curated" }}nav--active{{end}}" href="/curated/" -
+      // a class="section-nav-top-indexBar {{ if eq .Title "Curated" }}nav--active{{end}}" href="/curated/"
+        // .section-nav-top-line
+        // .section-nav-top-line
+        // .section-nav-top-line
       ul.section-nav-top-ul
-        li
-          a href="/curated/podcasts/" class="{{ if eq .Title "podcasts" }}nav--active{{end}}" Podcasts
-        li
-          a href="/curated/videos/" class="{{ if eq .Title "videos" }}nav--active{{end}}" Videos
-        li
-          a href="/curated/books/" class="{{ if eq .Title "books" }}nav--active{{end}}" Books
-        li
-          a href="/curated/articles/" class="{{ if eq .Title "articles" }}nav--active{{end}}" Articles
+        li.section-nav-top-li
+          a.section-nav-top-a href="/curated/podcasts/" class="{{ if eq .Title "podcasts" }}nav--active{{end}}" Podcasts
+        li.section-nav-top-li
+          a.section-nav-top-a href="/curated/talks/" class="{{ if eq .Title "talks" }}nav--active{{end}}" Talks
+        li.section-nav-top-li
+          a.section-nav-top-a href="/curated/books/" class="{{ if eq .Title "books" }}nav--active{{end}}" Books
+        li.section-nav-top-li
+          a.section-nav-top-a href="/curated/other/" class="{{ if eq .Title "other" }}nav--active{{end}}" Other
 
     .content
 
-      {{.Content}}
+      .mb3.mt1
+        {{.Content}}
+
+      //
+      // Books
+      //
+
+      {{ if eq .Params.curated_section "books" }}
+        {{ range .Params.books }}
+
+          .mb3
+            h4 {{.title}}
+            a href={{.amzn}} On Amazon
+            {{ with .online }}
+              a.ml2 href={{.}} HTML version
+            {{end}}
+            {{ with .github }}
+              a.ml2 href={{.}} Github
+            {{end}}
+
+        {{end}}
+      {{end}}
+
+      //
+      // Podcasts
+      //
+
+      {{ if eq .Params.curated_section "podcasts" }}
+        {{ range .Params.podcasts }}
+
+          .mb3
+            h4 {{.name}}
+            a href={{.url}} {{.url}}
+
+        {{end}}
+      {{end}}
+
+      //
+      // Talks
+      //
+
+      {{ if eq .Params.curated_section "talks" }}
+        {{ range .Params.talks }}
+
+          .mb3
+            a href={{.url}}
+              h4.mb0 {{.title}}
+              h6.mt0 {{.author}}
+
+        {{end}}
+      {{end}}
+
+      //
+      // Articles
+      //
 
 
 {{ partial "foot.html" . }}

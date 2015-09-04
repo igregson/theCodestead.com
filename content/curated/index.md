@@ -8,6 +8,11 @@ title: Curated
 nav: Curated
 ---
 
-Here's the main page for all collections...
+<p class="center caps">Curated Collections</p>
 
-[podcasts](podcasts)
+<p class="small center italic">An ever-evolving work in progress</p>
+
+[Podcasts](podcasts)  
+[Videos](videos)  
+[Books](books)  
+[Other](other)

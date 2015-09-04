@@ -1,45 +1,60 @@
 .section-nav-top
-ul.section-nav-top-ul
+.section-nav-top-ul
   display: inline-block
   width: 100%
   text-align: center
   margin: 0
-  li
-    display: inline-block
-    width: 25%
-    background: lightgrey
-    margin: 0
-    transition: background .2s ease
-    cursor: pointer
-    @extend .caps
-    font-size: .6em
-    // &:first-of-type
-    //   border-radius: 3px 0 0 0
-    // +above(800px)
-    //   &:last-of-type
-    //     border-radius: 0 3px 0 0
-    +below(800px)
-      width: 50%
-      // &:nth-child(2)
-      //   border-radius: 0 3px 0 0
-    &:hover
-      background: darken(lightgrey, 17)
-  li a
-    padding: 3px 23px 3px
-    display: inline-block
-    width: 100%
-  li a.nav--active
+.section-nav-top-li
+  display: inline-block
+  width: 25%
+  margin: 0
+  font-size: .7em
+  @extend .caps
+  +below(800px)
+    width: 50%
+.section-nav-top-a
+  background: lightgrey
+  transition: background .2s ease
+  // padding: 3px 23px 3px
+  padding: 7px 0 6px
+  display: inline-block
+  width: 100%
+  &:hover
     background: darken(lightgrey, 17)
 
-.section-nav-top-indexBar
-  margin: 0
-  background: lightgrey
-  cursor: pointer
-  line-height: 10px
-  border-radius: 3px 3px 0 0
-  a
-    color: transparent
-  &:hover,
-  & .nav--active
-    background: darken(lightgrey, 17)
-    border-radius: 3px 3px 0 0
+// Border Radiuses
+.section-nav-top-li:first-of-type .section-nav-top-a
+  border-radius: 3px 0 0 0
+.section-nav-top-li:last-of-type .section-nav-top-a
+  +above(800px)
+    border-radius: 0 3px 0 0
+.section-nav-top-li:nth-child(2) .section-nav-top-a
+  +below(800px)
+    border-radius: 0 3px 0 0
+
+// Active
+.section-nav-top-a.nav--active
+  background: darken(lightgrey, 17)
+
+
+
+// Top Bar
+// .section-nav-top-indexBar
+//   display: block
+//   margin: 0
+//   background: lightgrey
+//   cursor: pointer
+//   height: auto
+//   border-radius: 3px 3px 0 0
+//   padding: 3px
+//   &:hover,
+//   &.nav--active
+//     background: darken(lightgrey, 17)
+//     border-radius: 3px 3px 0 0
+// .section-nav-top-line
+//   height: 1px
+//   border: solid 1px rgba(black, .25)
+//   width: 100%
+//   display: inline-block
+//   margin-bottom: 1px
+//   margin-top: 0
