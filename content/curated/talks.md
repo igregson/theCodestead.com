@@ -13,6 +13,8 @@ nav: Curated
 # sidebar: right
 title: talks
 curated_section: talks
+# https://news.ycombinator.com/item?id=5511466
+# http://www.ybrikman.com/writing/2014/05/29/must-see-tech-talks-for-every-programmer/#career
 talks: 
   - 
     title: The Mother of All Demos
@@ -44,6 +46,23 @@ talks:
     title: List of JavaScript talks
     author: "@github.com/bolshchikov"
     url: https://github.com/bolshchikov/js-must-watch
+  - 
+    title: The Computer Revolution Hasn't Happened Yet
+    author: Alan Kay
+    url: http://www.youtube.com/watch?v=oKg1hTOQXoY
+  - 
+    title: How to Design a Good API and Why it Matter
+    author: Joshua Bloch
+    url: http://www.youtube.com/watch?v=aAb7hSCtvGw
+  - 
+    title: Designing a Beautiful REST+JSON API
+    author: Les Hazlewood
+    url: http://www.youtube.com/watch?v=5WXYw4J4QOU
+  - 
+    title: What We Actually Know About Software Development, and Why We Believe it's True
+    author: Greg Wilson
+    url: https://vimeo.com/9270320
+
 ---
 
 <p class="center caps">awesome talks</p>

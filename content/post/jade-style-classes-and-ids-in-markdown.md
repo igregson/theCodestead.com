@@ -27,3 +27,4 @@ Jade has the `:markdown` filter. This isn't what I'm talking about. I'm not envi
 See: 
 
 http://talk.commonmark.org/t/consistent-attribute-syntax/272/93
+https://github.com/pragdave/earmark
